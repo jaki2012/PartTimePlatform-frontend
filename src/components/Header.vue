@@ -2,7 +2,7 @@
   <div id="header">
     <div class="wrapper">
       <a href="index.html" class="logo">
-        <img src="src/assets/images/logo.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘" />
+        <img src="../assets/images/logo.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘" />
       </a>
       <ul class="reset" id="navheader">
         <li class="current"><a href="index.html">首页</a></li>
@@ -28,5 +28,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+   @import '../assets/css/style.css';
+   @import '../assets/css/popup.css';
+   #header {
+     margin-bottom: 10px;
+   }
 </style>
