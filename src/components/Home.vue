@@ -510,15 +510,15 @@
             <div id="home_banner">
                 <ul class="banner_bg">
                     <li class="banner_bg_1 current">
-                        <a href="h/subject/s_buyfundation.html?utm_source=DH__lagou&utm_medium=banner&utm_campaign=haomai" target="_blank"><img src="style/images/d05a2cc6e6c94bdd80e074eb05e37ebd.jpg" width="612" height="160" alt="好买基金——来了就给100万"
+                        <a href="h/subject/s_buyfundation.html?utm_source=DH__lagou&utm_medium=banner&utm_campaign=haomai" target="_blank"><img src="../assets/images/d05a2cc6e6c94bdd80e074eb05e37ebd.jpg" width="612" height="160" alt="电商vs新零售"
                             /></a>
                     </li>
                     <li class="banner_bg_2">
-                        <a href="h/subject/s_worldcup.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=wc" target="_blank"><img src="style/images/c9d8a0756d1442caa328adcf28a38857.jpg" width="612" height="160" alt="世界杯放假看球，老板我也要！"
+                        <a href="h/subject/s_worldcup.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=wc" target="_blank"><img src="../assets/images/c9d8a0756d1442caa328adcf28a38857.jpg" width="612" height="160" alt="梦想合伙人"
                             /></a>
                     </li>
                     <li class="banner_bg_3">
-                        <a href="h/subject/s_xiamen.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=xiamen" target="_blank"><img src="style/images/d03110162390422bb97cebc7fd2ab586.jpg" width="612" height="160" alt="出北京记——第一站厦门"
+                        <a href="h/subject/s_xiamen.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=xiamen" target="_blank"><img src="../assets/images/d03110162390422bb97cebc7fd2ab586.jpg" width="612" height="160" alt="种读公益活动"
                             /></a>
                     </li>
                 </ul>
@@ -527,15 +527,15 @@
                     <ul class="thumbs">
                         <li class="thumbs_1 current">
                             <i></i>
-                            <img src="style/images/4469b1b83b1f46c7adec255c4b1e4802.jpg" width="113" height="42" />
+                            <img src="../assets/images/4469b1b83b1f46c7adec255c4b1e4802.jpg" width="113" height="42" />
                         </li>
                         <li class="thumbs_2">
                             <i></i>
-                            <img src="style/images/381b343557774270a508206b3a725f39.jpg" width="113" height="42" />
+                            <img src="../assets/images/381b343557774270a508206b3a725f39.jpg" width="113" height="42" />
                         </li>
                         <li class="thumbs_3">
                             <i></i>
-                            <img src="style/images/354d445c5fd84f1990b91eb559677eb5.jpg" width="113" height="42" />
+                            <img src="../assets/images/354d445c5fd84f1990b91eb559677eb5.jpg" width="113" height="42" />
                         </li>
                     </ul>
                 </div>
@@ -545,7 +545,7 @@
             <ul id="da-thumbs" class="da-thumbs">
                 <li>
                     <a href="h/c/1650.html" target="_blank">
-                        <img src="style/images/a254b11ecead45bda166afa8aaa9c8bc.jpg" width="113" height="113" alt="联想" />
+                        <img src="../assets/images/a254b11ecead45bda166afa8aaa9c8bc.jpg" width="113" height="113" alt="联想" />
                         <div class="hot_info">
                             <h2 title="联想">联想</h2>
                             <em></em>
@@ -557,7 +557,7 @@
                 </li>
                 <li>
                     <a href="h/c/9725.html" target="_blank">
-                        <img src="style/images/c75654bc2ab141df8218983cfe5c89f9.jpg" width="113" height="113" alt="淘米" />
+                        <img src="../assets/images/c75654bc2ab141df8218983cfe5c89f9.jpg" width="113" height="113" alt="淘米" />
                         <div class="hot_info">
                             <h2 title="淘米">淘米</h2>
                             <em></em>
@@ -569,7 +569,7 @@
                 </li>
                 <li>
                     <a href="h/c/1914.html" target="_blank">
-                        <img src="style/images/2bba2b71d0b0443eaea1774f7ee17c9f.png" width="113" height="113" alt="优酷土豆" />
+                        <img src="../assets/images/2bba2b71d0b0443eaea1774f7ee17c9f.png" width="113" height="113" alt="优酷土豆" />
                         <div class="hot_info">
                             <h2 title="优酷土豆">优酷土豆</h2>
                             <em></em>
@@ -581,7 +581,7 @@
                 </li>
                 <li>
                     <a href="h/c/6630.html" target="_blank">
-                        <img src="style/images/f4822a445a8b495ebad81fcfad3e40e2.jpg" width="113" height="113" alt="思特沃克" />
+                        <img src="../assets/images/f4822a445a8b495ebad81fcfad3e40e2.jpg" width="113" height="113" alt="思特沃克" />
                         <div class="hot_info">
                             <h2 title="思特沃克">思特沃克</h2>
                             <em></em>
@@ -593,7 +593,7 @@
                 </li>
                 <li>
                     <a href="h/c/2700.html" target="_blank">
-                        <img src="style/images/5caf8f9631114bf990f87bb11360653e.png" width="113" height="113" alt="奇猫" />
+                        <img src="../assets/images/5caf8f9631114bf990f87bb11360653e.png" width="113" height="113" alt="奇猫" />
                         <div class="hot_info">
                             <h2 title="奇猫">奇猫</h2>
                             <em></em>
@@ -605,7 +605,7 @@
                 </li>
                 <li class="last">
                     <a href="h/c/1335.html" target="_blank">
-                        <img src="style/images/c0052c69ef4546c3b7d08366d0744974.jpg" width="113" height="113" alt="堆糖网" />
+                        <img src="../assets/images/c0052c69ef4546c3b7d08366d0744974.jpg" width="113" height="113" alt="堆糖网" />
                         <div class="hot_info">
                             <h2 title="堆糖网">堆糖网</h2>
                             <em></em>
@@ -1552,7 +1552,7 @@
         <!-- <div id="loginToolBar">
 	<div>
 		<em></em>
-		<img src="style/images/footbar_logo.png" width="138" height="45" />
+		<img src="../assets/images/footbar_logo.png" width="138" height="45" />
 		<span class="companycount"></span>
 		<span class="positioncount"></span>
 		<a href="#loginPop" class="bar_login inline" title="登录"><i></i></a>
@@ -1596,12 +1596,13 @@
     </div>
     <!-- end #container -->
 </template>
+
 <script>
 export default {
   name: 'home'
 }
 </script>
-<script type="text/javascript" src="../assets/js/home.min.js"> </script>
+
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -1645,5 +1646,24 @@ export default {
                 }   
                  #sidebar .menu_main h2 {
                      text-align: start;
+                 }
+
+                 #hotList ul{
+                     text-align: left;
+                 }
+
+                 .hotabbing {
+                     text-align:left;
+                 }
+
+                 .hot_pos_l a {
+                     text-decoration: none;
+                 }
+                 .hot_pos a {
+                     color: #00b38a;
+                 }
+
+                 .hot_pos a.btn {
+                     color: #fff;
                  }
 </style>
