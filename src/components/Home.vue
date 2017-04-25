@@ -1620,61 +1620,61 @@ export default {
 <style scoped>
    @import '../assets/css/style.css';
    @import '../assets/css/popup.css';
-                .ui-autocomplete {
-                    width: 488px;
-                    background: #fafafa !important;
-                    position: relative;
-                    z-index: 10;
-                    border: 2px solid #91cebe;
-                }
-                
-                .ui-autocomplete-category {
-                    font-size: 16px;
-                    color: #999;
-                    width: 50px;
-                    position: absolute;
-                    z-index: 11;
-                    right: 0px;
-                    /*top: 6px; */
-                    text-align: center;
-                    border-top: 1px dashed #e5e5e5;
-                    padding: 5px 0;
-                }
-                
-                .ui-menu-item {
-                    *width: 439px;
-                    vertical-align: middle;
-                    position: relative;
-                    margin: 0px;
-                    margin-right: 50px !important;
-                    background: #fff;
-                    border-right: 1px dashed #ededed;
-                }
-                
-                .ui-menu-item a {
-                    display: block;
-                    overflow: hidden;
-                }   
-                 #sidebar .menu_main h2 {
-                     text-align: start;
-                 }
+    .ui-autocomplete {
+        width: 488px;
+        background: #fafafa !important;
+        position: relative;
+        z-index: 10;
+        border: 2px solid #91cebe;
+    }
 
-                 #hotList ul{
-                     text-align: left;
-                 }
+    .ui-autocomplete-category {
+        font-size: 16px;
+        color: #999;
+        width: 50px;
+        position: absolute;
+        z-index: 11;
+        right: 0px;
+        /*top: 6px; */
+        text-align: center;
+        border-top: 1px dashed #e5e5e5;
+        padding: 5px 0;
+    }
 
-                 .hotabbing {
-                     text-align:left;
-                 }
+    .ui-menu-item {
+        *width: 439px;
+        vertical-align: middle;
+        position: relative;
+        margin: 0px;
+        margin-right: 50px !important;
+        background: #fff;
+        border-right: 1px dashed #ededed;
+    }
 
-                 .hot_pos_l a {
-                     text-decoration: none;
-                 }
-                 .hot_pos a {
-                     color: #00b38a;
-                 }
+    .ui-menu-item a {
+        display: block;
+        overflow: hidden;
+    }   
+        #sidebar .menu_main h2 {
+            text-align: start;
+        }
 
-                 .hot_pos a.btn {
-                     color: #fff;
-                 }
+        #hotList ul{
+            text-align: left;
+        }
+
+        .hotabbing {
+            text-align:left;
+        }
+
+        .hot_pos_l a {
+            text-decoration: none;
+        }
+        .hot_pos a {
+            color: #00b38a;
+        }
+
+        .hot_pos a.btn {
+            color: #fff;
+        }
 </style>

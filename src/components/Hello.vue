@@ -31,8 +31,9 @@ export default {
     }
   },
   created: function () {
-    var url = 'http://pv.sohu.com/cityjson'
+    var url = 'http://localhost:5000/user/test'
     $.ajax({
+      type: 'get',
       url: url,
       dataType: 'json',
       successs: function (data) {
