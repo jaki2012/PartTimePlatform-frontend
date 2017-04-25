@@ -1599,7 +1599,18 @@
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  mounted: function() {
+    const corejs = document.createElement('script')
+    corejs.type = 'text/javascript'
+    corejs.src = '../../static/js/core.min.js'
+    document.body.appendChild(corejs)
+
+    const homejs = document.createElement('script')
+    homejs.type = 'text/javascript'
+    homejs.src = '../../static/js/home.min.js'
+    document.body.appendChild(homejs)
+  }
 }
 </script>
 

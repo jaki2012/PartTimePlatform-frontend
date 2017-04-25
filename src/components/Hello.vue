@@ -22,12 +22,24 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created: function () {
+    var url = 'http://pv.sohu.com/cityjson'
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      successs: function (data) {
+        console.log(data)
+      }
+    })
+    console.log('hello')
   }
 }
 </script>
