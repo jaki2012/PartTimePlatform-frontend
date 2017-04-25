@@ -7,13 +7,13 @@
 	</header>
 	<section class="content_box cleafix">
 		<div class="left_area fl">
-			<form action="javascript:;">
+			<form action="javascript:;" id="mylogin">
 				<div class="form_body" data-view="loginView">
 					<div class="input_item clearfix" data-propertyname="username" data-controltype="Phone" style="display: block;">
-						<input type="text" class="input input_white" id="" name="" placeholder="请输入已验证手机/邮箱" data-required="required" autocomplete="off">
+						<input type="text" class="input input_white" id="account" name="account" placeholder="请输入已验证手机/邮箱" data-required="required" autocomplete="off">
 					</div>
 					<div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
-						<input type="password" class="input input_white" id="" name="" placeholder="请输入密码" data-required="required" autocomplete="off">
+						<input type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
 					</div>
 					<div class="input_item clearfix" data-propertyname="request_form_verifyCode" data-controltype="VerifyCode" style="display:none;">
 						<input type="text" class="input input_white fl" style="width:130px; display:block;" name="" placeholder="请证明你不是机器人" data-required="required"
@@ -69,13 +69,12 @@
 	</footer>
 	<!-- 页面主体END -->
 	<div style="display: none;">5a01fca9-d552-45e9-a47c-f34d2a14e626</div>
-    <vendorjs></vendorjs>
-    <mainjs></mainjs>
-    <staticjs></staticjs>
+    <validateForm></validateForm>
 </div>
 </template>
 
 <script>
+
 export default {
     name: 'login',
     components: {
@@ -86,64 +85,25 @@ export default {
                   {
                       attrs: {
                           type: 'text/javascript',
-                          src: '../../static/js/jquery-3.1.0.min.js'
+                          src: '../static/js/jquery.lib.min.js'
                       }
                   }
               )
           }
       },
-      'vendorjs': {
+      'validateForm': {
           render(createElement) {
               return createElement(
                   'script', 
                   {
                       attrs: {
                           type: 'text/javascript',
-                          src: '../../static/js/vendor_c7a7c93.js'
+                          src: '../static/js/validateform.js'
                       }
                   }
               )
           }
       },
-      'mainjs': {
-          render(createElement) {
-              return createElement(
-                  'script', 
-                  {
-                      attrs: {
-                          type: 'text/javascript',
-                          src: '../../static/js/main.html_aio_c174982.js'
-                      }
-                  }
-              )
-          }
-      },
-      'staticjs': {
-          render(createElement) {
-              return createElement(
-                  'script', 
-                  {
-                      attrs: {
-                          type: 'text/javascript',
-                          src: '../../static/js/static_43ced5b.js'
-                      }
-                  }
-              )
-          }
-      }, 
-      'extrajs': {
-          render(createElement) {
-              return createElement(
-                  'script', 
-                  {
-                      attrs: {
-                          type: 'text/javascript',
-                          src: '../../static/js/login.extra.js'
-                      }
-                  }
-              )
-          }
-      },                    
     },
     mounted: function() {
         var code = '//login page' + '\n';
@@ -152,10 +112,7 @@ export default {
 
         document.getElementById('header').style.display='none'
         document.getElementById('footer').style.display='none'
-        const corejs = document.createElement('script')
-        corejs.type = 'text/javascript'
-        corejs.appendChild(document.createTextNode(code))
-        document.body.appendChild(corejs)
+
     },
     destroyed: function(){
         document.getElementById('header').style.display='block'

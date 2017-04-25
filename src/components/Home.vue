@@ -1604,7 +1604,7 @@ export default {
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'
     corejs.src = '../../static/js/core.min.js'
-    console.log(corejs);
+
     document.body.appendChild(corejs)
 
     const homejs = document.createElement('script')
