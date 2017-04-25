@@ -31,12 +31,13 @@ export default {
     }
   },
   created: function () {
+    // CrossOrigin Test
     var url = 'http://localhost:5000/user/test'
     $.ajax({
       type: 'get',
       url: url,
       dataType: 'json',
-      successs: function (data) {
+      success: function (data) {
         console.log(data)
       }
     })

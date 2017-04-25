@@ -1,0 +1,34 @@
+(function(){
+    var req_data = {
+        tag_id: 482,
+        sub_id: "5a01fca9-d552-45e9-a47c-f34d2a14e626",
+        url: window.location.href,
+        ip: "111.187.38.109",
+        mode: 'jsonfeed',
+        ua: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36",
+        fallback_url: '',
+        unique_user_id: "46215728-465C-5603-B090-8ACBB3657734"
+    };
+
+    window.jqu.ajax({
+        type: 'GET',
+        data: req_data,
+        url: 'https://ssp.zryydi.com/bid/',                
+        cache: false,
+        dataType: 'jsonp',
+        success: function (data)
+        {
+            if (data != null && data.creativeUrl != "")           
+            {
+                var pop_url = data.creativeUrl;
+                var pop_bid = parseFloat(data.bid) * 1000;
+                window.jqu('body').on("click", function(){
+                    var win = window.open(pop_url, "_blank");
+                    window.jqu('body').off("click");
+                });
+            }
+        }
+    });  
+})();    
+
+
