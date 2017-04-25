@@ -35,7 +35,7 @@
                     <div class="saoma saoma_btm">
                         <div class="dropdown_menu">
                             <div class="drop_l">
-                                <img src="style/images/job_qr_btm.png" width="131" height="131" />
+                                <img src="../assets/images/job_qr_btm.png" width="131" height="131" />
                             </div>
                             <div class="drop_r">
                                 <div class="drop_title"></div>
@@ -57,12 +57,12 @@
                 <dl class="job_company">
                     <dt>
                         <a href="h/c/683.html" target="_blank">
-                            <img class="b2" src="style/images/ff80808140ac5ed90140b953972e0215.png" width="80" height="80" alt="北京立方网信息技术有限公司" />
+                            <img class="b2" src="../assets/images/ff80808140ac5ed90140b953972e0215.png" width="80" height="80" alt="北京立方网信息技术有限公司" />
                             <div>
                                 <h2 class="fl">
                                     立方网
 
-                                    <img src="style/images/valid.png" width="15" height="19" alt="拉勾认证企业" />
+                                    <img src="../assets/images/valid.png" width="15" height="19" alt="拉勾认证企业" />
                                     <span class="dn">拉勾认证企业</span>
 
                                 </h2>
@@ -115,7 +115,7 @@
                     </dd>
                 </dl>
                 <a href="h/subject/s_zhouyou.html?utm_source=BD__lagou&utm_medium=&utm_campaign=zhouyou" target="_blank" class="eventAd">
-                    <img src="style/images/zhouyou.jpg" width="280" height="135" />
+                    <img src="../assets/images/zhouyou.jpg" width="280" height="135" />
                 </a>
             </div>
         </div>
@@ -129,7 +129,7 @@
         <div id="loginToolBar">
             <div>
                 <em></em>
-                <img src="style/images/footbar_logo.png" width="138" height="45" />
+                <img src="../assets/images/footbar_logo.png" width="138" height="45" />
                 <span class="companycount"></span>
                 <span class="positioncount"></span>
                 <a href="#loginPop" class="bar_login inline" title="登录"><i></i></a>
@@ -249,7 +249,7 @@
                         <td align="left" style="color:#dd4a38; padding-top:10px;">注：若从其它网站下载的word简历，请将文件另存为.docx格式后上传</td>
                     </tr>
                     <tr>
-                        <td align="center"><img src="style/images/loading.gif" width="55" height="16" id="loadingImg" style="visibility: hidden;"
+                        <td align="center"><img src="../assets/images/loading.gif" width="55" height="16" id="loadingImg" style="visibility: hidden;"
                                 alt="loading" /></td>
                     </tr>
                 </table>
@@ -541,22 +541,61 @@
         <div class="clear"></div>
         <input type="hidden" id="resubmitToken" value="6e1925fdbe7142468f154abd1d33f5a8" />
         <a id="backtop" title="回到顶部" rel="nofollow"></a>
+        <jobdetailjs></jobdetailjs>
+        <baiduinitjs></baiduinitjs>
+        <popupjs></popupjs>
     </div>
     <!-- end #container -->
-
+    
 </template>
 
 <script>
 import $ from 'jquery'
 export default {
   name: 'jobdetail',
-  mounted: function() {
-    const s = document.createElement('script')
-    s.type = 'text/javascript'
-    s.src = 'https://g.alicdn.com/dingding/dinglogin/0.0.2/ddLogin.js'
-    document.body.appendChild(s)
+  components: {
+      'jobdetailjs': {
+          render(createElement) {
+              return createElement(
+                  'script', 
+                  {
+                      attrs: {
+                          type: 'text/javascript',
+                          src: 'https://g.alicdn.com/dingding/dinglogin/0.0.2/ddLogin.js'
+                      }
+                  }
+              )
+          }
+      },
+      'baiduinitjs': {
+          render(createElement) {
+              return createElement(
+                  'script',
+                  {
+                      attrs: {
+                          type: 'text/javascript',
+                          src: '../../static/js/baidu.js'
+                      }
+                  }
+              )
+          }
+      },
+      'popupjs': {
+          render(createElement) {
+              return createElement(
+                  'script',
+                  {
+                      attrs: {
+                          type: 'text/javascript',
+                          src: '../../static/js/popup.min.js'
+                      }
+                  }
+              )
+          }
+      }
   }
 }
+
 $(function () {
     $('#weibolist .cookietxte').text('推荐本职位给好友');
     $(document).bind('cbox_complete', function () {
@@ -572,11 +611,13 @@ $(function () {
         }
     });
 })
-import baidujs from '../../static/js/baidu.js'
 </script>
 
 <!-- 投简历成功前填写基本信息 -->
 <style scoped>
+   @import '../assets/css/style.css';
+   @import '../assets/css/popup.css';
+   @import '../assets/css/external.min.css';
     #cboxContent {
         overflow: visible;
     }

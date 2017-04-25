@@ -1,5 +1,4 @@
-exports.shit = function () {
-    console.log('fuck')
+$(function () {
     //百度地图API功能
     var sMap = new BMap.Map("smallmap");
     sMap.enableScrollWheelZoom(true);
@@ -76,4 +75,4 @@ exports.shit = function () {
             }
         });
     });
-}
+})
