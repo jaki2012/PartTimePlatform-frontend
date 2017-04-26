@@ -29,4 +29,12 @@ refer to PanJiaChen/vue-element-admin : https://github.com/PanJiaChen/vue-elemen
 
 # css+html beautify tools
 http://tool.lu/css/  + http://tool.oschina.net/codeformat/css
+
+# vue-chartjs 
+http://vue-chartjs.org/#/ 
+//TO-DO: replace vue-chartjs with chart.js since the properties of vue-chartjs is too less
+We even can not edit the fontsize inside a chart 
+
+#colour matching schemes
+http://tool.c7sky.com/webcolor/ + http://www.peise.net/
 ```
