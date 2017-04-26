@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import Home from '@/components/Home'
 import JobDetail from '@/components/JobDetail'
 import Login from '@/components/Login'
+import Create from '@/components/Create'
 
 Vue.use(Router)
 
@@ -32,6 +33,12 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    // create job page
+    {
+      path: '/create',
+      name: 'create',
+      component: Create
     }
   ]
 })

@@ -554,6 +554,19 @@ import $ from 'jquery'
 export default {
   name: 'jobdetail',
   components: {
+      'baiduapi': {
+          render(createElement) {
+              return createElement(
+                  'script', 
+                  {
+                      attrs: {
+                          type: 'text/javascript',
+                          src: 'http://api.map.baidu.com/api?v=2.0&ak=3d6a9f4b807441569414b01eecc20959'
+                      }
+                  }
+              )
+          }
+      },
       'jobdetailjs': {
           render(createElement) {
               return createElement(
