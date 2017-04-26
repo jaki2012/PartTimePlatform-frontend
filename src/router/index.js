@@ -6,6 +6,7 @@ import JobDetail from '@/components/JobDetail'
 import Login from '@/components/Login'
 import Create from '@/components/Create'
 import Position from '@/components/Position'
+import RefusedResumes from '@/components/resume/RefusedResumes'
 
 Vue.use(Router)
 
@@ -46,6 +47,12 @@ export default new Router({
       path: '/position',
       name: 'position',
       component: Position
+    },
+    // 不合适简历页面
+    {
+      path: '/refusedresumes',
+      name: 'refusedresumes',
+      component: RefusedResumes
     }
   ]
 })
