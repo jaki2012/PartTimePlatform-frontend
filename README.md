@@ -25,6 +25,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ``` bash
 # TinyMCE : The text area editor
 https://www.tinymce.com/
+refer to PanJiaChen/vue-element-admin : https://github.com/PanJiaChen/vue-element-admin
 
 # css+html beautify tools
 http://tool.lu/css/  + http://tool.oschina.net/codeformat/css
