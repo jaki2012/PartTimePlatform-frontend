@@ -32,7 +32,7 @@ http://tool.lu/css/  + http://tool.oschina.net/codeformat/css
 
 # vue-chartjs 
 http://vue-chartjs.org/#/ 
-//TO-DO: replace vue-chartjs with chart.js since the properties of vue-chartjs is too less
+//TO-DO: replace vue-chartjs with chart.js since the properties of vue-chartjs is too little
 We even can not edit the fontsize inside a chart 
 
 #colour matching schemes
