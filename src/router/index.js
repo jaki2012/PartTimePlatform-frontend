@@ -5,6 +5,7 @@ import Home from '@/components/Home'
 import JobDetail from '@/components/JobDetail'
 import Login from '@/components/Login'
 import Create from '@/components/Create'
+import Position from '@/components/Position'
 
 Vue.use(Router)
 
@@ -39,6 +40,12 @@ export default new Router({
       path: '/create',
       name: 'create',
       component: Create
+    },
+    // 已发布的职位页面
+    {
+      path: '/position',
+      name: 'position',
+      component: Position
     }
   ]
 })
