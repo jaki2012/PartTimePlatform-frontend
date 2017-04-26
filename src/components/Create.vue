@@ -618,7 +618,7 @@
 
         <div class="clear"></div>
         <input type="hidden" value="c29d4a7c35314180bf3be5eb3f00048f " id="resubmitToken">
-        <a rel="nofollow" title="回到顶部" id="backtop" style="display: none;"></a>
+        <a rel="nofollow" title="回到顶部" id="backtop"></a>
         <jobsjs></jobsjs>
     </div>
     <!-- end #container -->
