@@ -352,8 +352,6 @@
         <!--/#refuseMailSuccess-->
     </div>
     <!------------------------------------- end ------------------------------------------>
-    <jquerydatetimepickerjs></jquerydatetimepickerjs>
-    <receivedresumesjs></receivedresumesjs>
     <div class="clear"></div>
     <input type="hidden" value="9421e33d3091428796fec127b07b6c5b" id="resubmitToken">
     <a rel="nofollow" title="回到顶部" id="backtop"></a>
@@ -363,6 +361,24 @@
 
 <script>
 import $ from 'jquery'
+function loadScript(url, callback){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    if(script.readyState){ // IE
+        script.onreadystatechange = function(){
+            if(script.readyState == "loaded" || script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    }else{ // FF, Chrome, Opera, ...
+        script.onload = function(){
+            callback();
+        };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
 export default {
     name: 'create',
     components: {
@@ -391,51 +407,56 @@ export default {
                   }
               )
           }
-      },
-      mounted: function() {
-        $(function(){
-            $('#noticeDot-1').hide();
-            $('#noticeTip a.closeNT').click(function(){
-                $(this).parent().hide();
-            });
+      }
+    },
+    mounted: function() {
+    loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
+        loadScript("../../../static/js/received_resumes.js", function(){
+            //console.log('Actually we do nothing here')
+        })
+    });
+    $(function(){
+        $('#noticeDot-1').hide();
+        $('#noticeTip a.closeNT').click(function(){
+            $(this).parent().hide();
         });
-        var index = Math.floor(Math.random() * 2);
-        var ipArray = new Array('42.62.79.226','42.62.79.227');
-        var url = "ws://" + ipArray[index] + ":18080/wsServlet?code=314873";
-        var CallCenter = {
-                init:function(url){
-                    var _websocket = new WebSocket(url);
-                    _websocket.onopen = function(evt) {
-                        console.log("Connected to WebSocket server.");
-                    };
-                    _websocket.onclose = function(evt) {
-                        console.log("Disconnected");
-                    };
-                    _websocket.onmessage = function(evt) {
-                        //alert(evt.data);
-                        var notice = jQuery.parseJSON(evt.data);
-                        if(notice.status[0] == 0){
-                            $('#noticeDot-0').hide();
-                            $('#noticeTip').hide();
-                            $('#noticeNo').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                            $('#noticeNoPage').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                        }else{
-                            $('#noticeDot-0').show();
-                            $('#noticeTip strong').text(notice.status[0]);
-                            $('#noticeTip').show();
-                            $('#noticeNo').text('('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                            $('#noticeNoPage').text(' ('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                        }
-                        $('#noticeDot-1').hide();
-                    };
-                    _websocket.onerror = function(evt) {
-                        console.log('Error occured: ' + evt);
-                    };
-                }
-        };
-        CallCenter.init(url);
-    }
-    }
+    });
+    var index = Math.floor(Math.random() * 2);
+    var ipArray = new Array('42.62.79.226','42.62.79.227');
+    var url = "ws://" + ipArray[index] + ":18080/wsServlet?code=314873";
+    var CallCenter = {
+            init:function(url){
+                var _websocket = new WebSocket(url);
+                _websocket.onopen = function(evt) {
+                    console.log("Connected to WebSocket server.");
+                };
+                _websocket.onclose = function(evt) {
+                    console.log("Disconnected");
+                };
+                _websocket.onmessage = function(evt) {
+                    //alert(evt.data);
+                    var notice = jQuery.parseJSON(evt.data);
+                    if(notice.status[0] == 0){
+                        $('#noticeDot-0').hide();
+                        $('#noticeTip').hide();
+                        $('#noticeNo').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+                        $('#noticeNoPage').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+                    }else{
+                        $('#noticeDot-0').show();
+                        $('#noticeTip strong').text(notice.status[0]);
+                        $('#noticeTip').show();
+                        $('#noticeNo').text('('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+                        $('#noticeNoPage').text(' ('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+                    }
+                    $('#noticeDot-1').hide();
+                };
+                _websocket.onerror = function(evt) {
+                    console.log('Error occured: ' + evt);
+                };
+            }
+    };
+    CallCenter.init(url);
+}
 }
 </script>
 
