@@ -141,7 +141,7 @@ export default {
     },
     mounted: function(){
          var perCurrent = $(".company_center_aside .current").removeClass('current');
-         var current = $(".jobinfo").find("dd:eq(0)");
+         var current = $(".jobinfo").find("dd:eq(1)");
          current.addClass('current');
          this.showscoredetail();
          var ctx = document.getElementById("myChart");
@@ -175,14 +175,14 @@ export default {
             var a = document.getElementById('detailbtn');
             if(this.showing){
               a.innerText = "了解收支"
-              //$("#creditsChart").hide();
-              $('#line-chart').css('height','0px');
+              $("#myChart").hide();
+              //$('#line-chart').css('height','0px');
               this.showing = !this.showing;
             } else {
               a.innerText = "收起来"
               //一开始就hide的话，会导致vue-chartjs不渲染
-              //$("#creditsChart").show();
-              $('#line-chart').css('height','400px');
+              $("#myChart").show();
+              //$('#line-chart').css('height','400px');
               this.showing = !this.showing;
             }
             
