@@ -27,7 +27,7 @@
                 </div>
                 <!-- creditsChart -->
                 <div id="creditsChart">
-                    <incomeChart></incomeChart>
+                    <canvas id="myChart" width="704" height="400"></canvas>
                 </div>
                 </div>
                 <!--end #resumeScore-->
@@ -127,6 +127,7 @@
 <script>
 import UserInfoSideBar from './UserInfoSideBar'
 import IncomeChart from '../chart/IncomeChart'
+import Chart from 'chart.js';
 export default {
     name: 'credits',
     components: {
@@ -143,6 +144,31 @@ export default {
          var current = $(".jobinfo").find("dd:eq(0)");
          current.addClass('current');
          this.showscoredetail();
+         var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2017.04.10', '2017.04.17', '2017.04.24', '2017.05.01'],
+                datasets: [{
+                    label: '账户余额收支情况（最近一个月）',
+                    fill: false,
+                    lineTension:0,
+                    borderColor: '#FF6666',
+                    backgroundColor: '#FF6666',
+                    data: [670, 604, 724, 694],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:false
+                        }
+                    }]
+                }
+            }
+        });
     },
     methods: {
         showscoredetail: function() {
