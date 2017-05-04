@@ -30,7 +30,7 @@
 						 data-lg-tj-cid="idnull">
 					</div>
 					<div class="input_item clearfix">
-						<h5 class="reg_now">还没有拉勾帐号？<a rel="nofollow" href="https://passport.lagou.com/register/register.html" data-lg-tj-id="1ja0" data-lg-tj-no="idnull"
+						<h5 class="reg_now">还没有同嘉帐号？<a rel="nofollow" href="https://passport.lagou.com/register/register.html" data-lg-tj-id="1ja0" data-lg-tj-no="idnull"
 							 data-lg-tj-cid="idnull">立即注册</a></h5>
 					</div>
 					<input type="hidden" value="" id="isVisiable_request_form_verifyCode">
@@ -548,7 +548,7 @@ body {
 }
 
 .vender_login {
-	margin-top: 10px
+	margin-top: 0px
 }
 
 .vender_login li {
@@ -621,6 +621,7 @@ body {
 @media only screen and (-o-min-device-pixel-ratio:2/1),only screen and (min--moz-device-pixel-ratio:2),only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:240dpi),only screen and (min-resolution:2dppx) {
 	.sso_header .logo {
 		background-image: url(//img.lagou.com/passport/static/pc/modules/common/img/logo@2x_7750e17.png);
+		background-image: url('../assets/images/loginpagelogo.png');
 		background-size: 128px 54px
 	}
 
@@ -750,7 +751,10 @@ body {
 }
 
 .content_box .qrcode {
-	margin-top: 45px
+	margin-top: 39px;
+	padding-bottom: 0px;
+	margin-bottom:0px;
+	margin-left:-20px;
 }
 
 .content_box .qrcode img {
