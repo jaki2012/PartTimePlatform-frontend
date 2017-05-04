@@ -10,10 +10,13 @@ import Position from '@/components/Position'
 import RefusedResumes from '@/components/resume/RefusedResumes'
 import UserResumeStates from '@/components/UserResumeStates'
 import UserJobStates from '@/components/UserJobStates'
+import SearchList from '@/components/Searchlist'
 import UserInfo from '@/components/userinfo/UserInfo'
 import MyResume from '@/components/userinfo/MyResume'
 import Credits from '@/components/userinfo/Credits'
 import Income from '@/components/userinfo/Income'
+import Myjobs from '@/components/userinfo/Myjobs'
+
 
 Vue.use(Router)
 
@@ -96,6 +99,18 @@ export default new Router({
       path: '/income',
       name: 'income',
       component: Income
+    },
+    // 我的兼职
+    {
+      path: '/myjobs',
+      name: 'myjobs',
+      component: Myjobs
+    },
+    // 搜索结果页面
+    {
+      path: '/searchlist',
+      name: 'searchlist',
+      component: SearchList
     }
   ]
 })
