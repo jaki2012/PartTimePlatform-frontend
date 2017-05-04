@@ -14,18 +14,19 @@
                 <div id="resumeScore">
                     <div class="score fl">
                         <canvas height="120" width="120" id="doughnutChartCanvas" style="width: 120px; height: 120px;"></canvas>
-                        <div style="" class="scoreVal"><span style="display:block;font-size:14px">最新信用分</span><span>694</span>分</div>
+                        <div style="" class="scoreVal"><span style="display:block;font-size:14px;margin-bottom:8px">最新信用分</span><span  style="font-size:21px;color:#019875">694</span></div>
                     </div>
 
                     <div class="which fl">
                         <div class="level">信用等级:<em> 优秀</em></div>
                         <div class="evaTime">评估时间:<em> 2017-04-06</em></div>
                         <span class="startbtn scorebtn"><a>晒晒分</a></span>
-                        <span class="scorebtn"><a v-on:click="showscoredetail">了解分</a></span>
+                        <span class="scorebtn"><a id="detailbtn" v-on:click="showscoredetail">收起来</a></span>
                     </div>
                 </div>
+                <!-- creditsChart -->
                 <div id="creditsChart">
-                <creditsChart></creditsChart>
+                    <creditsChart></creditsChart>
                 </div>
                 </div>
                 <!--end #resumeScore-->
@@ -131,16 +132,31 @@ export default {
         'userinfosidebar': UserInfoSideBar,
         'creditsChart': CreditsChart,
     },
+    data: function () {
+        return {
+            showing: true
+        }
+    },
+    mounted: function(){
+         var perCurrent = $(".company_center_aside .current").removeClass('current');
+         var current = $(".jobinfo").find("dd:eq(0)");
+         current.addClass('current');
+         this.showscoredetail();
+    },
     methods: {
         showscoredetail: function() {
-            var showing = false;
-            console.log(showing);
-            if(showing){
-              $("#line-chart").hide();
-              showing = !showing;
+            var a = document.getElementById('detailbtn');
+            if(this.showing){
+              a.innerText = "了解分"
+              //$("#creditsChart").hide();
+              $('#line-chart').css('height','0px');
+              this.showing = !this.showing;
             } else {
-              $("#line-chart").show();
-              showing = !showing;
+              a.innerText = "收起来"
+              //一开始就hide的话，会导致vue-chartjs不渲染
+              //$("#creditsChart").show();
+              $('#line-chart').css('height','400px');
+              this.showing = !this.showing;
             }
             
         }
@@ -153,6 +169,7 @@ export default {
    @import '../../assets/css/popup.css';
 
    #resumeScore {
+       margin-top: 25px;
        margin-left: 13px;
    }
 
@@ -198,6 +215,10 @@ export default {
 
     .startbtn {
         margin-left: 150px!important;
+    }
+
+    #line-chart {
+        height:400px;
     }
 
 </style>
