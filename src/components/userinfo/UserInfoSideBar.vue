@@ -23,7 +23,7 @@
                 <a href="positions.html">信用积分</a>
             </dd>
             <dd>
-                <a href="positions.html">兼职收入结算</a>
+                <a href="positions.html">收入/提现</a>
             </dd>
             <dd>
                 <a href="positions.html">我的兼职</a>

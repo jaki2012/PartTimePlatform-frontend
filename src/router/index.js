@@ -13,6 +13,7 @@ import UserJobStates from '@/components/UserJobStates'
 import UserInfo from '@/components/userinfo/UserInfo'
 import MyResume from '@/components/userinfo/MyResume'
 import Credits from '@/components/userinfo/Credits'
+import Income from '@/components/userinfo/Income'
 
 Vue.use(Router)
 
@@ -89,6 +90,12 @@ export default new Router({
       path: '/credits',
       name: 'credits',
       component: Credits
+    },
+    // 兼职收入与体现
+    {
+      path: '/income',
+      name: 'income',
+      component: Income
     }
   ]
 })

@@ -5,33 +5,34 @@
             <dl class="company_center_content">
                 <dt>
                     <h1>
-                        <em></em> 信用积分
+                        <em></em> 兼职收入
                     </h1>
                 </dt>
                 <dd>
                 <div class="profile_box">
-                <h2>信用一览</h2>
+                <h2>账户总览</h2>
                 <div id="resumeScore">
                     <div class="score fl">
                         <canvas height="120" width="120" id="doughnutChartCanvas" style="width: 120px; height: 120px;"></canvas>
-                        <div style="" class="scoreVal"><span style="display:block;font-size:14px;margin-bottom:8px">最新信用分</span><span  style="font-size:21px;color:#019875">694</span></div>
+                        <div style="" class="scoreVal"><span style="display:block;font-size:14px;margin-bottom:8px">账户余额</span><span  style="font-size:21px;color:#019875">¥694.00</span></div>
                     </div>
 
                     <div class="which fl">
-                        <div class="level">信用等级:<em> 优秀</em></div>
-                        <div class="evaTime">评估时间:<em> 2017-04-06</em></div>
-                        <span class="startbtn scorebtn"><a>晒晒分</a></span>
+                        <div class="buttons">
+                        <span class="startbtn scorebtn"><a>余额提现</a></span>
+                        <span class="scorebtn"><a>电子商城</a></span>
                         <span class="scorebtn"><a id="detailbtn" v-on:click="showscoredetail">收起来</a></span>
+                        </div>
                     </div>
                 </div>
                 <!-- creditsChart -->
                 <div id="creditsChart">
-                    <creditsChart></creditsChart>
+                    <incomeChart></incomeChart>
                 </div>
                 </div>
                 <!--end #resumeScore-->
                 <div class="profile_box" id="basicInfo">
-                    <h2>信用足迹</h2>
+                    <h2>收支记录</h2>
                     <div class="basicShow">
                     <ul class="reset resumeLists">
                         <li data-id="1686182" class="onlineResume">
@@ -39,20 +40,20 @@
 			                                    <input type="checkbox">
 			                                    <i></i>
 			                                </label>
-                            <div class="resumeShow">
+                            <div class="resumeShow resumeIntroCash">
                                 <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
-                                    <img src="../../assets/images/logo_doumi.png">
+                                    <img src="../../assets/images/提现 (1).png">
                                 </a>
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            知名宜芝多营业员
+			                                        				                                            现金提现：￥30
 			                                        	</a>
                                         
                                     </h3>
                                     <span class="fr">结算时间：2014-07-01 17:08</span>
                                     <div style="font-size:12px">
-                                        <em style="color:#999">工作地点：</em>上海嘉定 <em style="color:#999">兼职类型：</em>服务员<br>
+                                        <em style="color:#999">来源兼职：</em>知名宜芝多营业员<br>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
@@ -66,8 +67,8 @@
                                 <div class="links">
                                     <a data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
                                         data-forwardcount="1" class="resume_forward" href="javascript:void(0)">
-                                                    	互评信用结果：
-                                                    	                                                    	<span>+3</span><span>分</span>
+                                                    	账户余额：
+                                                    	                                                    	<span>￥</span><span>694.00</span>
                                                     	                                                    </a>
                                     
                                 </div>
@@ -80,18 +81,18 @@
 			                                </label>
                             <div class="resumeShow">
                                 <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
-                                    <img src="../../assets/images/logo_doumi.png">
+                                    <img src="../../assets/images/收入.png">
                                 </a>
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            影院检票一协助小时工日结包餐
+			                                        				                                            兼职日结收入: ￥120
 			                                        	</a>
                                         
                                     </h3>
                                     <span class="fr">结算时间：2014-07-01 17:08</span>
                                     <div style="font-size:12px">
-                                        <em style="color:#999">工作地点：</em>上海宝山 <em style="color:#999">兼职类型：</em>其他<br>
+                                        <em style="color:#999">来源兼职：</em>影院检票一协助小时工日结包餐<br>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
@@ -105,8 +106,8 @@
                                 <div class="links">
                                     <a data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
                                         data-forwardcount="1" class="resume_forward" href="javascript:void(0)">
-                                                    	互评信用结果：
-                                                    	                                                    	<span>-2</span><span>分</span>
+                                                    	账户余额：
+                                                    	                                                    	<span>￥</span><span>724.00</span>
                                                     	                                                    </a>
                                     
                                 </div>
@@ -125,12 +126,12 @@
 
 <script>
 import UserInfoSideBar from './UserInfoSideBar'
-import CreditsChart from '../chart/CreditsChart'
+import IncomeChart from '../chart/IncomeChart'
 export default {
     name: 'credits',
     components: {
         'userinfosidebar': UserInfoSideBar,
-        'creditsChart': CreditsChart,
+        'incomeChart': IncomeChart,
     },
     data: function () {
         return {
@@ -147,7 +148,7 @@ export default {
         showscoredetail: function() {
             var a = document.getElementById('detailbtn');
             if(this.showing){
-              a.innerText = "了解分"
+              a.innerText = "了解收支"
               //$("#creditsChart").hide();
               $('#line-chart').css('height','0px');
               this.showing = !this.showing;
@@ -214,7 +215,7 @@ export default {
     }
 
     .startbtn {
-        margin-left: 150px!important;
+        margin-left: 80px!important;
     }
 
     #line-chart {
@@ -224,5 +225,32 @@ export default {
     #resumeScore div.fl {
         background-color: white;
     }
+
+    #resumeScore div.which div {
+        margin: 60px 10px 20px 10px;
+        text-align: center;
+    }
+
+    ul.resumeLists li .resumeShow img {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    }
+
+    .resumeIntro h3.unread {
+    font-weight: 400;
+}
+
+.resumeIntroCash h3 a {
+    color: #FF6666;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.resumeIntroCash .links a{
+    color: #FF6666
+}
 
 </style>
