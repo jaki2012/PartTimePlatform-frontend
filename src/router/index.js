@@ -11,6 +11,8 @@ import RefusedResumes from '@/components/resume/RefusedResumes'
 import UserResumeStates from '@/components/UserResumeStates'
 import UserJobStates from '@/components/UserJobStates'
 import UserInfo from '@/components/userinfo/UserInfo'
+import MyResume from '@/components/userinfo/MyResume'
+import Credits from '@/components/userinfo/Credits'
 
 Vue.use(Router)
 
@@ -75,6 +77,18 @@ export default new Router({
       path: '/userinfo',
       name: 'userinfo',
       component: UserInfo
+    },
+    // 用户个人简历
+    {
+      path: '/myresume',
+      name: 'myresume',
+      component: MyResume
+    },
+    // 兼职信用积分
+    {
+      path: '/credits',
+      name: 'credits',
+      component: Credits
     }
   ]
 })
