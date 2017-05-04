@@ -35,6 +35,11 @@ http://vue-chartjs.org/#/
 //TO-DO: replace vue-chartjs with chart.js since the properties of vue-chartjs is too little
 We even can not edit the fontsize inside a chart 
 
+# chart.js 
+http://www.chartjs.org/docs/
+We successfully implement a income-chart(linechart) with full-characterisics chart.js.
+with npm we can use <u>npm install chart.js -S</u> to import chart.js
+
 #colour matching schemes
 http://tool.c7sky.com/webcolor/ + http://www.peise.net/
 ```

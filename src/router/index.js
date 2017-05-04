@@ -16,6 +16,7 @@ import MyResume from '@/components/userinfo/MyResume'
 import Credits from '@/components/userinfo/Credits'
 import Income from '@/components/userinfo/Income'
 import Myjobs from '@/components/userinfo/Myjobs'
+import Mydelivery from '@/components/userinfo/Mydelivery'
 
 
 Vue.use(Router)
@@ -111,6 +112,12 @@ export default new Router({
       path: '/searchlist',
       name: 'searchlist',
       component: SearchList
+    },
+    // 搜索结果页面
+    {
+      path: '/mydelivery',
+      name: 'mydelivery',
+      component: Mydelivery
     }
   ]
 })

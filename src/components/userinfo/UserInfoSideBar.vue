@@ -28,6 +28,9 @@
             <dd>
                 <a href="positions.html">我的兼职</a>
             </dd>
+            <dd>
+                <a href="positions.html">已投简历状态</a>
+            </dd>
         </dl>
     </div>
     <!-- end .sidebar -->  
