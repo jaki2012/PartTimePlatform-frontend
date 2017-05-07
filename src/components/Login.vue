@@ -7,13 +7,13 @@
 	</header>
 	<section class="content_box cleafix">
 		<div class="left_area fl">
-			<form action="javascript:;" id="mylogin">
+			<form id="mylogin" v-on:submit.prevent="submit">
 				<div class="form_body" data-view="loginView">
 					<div class="input_item clearfix" data-propertyname="username" data-controltype="Phone" style="display: block;">
-						<input type="text" class="input input_white" id="account" name="account" placeholder="请输入已验证手机/邮箱" data-required="required" autocomplete="off">
+						<input v-model="form.name" type="text" class="input input_white" id="account" name="account" placeholder="请输入已验证手机/邮箱" data-required="required" autocomplete="off">
 					</div>
 					<div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
-						<input type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
+						<input v-model="form.password" type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
 					</div>
 					<div class="input_item clearfix" data-propertyname="request_form_verifyCode" data-controltype="VerifyCode" style="display:none;">
 						<input type="text" class="input input_white fl" style="width:130px; display:block;" name="" placeholder="请证明你不是机器人" data-required="required"
@@ -59,7 +59,7 @@
 			</ul>
 			<div class="qrcode">
 				<img src="../assets/images/qrcode_0ec6bff.jpg" alt="二维码">
-				<p>[ 扫码下载拉勾APP ]</p>
+				<p>[ 扫码下载同嘉APP ]</p>
 			</div>
 		</div>
 	</section>
@@ -74,9 +74,33 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex'
+import { USER_SIGNIN } from '../vuex/store/user'
 export default {
     name: 'login',
+	data: function (){
+		return {
+			// false 代表没有提交过
+			btn: false,
+			form: {
+				name:'',
+				password:''
+			}
+		}
+	},
+	methods: {
+		...mapActions([USER_SIGNIN,"enterLoginPage","leaveLoginPage"]),
+		submit() {
+			this.btn = true
+			if(!this.form.name || !this.form.password) return 
+			if(!(this.form.name === "jaki2012")) {
+				alert("账号密码错误，请重新输入")
+				return 
+			}
+			this.USER_SIGNIN(this.form)
+			this.$router.replace({ path: '/home' })
+		}
+	},
     components: {
       'jqueryjs': {
           render(createElement) {
@@ -109,15 +133,15 @@ export default {
         var code = '//login page' + '\n';
         code = code + "require(['pc/page/login/main']);"+'\n';
         code = code + "require(['pc/modules/event/happy-3rd-birthday/main']);";
-
-        document.getElementById('header').style.display='none'
-        document.getElementById('footer').style.display='none'
+		this.enterLoginPage();
+        // document.getElementById('header').style.display='none'
+        // document.getElementById('footer').style.display='none'
 
     },
     destroyed: function(){
-        document.getElementById('header').style.display='block'
-        document.getElementById('footer').style.display='block'
-        console.log('Destoyed: I am called');
+		this.leaveLoginPage();
+        // document.getElementById('header').style.display='block'
+        // document.getElementById('footer').style.display='block'
     }
 }
 </script>

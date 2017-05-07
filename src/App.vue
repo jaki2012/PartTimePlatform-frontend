@@ -1,18 +1,20 @@
 <template>
   <div id="app">
-    <headerbar></headerbar>
+    <headerbar v-if="!app.loginPage"></headerbar>
     <div>
       <router-view></router-view>
     </div>
-    <footerbar></footerbar>
+    <footerbar v-if="!app.loginPage"></footerbar>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Footer from './components/Footer'
 import Header from './components/Header'
 export default {
   name: 'app',
+  computed: mapState({app: state => state.app}),
   components: {
     'footerbar': Footer,
     'headerbar': Header

@@ -5,7 +5,7 @@
 
                 <div class="menu_box">
                     <div class="menu_main">
-                        <h2>技术 <span></span></h2>
+                        <h2>技术<span></span></h2>
                         <a href="h/jobs/list_Java?labelWords=label">Java</a>
                         <a href="h/jobs/list_PHP?labelWords=label">PHP</a>
                         <a href="h/jobs/list_C?labelWords=label">C</a>
@@ -489,7 +489,7 @@
                     <input type="hidden" name="lc" id="lc" value="" />
                     <input type="hidden" name="workAddress" id="workAddress" value="" />
                     <input type="hidden" name="city" id="cityInput" value="" />
-                    <input type="submit" id="search_button" value="搜索" />
+                    <router-link :to="{ path: 'searchlist', query: { word: '前端开发' }}"><input type="submit" id="search_button" value="搜索" /></router-link>
 
                 </form>
             </div>
@@ -626,7 +626,7 @@
                     <li class="clearfix">
                         <div class="hot_pos_l">
                             <div class="mb10">
-                                <a href="h/jobs/147822.html" target="_blank">运营总监</a> &nbsp;
+                                <router-link to="jobdetail" target="_blank">运营总监</router-link> &nbsp;
                                 <span class="c9">[北京]</span>
                             </div>
                             <span><em class="c7">月薪： </em>15k-20k</span>
@@ -1598,8 +1598,11 @@
 </template>
 
 <script>
+import user from '../vuex/store/index'
+import { mapState } from 'vuex'
 export default {
   name: 'home',
+  computed: mapState({user: state=>state.user}),
   mounted: function() {
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'

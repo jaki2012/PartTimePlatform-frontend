@@ -26,8 +26,7 @@ export default new Router({
     // Vue-cli welcome page
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      redirect: '/home'
     },
     // first page
     {

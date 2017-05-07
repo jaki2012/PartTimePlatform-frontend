@@ -14,7 +14,8 @@
     "chart.js": "^2.5.0",
     "vue": "^2.2.6",
     "vue-chartjs": "^2.6.1",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "vuex": "^2.3.1"
   },
   "devDependencies": {
     "amd-loader": "0.0.5",
