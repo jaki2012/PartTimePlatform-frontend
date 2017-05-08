@@ -65,7 +65,7 @@
 	</section>
 
 	<footer>
-		<h4 class="slogan">— 专注互联网职业机会 —</h4>
+		<h4 class="slogan">— 专注大学生互联网兼职 —</h4>
 	</footer>
 	<!-- 页面主体END -->
 	<div style="display: none;">5a01fca9-d552-45e9-a47c-f34d2a14e626</div>

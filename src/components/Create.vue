@@ -417,15 +417,15 @@
                                         <ul class="profile_radio clearfix reset">
                                             <li>
                                                 全职<em></em>
-                                                <input type="radio" name="jobNature" value="全职">
+                                                <input type="radio" id="full" name="jobNature" value="全职">
                                             </li>
                                             <li>
                                                 兼职<em></em>
-                                                <input type="radio" name="jobNature" value="兼职">
+                                                <input type="radio" id="parttime" name="jobNature" value="兼职">
                                             </li>
                                             <li>
                                                 实习<em></em>
-                                                <input type="radio" name="jobNature" value="实习">
+                                                <input type="radio" id="intern" name="jobNature" value="实习">
                                             </li>
                                         </ul>
                                     </td>
@@ -577,7 +577,7 @@
                                     <td width="25"></td>
                                     <td colspan="2">
                                         <input type="submit" value="预览" id="jobPreview" class="btn_32">
-                                        <input type="button" value="发布" id="formSubmit" class="btn_32">
+                                        <input type="button" value="发布" id="formSubmit" class="btn_32" v-on:click="submit">
                                     </td>
                                 </tr>
                             </tbody>
@@ -627,6 +627,27 @@
 <script>
 export default {
     name: 'create',
+    data: function() {
+        return {
+            newJob: {
+                catagory: '',
+                name:'',
+                department:'',
+                full:'',
+                parttime:'',
+                internal:'',
+                leastsalary:'',
+                mostsalary:'',
+                city:'',
+                experience:'',
+                background:'',
+                temptation:'',
+                description:'',
+                address:'',
+                email:''
+            }
+        }
+    },
     components: {
       'jobsjs': {
           render(createElement) {
@@ -641,6 +662,50 @@ export default {
               )
           }
       }
+    },
+    methods: {
+        submit: function() {
+            //获取兼职类型
+            var jobNature;
+            if($('input:radio[id="full"]').is(":checked")){
+                jobNature = "全职"
+            } else if($('input:radio[id="parttime"]').is(":checked")){
+                jobNature = "兼职"
+            } else {
+                jobNature = "实习"
+            }
+            //获取职位描述
+            console.log(tinymce.editors[0].getBody().innerText);
+            var positionDetail = tinymce.editors[0].getBody().innerText;
+
+            //获取时间
+            var myDate = new Date();
+            var time = myDate.getHours() + ":" + myDate.getMinutes();
+            $.ajax({
+                url:"http://localhost:3000/positions",
+                type:'post',
+                data: {
+                    catagory: $('#select_category').val(),
+                    name: $('#positionName').val(),
+                    department: $('#position').val(),
+                    jobnature: jobNature,
+                    leastsalary: $('#salaryMin').val(),
+                    mostsalary: $('#salaryMax').val(),
+                    city: $('#workAddress').val(),
+                    experience: $('#select_experience').val(),
+                    background: $('#select_education').val(),
+                    temptation: $('#positionAdvantage').val(),
+                    description: positionDetail,
+                    address: $('#positionAddress').val(),
+                    email: $('#forwardEmail').val(),
+                    releasetime: time
+                },
+                dataType:'json',
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+        }
     },
     mounted: function() {
         tinymce.init({

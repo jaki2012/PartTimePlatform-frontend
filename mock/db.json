@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": "2",
+      "title": "haha",
+      "author": "jaki"
+    }
+  ],
+  "positions": [
+    {
+      "catagory": "后端开发",
+      "name": "Node.js高级工程师",
+      "jobnature": "全职",
+      "leastsalary": "3",
+      "mostsalary": "4",
+      "city": "上海",
+      "experience": "3-5年",
+      "background": "硕士",
+      "temptation": "美女hr/五险一金",
+      "description": "超级舒服哦",
+      "address": "上海市北极光软件开发公司",
+      "email": "",
+      "releasetime": "13:52",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

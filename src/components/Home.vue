@@ -1059,7 +1059,37 @@
                     <a href="list.html" class="btn fr" target="_blank">查看更多</a>
                 </ul>
                 <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
-                    <li class="clearfix">
+                    <li class="clearfix" v-if="datanotnull">
+                        <div class="hot_pos_l">
+                            <div class="mb10">
+                                <a href="h/jobs/149389.html" target="_blank">{{position.name}}</a> &nbsp;
+                                <span class="c9">[{{position.city}}]</span>
+                            </div>
+                            <span><em class="c7">月薪： </em>{{position.leastsalary}}k-{{position.mostsalary}}k</span>
+                            <span><em class="c7">经验：</em>{{position.experience}}</span>
+                            <span><em class="c7">最低学历：</em> {{position.background}}</span>
+                            <br />
+                            <span><em class="c7">职位诱惑：</em>{{position.temptation}}</span>
+                            <br />
+                            <span>{{position.releasetime}}发布</span>
+                            <!-- <a  class="wb">分享到微博</a> -->
+                        </div>
+                        <div class="hot_pos_r">
+                            <div class="mb10"><a href="h/c/8250.html" target="_blank">途牛旅游网</a></div>
+                            <span><em class="c7">领域：</em> 电子商务,在线旅游</span>
+                            <span><em class="c7">创始人：</em>于敦德</span>
+                            <br />
+                            <span> <em class="c7">阶段： </em>上市公司</span>
+                            <span> <em class="c7">规模：</em>500-2000人</span>
+                            <ul class="companyTags reset">
+                                <li>绩效奖金</li>
+                                <li>股票期权</li>
+                                <li>五险一金</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- jaki add -->
+                    <li class="clearfix" v-if="!datanotnull">
                         <div class="hot_pos_l">
                             <div class="mb10">
                                 <a href="h/jobs/149389.html" target="_blank">高级PHP研发工程师</a> &nbsp;
@@ -1603,17 +1633,39 @@ import { mapState } from 'vuex'
 export default {
   name: 'home',
   computed: mapState({user: state=>state.user}),
+  data: function() {
+      return {
+          datanotnull: false,
+          position: null
+      }
+  },
+  methods: {
+      haha: function() {
+          alert('sb');
+      }
+  },
   mounted: function() {
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'
     corejs.src = '../../static/js/core.min.js'
-
     document.body.appendChild(corejs)
 
     const homejs = document.createElement('script')
     homejs.type = 'text/javascript'
     homejs.src = '../../static/js/home.min.js'
     document.body.appendChild(homejs)
+
+    var vuectx = this;
+    $.ajax({
+        url:"http://localhost:3000/positions",
+        type:'get',
+        dataType:'json',
+        success: function(data) {
+            console.log(data[0]);
+            vuectx._data.datanotnull = true;
+            vuectx._data.position = data[0];
+        }
+    });
   }
 }
 </script>
