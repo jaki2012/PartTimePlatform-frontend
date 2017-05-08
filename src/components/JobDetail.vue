@@ -48,7 +48,8 @@
                         </div>
                     </div>
                     <dd>
-                        <a href="#loginPop" title="登录" class="inline btn fr btn_apply">投个简历</a>
+                        <!--<a href="#loginPop" title="登录" class="inline btn fr btn_apply">投个简历</a>-->
+                        <a href="#loginSuccess" title="登录" class="inline btn fr btn_apply" v-on:click="deliver">投个简历</a>
                     </dd>
                 </dl>
                 <div id="weibolist"></div>
@@ -291,6 +292,10 @@
                 </div>
             </div>
             <!--/#loginPop-->
+
+            <div id="loginSuccess" class="popup" style="height:240px;">
+                <span>投递成功！</span>
+            </div>
 
             <div id="infoBeforeDeliverResume" class="popup" style="height:300px; overflow:visible;">
                 <div class="f18">为方便所投递企业HR查阅，请确认个人信息</div>
@@ -553,6 +558,30 @@
 import $ from 'jquery'
 export default {
   name: 'jobdetail',
+  methods: {
+      deliver: function() {
+            $.ajax({
+                url:"http://localhost:3000/unhandleresumes",
+                type:'post',
+                data: {
+                    name: 'jaki2012',
+                    sex: '男',
+                    education: '硕士',
+                    address: '嘉定安亭',
+                    experience: '3-5年',
+                    school: '上海市同济大学',
+                    job:'Node.js高级工程师',
+                    jobdetailid:'1',
+                    jobdetaillink:'hahah',
+                    id:1
+                },
+                dataType:'json',
+                success: function(data) {
+                    console.log(data);
+                }
+            });
+      }
+  },
   components: {
       'baiduapi': {
           render(createElement) {

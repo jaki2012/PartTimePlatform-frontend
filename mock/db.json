@@ -11,6 +11,78 @@
       "author": "jaki"
     }
   ],
+  "unhandleresumes": [
+    {
+      "name": "jaki2012",
+      "sex": "男",
+      "education": "硕士",
+      "address": "嘉定安亭",
+      "experience": "3-5年",
+      "school": "上海市同济大学",
+      "job": "Node.js高级工程师",
+      "jobdetailid": "1",
+      "jobdetaillink": "hahah",
+      "id": 1
+    }
+  ],
+  "acceptedresumes": [
+    {
+      "name": "jaki2012",
+      "sex": "男",
+      "education": "硕士",
+      "address": "嘉定安亭",
+      "experience": "3-5年",
+      "school": "上海市同济大学",
+      "job": "Node.js高级工程师",
+      "jobdetailid": "1",
+      "jobdetaillink": "hahah",
+      "id": 1
+    },
+    {
+      "name": "jaki2012",
+      "sex": "男",
+      "education": "硕士",
+      "address": "嘉定安亭",
+      "experience": "3-5年",
+      "school": "上海市同济大学",
+      "job": "Node.js高级工程师",
+      "jobdetailid": "1",
+      "jobdetaillink": "hahah",
+      "id": 2
+    },
+    {
+      "name": "jaki2012",
+      "sex": "男",
+      "education": "硕士",
+      "address": "嘉定安亭",
+      "experience": "3-5年",
+      "school": "上海市同济大学",
+      "job": "Node.js高级工程师",
+      "jobdetailid": "1",
+      "jobdetaillink": "hahah",
+      "id": 3
+    }
+  ],
+  "userjobs": [
+    {
+      "name": "Node.js高级工程师",
+      "agency": "斗米兼职",
+      "address": "上海",
+      "uptitle": "双方已互评",
+      "downtitle": "已结算",
+      "downtitlehref": "nothing",
+      "id": 1
+    },
+    {
+      "name": "Node.js高级工程师",
+      "agency": "斗米兼职",
+      "address": "上海",
+      "uptitle": "简历审核通过",
+      "downtitle": "兼职进行中",
+      "downtitlehref": "javascript:;",
+      "id": 2
+    }
+  ],
   "positions": [
     {
       "catagory": "后端开发",

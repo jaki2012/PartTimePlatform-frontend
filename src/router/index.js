@@ -8,6 +8,8 @@ import Login from '@/components/Login'
 import Create from '@/components/Create'
 import Position from '@/components/Position'
 import RefusedResumes from '@/components/resume/RefusedResumes'
+import UnhandleResumes from '@/components/resume/UnhandleResumes'
+import AcceptedResumes from '@/components/resume/AcceptedResumes'
 import UserResumeStates from '@/components/UserResumeStates'
 import UserJobStates from '@/components/UserJobStates'
 import SearchList from '@/components/Searchlist'
@@ -57,6 +59,18 @@ export default new Router({
       path: '/position',
       name: 'position',
       component: Position
+    },
+    // 待处理简历页面
+    {
+      path: '/unhandleresumes',
+      name: 'unhandleresumes',
+      component: UnhandleResumes
+    },
+    // 已录取简历页面
+    {
+      path: '/acceptedresumes',
+      name: 'acceptedresumes',
+      component: AcceptedResumes
     },
     // 不合适简历页面
     {

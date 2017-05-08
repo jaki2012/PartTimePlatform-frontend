@@ -23,7 +23,7 @@
               <i></i>
           </dt>
           <dd style="display: none;"><router-link to="position">我发布的职位</router-link></dd>
-          <dd style="display: none;"><router-link to="refusedresumes">我收到的简历</router-link></dd>
+          <dd style="display: none;"><router-link to="unhandleresumes">我收到的简历</router-link></dd>
           <dd class="btm" style="display: none;"><a href="myhome.html">我的公司主页</a></dd>
           <dd style="display: none;"><router-link to="userinfo">我要找工作</router-link></dd>
           <dd style="display: none;"><a href="accountBind.html">帐号设置</a></dd>
