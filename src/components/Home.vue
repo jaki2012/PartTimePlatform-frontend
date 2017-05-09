@@ -623,6 +623,40 @@
             </ul>
             <div id="hotList">
                 <ul class="hot_pos reset">
+                    <template v-for="(position,index) in positions">
+                    <li :class="{'odd':index%2==0}" class="clearfix">
+                        <div class="hot_pos_l">
+                            <div class="mb10">
+                                <router-link to="jobdetail" target="_blank">{{position.JobInfo.JobDetail.Title}}</router-link>&nbsp;
+                                <span class="c9">[{{position.JobInfo.JobDetail.Place}}]</span>
+                            </div>
+                            <span><em class="c7">工作天数：</em>{{position.JobInfo.JobDetail.Day}}</span>
+                            <span><em class="c7">兼职报酬：</em>{{position.JobInfo.JobDetail.Salary}}</span>
+                            <br />                         
+                            <span><em class="c7">工作要求：</em>{{position.JobInfo.JobDetail.Demand}}</span>
+                            <br />
+                            <span><em class="c7">职位诱惑：</em>发展前景</span>
+                            <span>1天前发布</span>
+                            <!-- <a  class="wb">分享到微博</a> -->
+                        </div>
+                        <div class="hot_pos_r">
+                            <div class="mb10 recompany"><a href="h/c/399.html" target="_blank">{{position.AgencyName}}</a></div>
+                            <span><em class="c7">中介评分：</em>{{position.Score}}分</span>
+                            <span><em class="c7">总需求人数：</em>{{position.JobInfo.TotalHired}}</span>
+                            <br />
+                            <span><em class="c7">目前申请：</em>{{position.JobInfo.TotalApplied}}人</span>
+                            <span><em class="c7">目前录取：</em>{{position.JobInfo.TotalSettled}}人</span>
+                            <ul class="companyTags reset">
+                                <li>移动互联网</li>
+                                <li>五险一金</li>
+                                <li>扁平管理</li>
+                            </ul>
+                        </div>
+                    </li>
+                    </template>
+                    <a href="list.html" class="btn fr" target="_blank">查看更多</a>
+                </ul>           
+                <ul v-if="false" class="hot_pos reset">
                     <li class="clearfix">
                         <div class="hot_pos_l">
                             <div class="mb10">
@@ -1059,36 +1093,6 @@
                     <a href="list.html" class="btn fr" target="_blank">查看更多</a>
                 </ul>
                 <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
-                    <li class="clearfix" v-if="datanotnull">
-                        <div class="hot_pos_l">
-                            <div class="mb10">
-                                <router-link :to="{ path: 'jobdetail', query: { jobid: position.id }}" target="_blank">{{position.name}}</router-link> &nbsp;
-                                <span class="c9">[{{position.city}}]</span>
-                            </div>
-                            <span><em class="c7">月薪： </em>{{position.leastsalary}}k-{{position.mostsalary}}k</span>
-                            <span><em class="c7">经验：</em>{{position.experience}}</span>
-                            <span><em class="c7">最低学历：</em> {{position.background}}</span>
-                            <br />
-                            <span><em class="c7">职位诱惑：</em>{{position.temptation}}</span>
-                            <br />
-                            <span>{{position.releasetime}}发布</span>
-                            <!-- <a  class="wb">分享到微博</a> -->
-                        </div>
-                        <div class="hot_pos_r">
-                            <div class="mb10"><a href="h/c/8250.html" target="_blank">途牛旅游网</a></div>
-                            <span><em class="c7">领域：</em> 电子商务,在线旅游</span>resume
-                            <span><em class="c7">创始人：</em>于敦德</span>
-                            <br />
-                            <span> <em class="c7">阶段： </em>上市公司</span>
-                            <span> <em class="c7">规模：</em>500-2000人</span>
-                            <ul class="companyTags reset">
-                                <li>绩效奖金</li>
-                                <li>股票期权</li>
-                                <li>五险一金</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- jaki add -->
                     <li class="clearfix" v-if="!datanotnull">
                         <div class="hot_pos_l">
                             <div class="mb10">
@@ -1636,10 +1640,11 @@ export default {
   data: function() {
       return {
           datanotnull: false,
-          position: null
+          positions: null
       }
   },
   mounted: function() {
+
     console.log(this.$route.query.detail)
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'
@@ -1653,13 +1658,16 @@ export default {
 
     var vuectx = this;
     $.ajax({
-        url:"http://localhost:3000/positions",
+        url:"http://211.159.220.170:8000/job/all",
         type:'get',
         dataType:'json',
         success: function(data) {
-            console.log(data[0]);
+            if(0 != data.err){
+                return
+            }
             vuectx._data.datanotnull = true;
-            vuectx._data.position = data[0];
+            vuectx._data.positions = data.data;
+            console.log(data.data)
         }
     });
   }
