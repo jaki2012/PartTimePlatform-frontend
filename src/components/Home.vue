@@ -1639,21 +1639,8 @@ export default {
           position: null
       }
   },
-  methods: {
-      haha: function() {
-          alert('sb');
-      }
-  },
   mounted: function() {
-
-    $.ajax({
-        url: "http://211.159.220.170:8000/job/all",
-        dataType: "json",
-        type: "get",
-        success: function(data) {
-            console.log(data)
-        }
-    })
+    console.log(this.$route.query.detail)
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'
     corejs.src = '../../static/js/core.min.js'

@@ -16,8 +16,8 @@
 						<input v-model="form.password" type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
 					</div>
 					<div style="margin-top:10px; margin-left:40px">
-						中介用户  <input checked type="radio" id="agency" name="usertype" value="1">
-						学生用户  <input type="radio" id="student" name="usertype" value="0">
+						学生用户  <input checked type="radio" id="student" name="usertype" value="0">
+						中介用户  <input type="radio" id="agency" name="usertype" value="1">
 					</div>
 					<div class="input_item clearfix" data-propertyname="request_form_verifyCode" data-controltype="VerifyCode" style="display:none;">
 						<input type="text" class="input input_white fl" style="width:130px; display:block;" name="" placeholder="请证明你不是机器人" data-required="required"
@@ -93,7 +93,9 @@ export default {
 			form: {
 				name:'',
 				password:'',
-				type:''
+				type:'',
+				token:'',
+				detail:''
 			}
 		}
 	},
@@ -101,13 +103,13 @@ export default {
 		...mapActions([USER_SIGNIN,"enterLoginPage","leaveLoginPage"]),
 		submit() {
 			this.btn = true
-			var role;
 			if(!this.form.name || !this.form.password) return 
 			if($('input:radio[id="agency"]').is(":checked")){
-				role = 1;
+				this.form.type = 1;
 			} else {
-				role = 0;
+				this.form.type = 0;
 			}
+			console.log(this.form.type)
 			//发送请求获取用户数据
 			var vuectx = this;
 			$.ajax({
@@ -115,7 +117,7 @@ export default {
 				data: {
 					username: this.form.name,
 					password: this.form.password,
-					role: role
+					role: this.form.type
 				},
 				type: 'post',
 				success: function(data) {
@@ -124,17 +126,26 @@ export default {
 					}
 					vuectx._data.loginSuccessful = true;
 					vuectx._data.userdata = data;
-					alert(vuectx._data.userdata.data.token+" 登录成功",)
+					vuectx._data.form.token = vuectx._data.userdata.data.token;
+					vuectx._data.form.detail = vuectx._data.userdata.data.detail;
+					alert(vuectx._data.userdata.data.token+" 登录成功")
+					vuectx.jumptohome()
 				},
 				error: function(data) {
 					alert("账号密码错误，请重新输入")
 					return 
 				}
 			})
-			// set user type
-			this.form.type = this.form.name === "jaki2012" ? 1:2;
+		},
+		jumptohome() {
 			this.USER_SIGNIN(this.form)
-			this.$router.replace({ path: '/home' })
+			console.log(this.form)
+			if(this.userdata.data.detail === false){
+				this.$router.replace({path: '/userinfo'})
+			} else {
+				this.$router.replace({path: '/home'})
+			}
+			//this.$router.replace({path: '/home', query: {detail:this.userdata.data.detail}})
 		}
 	},
     components: {

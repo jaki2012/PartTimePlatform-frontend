@@ -311,15 +311,10 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="right">简历真实性</td>
-                            <td style="padding-bottom:0px;">
-                                <input id="input-id1" data-symbol="★" type="number" class="rating" min=0 max=5 step=0.3 data-size="xs" >
-                            </td>
-                        </tr>
-                        <tr>
                             <td align="right">兼职表现</td>
                             <td style="padding-bottom:0px;">
-                                <input id="input-id2" data-symbol="★" type="number" class="rating" min=0 max=5 step=0.3 data-size="xs" >
+                                <!-- 查看js源码 options.stars-->
+                                <input id="input-id1" data-symbol="★" data-stars="10" type="number" class="rating" min=0 max=10 step=0.3 data-size="xs" >
                             </td>
                         </tr>
                         <tr>

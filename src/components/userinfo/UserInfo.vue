@@ -12,7 +12,7 @@
                 <dd>
                     <div class="ccc_tr">账号类别： <span>学生用户</span></div>
                     <div class="ccc_tr bcid number">智能合约id (BCID)： <span>PC9527</span></div>
-                    <form action="http://www.lagou.com/corpPosition/preview.html" method="post" id="jobForm">
+                    <form v-if="!user.detail" action="http://www.lagou.com/corpPosition/preview.html" method="post" id="jobForm">
                         <input type="hidden" value="" name="id">
                         <input type="hidden" value="create" name="preview">
                         <input type="hidden" value="25927" name="companyId">
@@ -24,49 +24,124 @@
                                     <td></td>
                                     <td>用户名:</td>
                                     <td>
-                                        <span class="concre_content" >{{user.username}}</span>
+                                        <span class="special_concre_content">{{user.name}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><span class="redstar">*</span></td>
-                                    <td>姓名:</td>
+                                    <td>用户id:</td>
                                     <td>
-                                        <span class="concre_content" >{{user.name}}</span>
+                                        <span id="userid" class="concre_content" >{{userinfo.userid}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="redstar">*</span></td>
+                                    <td>真实名字:</td>
+                                    <td>
+                                        <span id="realname" class="concre_content" >{{userinfo.realname}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>性别:</td>
                                     <td>
-                                        <span class="concre_content">{{user.male}}</span>
+                                        <span id="gender" class="concre_content">{{userinfo.gender}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>学校:</td>
                                     <td>
-                                        <span class="concre_content">{{user.school}}</span>
+                                        <span id="school" class="concre_content">{{userinfo.school}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>学号:</td>
                                     <td>
-                                        <span class="concre_content number">{{user.studynumber}}</span>
+                                        <span id="stuid" class="concre_content number">{{userinfo.stuid}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>手机:</td>
                                     <td>
-                                        <span class="concre_content number">{{user.telephone}}</span>
+                                        <span id="telephone" class="concre_content number">{{userinfo.telephone}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="25"></td>
+                                    <td colspan="2">
+                                        <input type="button" v-on:click="edit" value="完善/修改" id="edit" class="btn_32">
+                                        <input type="button" v-on:click="save" value="保存信息" style="display:none" id="save" class="btn_32">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                    <!-- end form one -->
+                    <form v-if="user.detail" action="http://www.lagou.com/corpPosition/preview.html" method="post" id="jobForm">
+                        <input type="hidden" value="" name="id">
+                        <input type="hidden" value="create" name="preview">
+                        <input type="hidden" value="25927" name="companyId">
+                        <input type="hidden" value="c29d4a7c35314180bf3be5eb3f00048f" name="resubmitToken" style="display:none">
+                        <table class="btm">
+                            <tbody>
+                                <tr>
+                                    <!-- 预留距离 -->
+                                    <td></td>
+                                    <td>用户名:</td>
+                                    <td>
+                                        <span class="concre_content number" >{{user.name}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="redstar">*</span></td>
+                                    <td>用户id:</td>
+                                    <td>
+                                        <span class="concre_content number" >{{userinfo.UserID}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="redstar">*</span></td>
+                                    <td>真实:</td>
+                                    <td>
+                                        <span class="concre_content" >{{userinfo.RealName}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>性别:</td>
+                                    <td>
+                                        <span class="concre_content">{{userinfo.Gender}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>学校:</td>
+                                    <td>
+                                        <span class="concre_content">{{userinfo.School}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>学号:</td>
+                                    <td>
+                                        <span class="concre_content number">{{userinfo.StuID}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>手机:</td>
+                                    <td>
+                                        <span class="concre_content number">{{userinfo.Tele}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>状态:</td>
                                     <td>
-                                        <span class="concre_content">{{user.state}}</span>
+                                        <span class="concre_content">{{userinfo.Status}}</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -87,29 +162,46 @@
 </template>
 
 <script>
-import UserInfoSideBar from './UserInfoSideBar';
+import { mapState } from 'vuex'
+import UserInfoSideBar from './UserInfoSideBar'
 export default {
     name: 'userinfo',
     components: {
         'userinfosidebar': UserInfoSideBar
     },
+    computed: mapState({user: state=>state.user}),
     data: function() {
         return {
-            user: ''
+            //覆盖了原有数据！
+            //user: ''
+            userinfo: ''
         }
     },
-    created: function() {
-        var userid = this.$route.query.userid;
+    mounted: function() {
+        //core.min.js 确保菜单能够正常收缩
+        const corejs = document.createElement('script')
+        corejs.type = 'text/javascript'
+        corejs.src = '../../static/js/core.min.js'
+        document.body.appendChild(corejs)
+        console.log(this)
         var vuectx = this;
-        $.ajax({
-            url: "http://localhost:3000/users/" + userid,
-            type: 'get',
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                vuectx._data.user = data;
-            }
-        });
+        if(this.user.detail){
+            $.ajax({
+                url: "http://211.159.220.170:8000/user/info",
+                data: {
+                    username: this.user.name
+                },
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    vuectx._data.userinfo = data.data.UserInfo
+                    console.log(data)
+                }
+            });
+        }else {
+            //mounted 才会有组件渲染
+            $("#edit").click();
+        }
     },
     methods: {
         edit: function() {
@@ -139,6 +231,32 @@ export default {
             }
             $('#save').css('display','none');
             $('#edit').css('display','block');
+            this.updatedetail();
+        },
+        updatedetail: function() {
+            //数据绑定不生效的原因在于动态生成了input
+            var userid = $("#userid")[0].innerText
+            var realname = $("#realname")[0].innerText
+            var school = $("#school")[0].innerText
+            var stuid = $("#stuid")[0].innerText
+            var gender = $("#gender")[0].innerText == "男" ? 0 : 1;
+            var telephone = $("#telephone")[0].innerText
+            $.ajax({
+                url: "http://211.159.220.170:8000/user/detail?username="+this.user.name,
+                type: "post",
+                dataType: "json",
+                data: {
+                    UserID: userid,
+                    RealName: realname,
+                    School: school,
+                    StuID: stuid,
+                    Gender: gender,
+                    Tele: telephone
+                },
+                success: function(data) {
+                    console.log(data)
+                }
+            })
         }
     }
 }
@@ -168,6 +286,13 @@ export default {
        padding-left:30px!important;
        width:140px;
    }
+
+  .special_concre_content {
+      color: #019875;
+      font-size: 15px;
+      border-bottom: 1px dashed #e0e0e0;
+      padding-bottom: 5px;
+  }
 
   .concre_content {
       color: #019875;
