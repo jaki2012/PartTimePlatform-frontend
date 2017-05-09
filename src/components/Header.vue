@@ -9,7 +9,7 @@
         <li><a href="companylist.html">公司</a></li>
         <li><a href="h/toForum.html" target="_blank">论坛</a></li>
         <li><router-link to="myresume" rel="nofollow">我的简历</router-link></li>
-        <li><router-link to="create" rel="nofollow">发布职位</router-link></li>
+        <li><router-link to="createjob" rel="nofollow">发布职位</router-link></li>
       </ul>
       <ul class="loginTop" v-if="!user.name">
         <li><router-link to="login" rel="nofollow">登录</router-link></li>

@@ -6,6 +6,7 @@ import Home from '@/components/Home'
 import JobDetail from '@/components/JobDetail'
 import Login from '@/components/Login'
 import Create from '@/components/Create'
+import CreateJob from '@/components/CreateJob'
 import Position from '@/components/Position'
 import RefusedResumes from '@/components/resume/RefusedResumes'
 import UnhandleResumes from '@/components/resume/UnhandleResumes'
@@ -53,6 +54,12 @@ export default new Router({
       path: '/create',
       name: 'create',
       component: Create
+    },
+    // create job page
+    {
+      path: '/createjob',
+      name: 'createjob',
+      component: CreateJob
     },
     // 已发布的职位页面
     {
