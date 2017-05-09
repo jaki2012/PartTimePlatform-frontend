@@ -1062,7 +1062,7 @@
                     <li class="clearfix" v-if="datanotnull">
                         <div class="hot_pos_l">
                             <div class="mb10">
-                                <a href="h/jobs/149389.html" target="_blank">{{position.name}}</a> &nbsp;
+                                <router-link :to="{ path: 'jobdetail', query: { jobid: position.id }}" target="_blank">{{position.name}}</router-link> &nbsp;
                                 <span class="c9">[{{position.city}}]</span>
                             </div>
                             <span><em class="c7">月薪： </em>{{position.leastsalary}}k-{{position.mostsalary}}k</span>

@@ -93,7 +93,7 @@ export default {
 		submit() {
 			this.btn = true
 			if(!this.form.name || !this.form.password) return 
-			if(!(this.form.name === "jaki2012")) {
+			if(!(this.form.name === "jaki2012") && !(this.form.name === "doumi")) {
 				alert("账号密码错误，请重新输入")
 				return 
 			}

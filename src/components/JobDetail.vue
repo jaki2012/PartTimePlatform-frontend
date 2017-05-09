@@ -558,6 +558,25 @@
 import $ from 'jquery'
 export default {
   name: 'jobdetail',
+  data: function() {
+      return {
+          position: ''
+      }
+  },
+  created: function() {
+      var vuectx = this
+      console.log(this.$route.query.jobid)
+      $.ajax({
+          //此处直接取id为1的职位
+          url:"http://localhost:3000/positions/1",
+          type: 'get',
+          dataType: 'json',
+          success: function(data) {
+              vuectx._data.position = data;
+              console.log(data);
+          }
+      });
+  },
   methods: {
       deliver: function() {
             $.ajax({
