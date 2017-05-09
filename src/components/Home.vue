@@ -1076,7 +1076,7 @@
                         </div>
                         <div class="hot_pos_r">
                             <div class="mb10"><a href="h/c/8250.html" target="_blank">途牛旅游网</a></div>
-                            <span><em class="c7">领域：</em> 电子商务,在线旅游</span>
+                            <span><em class="c7">领域：</em> 电子商务,在线旅游</span>resume
                             <span><em class="c7">创始人：</em>于敦德</span>
                             <br />
                             <span> <em class="c7">阶段： </em>上市公司</span>
@@ -1645,6 +1645,15 @@ export default {
       }
   },
   mounted: function() {
+
+    $.ajax({
+        url: "http://211.159.220.170:8000/job/all",
+        dataType: "json",
+        type: "get",
+        success: function(data) {
+            console.log(data)
+        }
+    })
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'
     corejs.src = '../../static/js/core.min.js'

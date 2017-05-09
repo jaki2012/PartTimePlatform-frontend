@@ -24,49 +24,49 @@
                                     <td></td>
                                     <td>用户名:</td>
                                     <td>
-                                        <span class="concre_content" >AlinaWang</span>
+                                        <span class="concre_content" >{{user.username}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><span class="redstar">*</span></td>
                                     <td>姓名:</td>
                                     <td>
-                                        <span class="concre_content" >王尘玉</span>
+                                        <span class="concre_content" >{{user.name}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>性别:</td>
                                     <td>
-                                        <span class="concre_content"></span>
+                                        <span class="concre_content">{{user.male}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>学校:</td>
                                     <td>
-                                        <span class="concre_content">同济大学</span>
+                                        <span class="concre_content">{{user.school}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>学号:</td>
                                     <td>
-                                        <span class="concre_content number">1452809</span>
+                                        <span class="concre_content number">{{user.studynumber}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>手机:</td>
                                     <td>
-                                        <span class="concre_content number">18901700610</span>
+                                        <span class="concre_content number">{{user.telephone}}</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>状态:</td>
                                     <td>
-                                        <span class="concre_content">待审核</span>
+                                        <span class="concre_content">{{user.state}}</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -92,6 +92,24 @@ export default {
     name: 'userinfo',
     components: {
         'userinfosidebar': UserInfoSideBar
+    },
+    data: function() {
+        return {
+            user: ''
+        }
+    },
+    created: function() {
+        var userid = this.$route.query.userid;
+        var vuectx = this;
+        $.ajax({
+            url: "http://localhost:3000/users/" + userid,
+            type: 'get',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                vuectx._data.user = data;
+            }
+        });
     },
     methods: {
         edit: function() {

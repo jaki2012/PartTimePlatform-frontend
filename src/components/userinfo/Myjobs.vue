@@ -346,15 +346,6 @@ export default {
    @import '../../assets/css/popup.css';
    @import '../../assets/css/star-rating.min.css';
 
-   #cboxContent {
-        overflow: visible;
-    }
-    
-    #colorbox,
-    #cboxOverlay,
-    #cboxWrapper {
-        overflow: visible;
-    }
    #forwardResumeForm {
         font-family: 'Hiragino Sans GB'!important;
    }

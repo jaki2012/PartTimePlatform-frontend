@@ -11,6 +11,42 @@
       "author": "jaki"
     }
   ],
+  "users": [
+    {
+      "id": 1,
+      "name": "李一鸣",
+      "username": "jaki2012",
+      "experience": "1-3年",
+      "background": "硕士",
+      "telephone": "13122608868",
+      "email": "jaki2012@sina.com",
+      "male": "男",
+      "school": "上海市同济大学",
+      "address": "嘉定黄渡",
+      "bcid": "PC9527",
+      "studynumber": "1452809",
+      "credits": "694",
+      "ratetimes": "5",
+      "state": "审核已通过"
+    },
+    {
+      "id": 2,
+      "name": "斗米兼职中介",
+      "username": "doumi",
+      "experience": "1-3年",
+      "background": "硕士",
+      "telephone": "13122608868",
+      "email": "jaki2012@sina.com",
+      "male": "男",
+      "school": "上海市同济大学",
+      "address": "嘉定黄渡",
+      "bcid": "PC9528",
+      "studynumber": "1452809",
+      "credits": "694",
+      "ratetimes": "5",
+      "state": "审核已通过"
+    }
+  ],
   "unhandleresumes": [
     {
       "name": "jaki2012",
@@ -37,6 +73,18 @@
       "jobdetailid": "1",
       "jobdetaillink": "hahah",
       "id": 1
+    },
+    {
+      "name": "jaki2012",
+      "sex": "男",
+      "education": "硕士",
+      "address": "嘉定安亭",
+      "experience": "3-5年",
+      "school": "上海市同济大学",
+      "job": "Node.js高级工程师",
+      "jobdetailid": "1",
+      "jobdetaillink": "hahah",
+      "id": 2
     }
   ],
   "userjobs": [
@@ -53,18 +101,18 @@
   "positions": [
     {
       "catagory": "后端开发",
-      "name": "Python资深工程师",
+      "name": "Node.js高级工程师",
       "jobnature": "全职",
-      "leastsalary": "2",
+      "leastsalary": "3",
       "mostsalary": "4",
       "city": "上海",
       "experience": "1-3年",
       "background": "硕士",
-      "temptation": "美女hr/五险一金！",
-      "description": "超爽的工作！\n",
-      "address": "上海市甲骨文软件科技有限公司",
+      "temptation": "大家都来了 你还在等什么！！",
+      "description": "1、参与管理和维护立方网，保证网络社区健康、有序地运转，负责网站信息安全；\n2、强化团队建设，提高团队工作效率，做好领导与员工直接沟通的桥梁；",
+      "address": "上海立方网互联网有限公司",
       "email": "",
-      "releasetime": "9:43",
+      "releasetime": "11:37",
       "id": 1
     }
   ],

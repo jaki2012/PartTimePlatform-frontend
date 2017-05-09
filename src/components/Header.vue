@@ -22,10 +22,16 @@
               <span class="red dn" id="noticeDot-1"></span>
               <i></i>
           </dt>
-          <dd style="display: none;"><router-link to="position">我发布的职位</router-link></dd>
-          <dd style="display: none;"><router-link to="unhandleresumes">我收到的简历</router-link></dd>
-          <dd class="btm" style="display: none;"><a href="myhome.html">我的公司主页</a></dd>
-          <dd style="display: none;"><router-link to="userinfo">我要找工作</router-link></dd>
+          <!-- 中介用户 -->
+          <dd v-if="user.type==2" style="display: none;"><router-link to="position">我发布的职位</router-link></dd>
+          <dd v-if="user.type==2" style="display: none;"><router-link to="unhandleresumes">我收到的简历</router-link></dd>
+          <dd v-if="user.type==2" class="btm" style="display: none;"><a href="myhome.html">我的公司主页</a></dd>
+          <!-- end中介用户 -->
+          <!-- 学生用户 -->
+          <dd v-if="user.type==1" style="display: none;"><router-link :to="{ path: 'userinfo', query: { userid: user.type }}">我的个人资料</router-link></dd>
+          <dd v-if="user.type==1" style="display: none;"><router-link :to="{ path: 'myresume', query: { userid: user.type }}">我的个人简历</router-link></dd>
+          <dd v-if="user.type==1" style="display: none;"><router-link to="myjobs">我的兼职状态</router-link></dd>
+          <!-- end学生用户 -->
           <dd style="display: none;"><a href="accountBind.html">帐号设置</a></dd>
           <dd class="logout" style="display: none;"><a rel="nofollow" v-on:click="submit">退出当前账号</a></dd>
       </dl>

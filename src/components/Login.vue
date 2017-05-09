@@ -15,6 +15,10 @@
 					<div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
 						<input v-model="form.password" type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
 					</div>
+					<div style="margin-top:10px; margin-left:40px">
+						中介用户  <input checked type="radio" id="agency" name="usertype" value="1">
+						学生用户  <input type="radio" id="student" name="usertype" value="0">
+					</div>
 					<div class="input_item clearfix" data-propertyname="request_form_verifyCode" data-controltype="VerifyCode" style="display:none;">
 						<input type="text" class="input input_white fl" style="width:130px; display:block;" name="" placeholder="请证明你不是机器人" data-required="required"
 						 autocomplete="off">
@@ -82,9 +86,14 @@ export default {
 		return {
 			// false 代表没有提交过
 			btn: false,
+			// 登录成功与否
+			loginSuccessful: false,
+			// userdata
+			userdata: '',
 			form: {
 				name:'',
-				password:''
+				password:'',
+				type:''
 			}
 		}
 	},
@@ -92,11 +101,38 @@ export default {
 		...mapActions([USER_SIGNIN,"enterLoginPage","leaveLoginPage"]),
 		submit() {
 			this.btn = true
+			var role;
 			if(!this.form.name || !this.form.password) return 
-			if(!(this.form.name === "jaki2012") && !(this.form.name === "doumi")) {
-				alert("账号密码错误，请重新输入")
-				return 
+			if($('input:radio[id="agency"]').is(":checked")){
+				role = 1;
+			} else {
+				role = 0;
 			}
+			//发送请求获取用户数据
+			var vuectx = this;
+			$.ajax({
+				url: "http://211.159.220.170:8000/user/login",
+				data: {
+					username: this.form.name,
+					password: this.form.password,
+					role: role
+				},
+				type: 'post',
+				success: function(data) {
+					if(0 != data.err){
+						return
+					}
+					vuectx._data.loginSuccessful = true;
+					vuectx._data.userdata = data;
+					alert(vuectx._data.userdata.data.token+" 登录成功",)
+				},
+				error: function(data) {
+					alert("账号密码错误，请重新输入")
+					return 
+				}
+			})
+			// set user type
+			this.form.type = this.form.name === "jaki2012" ? 1:2;
 			this.USER_SIGNIN(this.form)
 			this.$router.replace({ path: '/home' })
 		}
@@ -473,6 +509,10 @@ button,input,optgroup,select,textarea {
 
 input {
 	font-family: Arial,"Hiragino Sans GB","Microsoft Yahei",SimSun
+}
+
+input[type="radio"]{
+	margin: 10px 30px 0 0px;
 }
 
 label,select,button,input[type=button],input[type=reset],input[type=submit],input[type=radio],input[type=checkbox] {

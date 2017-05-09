@@ -16,7 +16,7 @@
                   </dl>
                 </div>
                     <div class="nameShow fl">
-                        <h1 title="jason的简历">Alina Wang的简历</h1>
+                        <h1 title="jason的简历">{{user.username}}的简历</h1>
                         <span class="rename">重命名</span> | <a target="_blank" href="h/resume/preview.html">预览</a>
                     </div>
                     <form class="fl dn" id="resumeNameForm">
@@ -29,7 +29,7 @@
                 <!--end #lastChangedTime-->
                 <div id="resumeScore">
                     <div class="score fl">
-                        <canvas height="120" width="120" id="doughnutChartCanvas" style="width: 120px; height: 120px;"></canvas>
+                        <canvas height="120" width="120" id="doughnutChartCanvas" style="width: 120px!important; height: 120px!important;"></canvas>
                         <div style="" class="scoreVal"><span>15</span>分</div>
                     </div>
 
@@ -44,8 +44,8 @@
                     <h2>基本信息</h2>
                     <span class="c_edit"></span>
                     <div class="basicShow">
-                        <span>jason |  男 |    大专 |  3年工作经验<br>
-                                                    18644444444 | jason@qq.com<br>
+                        <span>{{user.name}} |  {{user.sex}} |    {{user.background}} |  {{user.experience}}工作经验<br>
+                                                    {{user.telephone}} | {{user.email}}<br>
                             </span>
                         <div class="m_portrait">
                             <div></div>
@@ -1567,9 +1567,47 @@
 </template>
 
 <script>
+function scoreChange(a) {
+	function e() {
+		var b = document.getElementById("doughnutChartCanvas").getContext("2d");
+		new Chart(b).Doughnut(c, d), $("#resumeScore .scoreVal span").text(a).parent().fadeIn(200)
+	}
+	var b = 360 * parseInt(a) / 100,
+		c = [{
+			value: b,
+			color: "#009a6d"
+		}, {
+			value: 360 - b,
+			color: "#ffffff"
+		}],
+		d = {
+			percentageInnerCutout: 80,
+			segmentShowStroke: !1,
+			animationEasing: "easeOutQuart"
+		};
+	setTimeout(e, 300)
+}
 import UserInfoSideBar from './UserInfoSideBar';
 export default {
     name: 'myresume',
+    data: function() {
+        return {
+            user: ''
+        }
+    },
+    created: function() {
+        var userid = this.$route.query.userid;
+        var vuectx = this;
+        $.ajax({
+            url: "http://localhost:3000/users/" + userid,
+            type: 'get',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                vuectx._data.user = data;
+            }
+        });
+    },
     components: {
       'chartjs': {
           render(createElement) {
@@ -1600,6 +1638,8 @@ export default {
       'userinfosidebar' : UserInfoSideBar
     },
     mounted: function() {
+        //查看js源码得到
+        scoreChange(40);
         var perCurrent = $(".userinfo .current").removeClass('current');
         var current = $(".userinfo").find("dd:eq(1)");
         current.addClass('current');
