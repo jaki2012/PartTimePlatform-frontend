@@ -6,15 +6,15 @@
                     <dt>
                         <h1 title="内容运营">
                             <em></em>
-                            <div>立方网运营部招聘</div>
-                            内容运营
+                            <div>{{job.AgencyName}}招聘</div>
+                            {{job.JobDetail.Title}}
                         </h1>
                         <a class="inline jd_collection" href="#loginPop" title="登录">
                         </a>
                     </dt>
                     <dd class="job_request">
-                        <span class="red">4k-6k</span>
-                        <span>武汉</span>
+                        <span class="red">{{job.JobDetail.Salary}} x {{job.JobDetail.Day}}</span>
+                        <span>{{job.JobDetail.Place}}</span>
                         <span>经验3-5年 </span>
                         <span> 本科及以上</span>
                         <span>全职</span><br /> 职位诱惑 : 大家都来了 你还在等什么！！
@@ -23,7 +23,7 @@
                     <dd class="job_bt">
                         <h3 class="description">职位描述</h3>
                         <p>岗位职责： <br />1、参与管理和维护立方网，保证网络社区健康、有序地运转，负责网站信息安全； <br />2、强化团队建设，提高团队工作效率，做好领导与员工直接沟通的桥梁； <br />3、制定和完善客服体系规章制度,培训新人。</p>
-                        <p>&nbsp;岗位要求： <br />1、2年以上互联网行业客服主管工作经验，本科及以上学历； <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
+                        <p>&nbsp;岗位要求： <br />{{job.JobDetail.Demand}} <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
                     </dd>
 
                     <dd class="unresume">
@@ -561,7 +561,7 @@ export default {
   name: 'jobdetail',
   data: function() {
       return {
-          position: '',
+          job: '',
           jobid: this.$route.query.jobid
       }
   },
@@ -571,11 +571,15 @@ export default {
       console.log(this.$route.query.jobid)
       $.ajax({
           //此处直接取id为1的职位
-          url:"http://localhost:3000/positions/1",
+          url:"http://211.159.220.170:8000/job/query",
           type: 'get',
+          data: {
+              JobID: this.jobid
+          },
           dataType: 'json',
           success: function(data) {
-              vuectx._data.position = data;
+              if(data.msg !=0 ) return
+              vuectx._data.job = data.data;
               console.log(data);
           }
       });

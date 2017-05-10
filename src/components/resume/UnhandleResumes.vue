@@ -35,7 +35,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 待处理简历 <span>（共1份）</span> </h1>
+                    <em></em> 待处理简历 <span>（共{{resumes.length}}份）</span> </h1>
             </dt>
             <dd>
                 <form action="haveRefuseResumes.html" method="get" id="filterForm">
@@ -98,7 +98,8 @@
                     </div>
                     <!-- end .filter_options -->
                     <ul class="reset resumeLists">
-                    <li v-if="datanotnull" data-id="1686181" class="onlineResume">
+                    <template v-for="resume in resumes">
+                    <li data-id="1686181" class="onlineResume">
                             <label class="checkbox">
 			                                    <input type="checkbox">
 			                                    <i></i>
@@ -110,7 +111,7 @@
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            {{resume.name}}的简历
+			                                        				                                            {{resume.UserID}}的简历
 			                                        	</a>
                                         <em></em>
                                     </h3>
@@ -120,12 +121,12 @@
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	来源高校：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.school}}</a>
-				                                       		信用积分：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">694</a>				                                        </span>
+				                                        	简历状态：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.Status}}</a>
+				                                       		信用积分：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.StuScore}}</a>				                                        </span>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.job}}</a>
+				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.JobID}}</a>
 				                                       						                                        </span>
                                     </div>
                                 </div>
@@ -135,48 +136,12 @@
                                                     	转发
                                                     	                                                    	<span>(1人)</span>
                                                     	                                                    </a>
-                                    <a v-on:click="accept">录用</a>
-                                    <a class="resume_del" href="javascript:void(0)">删除</a>
+                                    <a :txid="resume.TxID" v-on:click="accept(1,$event)">录用</a>
+                                    <a class="resume_del" v-on:click="accept(2,$event)">删除</a>
                                 </div>
                             </div>
                         </li>
-                        <li v-if="!datanotnull" data-id="1686182" class="onlineResume">
-                            <label class="checkbox">
-			                                    <input type="checkbox">
-			                                    <i></i>
-			                                </label>
-                            <div class="resumeShow">
-                                <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
-                                    <img src="../../assets/images/default_headpic.png">
-                                </a>
-                                <div class="resumeIntro">
-                                    <h3 class="unread">
-                                        <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            jason的简历
-			                                        	</a>
-                                        <em></em>
-                                    </h3>
-                                    <span class="fr">投递时间：2014-07-01 17:08</span>
-                                    <div>
-                                        jason / 男 / 大专 / 3年 / 广州 <br> 高级产品经理 · 上海辉硕科技有限公司 | 本科 · 北京大学
-                                    </div>
-                                    <div class="jdpublisher">
-                                        <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">随便写</a>
-				                                       						                                        </span>
-                                    </div>
-                                </div>
-                                <div class="links">
-                                    <a data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
-                                        data-forwardcount="1" class="resume_forward" href="javascript:void(0)">
-                                                    	转发
-                                                    	                                                    	<span>(1人)</span>
-                                                    	                                                    </a>
-                                    <a class="resume_del" href="javascript:void(0)">录用</a>
-                                    <a class="resume_del" href="javascript:void(0)">删除</a>
-                                </div>
-                            </div>
-                        </li>
+                        </template>
                     </ul>
                     <!-- end .resumeLists -->
                 </form>
@@ -403,6 +368,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import $ from 'jquery'
 function loadScript(url, callback){
     var script = document.createElement("script");
@@ -427,47 +393,25 @@ export default {
     data: function() {
         return {
             datanotnull: false,
-            resume: ''
+            resumes: ''
         }
     },
+    computed: mapState({user: state=> state.user}),
     methods:{
-        accept: function() {
+        accept: function(result,e) {
+            var txid = $(e.currentTarget).attr("txid");
             $.ajax({
-                url:"http://localhost:3000/acceptedresumes",
-                type:'post',
+                url: "http://211.159.220.170:8000/tx/agency/check?username="+this.user.name,
+                dataType: 'json',
+                type: 'post',
                 data: {
-                    name: 'jaki2012',
-                    sex: '男',
-                    education: '硕士',
-                    address: '嘉定安亭',
-                    experience: '3-5年',
-                    school: '上海市同济大学',
-                    job:'Node.js高级工程师',
-                    jobdetailid:'1',
-                    jobdetaillink:'hahah'
+                    TxID: txid,
+                    Result: 1,
                 },
-                dataType:'json',
                 success: function(data) {
-                    console.log(data);
+                    console.log(data)
                 }
-            });
-
-            $.ajax({
-                url:"http://localhost:3000/userjobs",
-                type:'post',
-                data: {
-                    name: 'Node.js高级工程师',
-                    agency: '斗米兼职',
-                    address: '上海',
-                    uptitle:'简历审核通过',
-                    downtitle:'兼职进行中',
-                    downtitlehref:'javascript:;'
-                },
-                dataType:'json',
-                success: function(data) {
-                    console.log(data);
-                }
-            });
+            })
         }
     },
     components: {
@@ -500,15 +444,19 @@ export default {
     },
     mounted: function() {
         // jquery需要获取vue上下文环境
-        var vuectx = this;
+        var vuectx = this
         $.ajax({
-            url:"http://localhost:3000/unhandleresumes",
-            type:'get',
-            dataType:'json',
+            //此处直接取id为1的职位
+            url:"http://211.159.220.170:8000/job/query",
+            type: 'get',
+            data: {
+                JobID: this.$route.query.jobid
+            },
+            dataType: 'json',
             success: function(data) {
-                console.log(data[0]);
-                vuectx._data.datanotnull = true;
-                vuectx._data.resume = data[0];
+                if(data.msg !=0 ) return
+                vuectx._data.resumes = data.data.Txs;
+                console.log(data);
             }
         });
         loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
