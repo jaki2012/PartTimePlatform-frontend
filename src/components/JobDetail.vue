@@ -49,7 +49,7 @@
                     </div>
                     <dd>
                         <!--<a href="#loginPop" title="登录" class="inline btn fr btn_apply">投个简历</a>-->
-                        <a href="#loginSuccess" title="登录" class="inline btn fr btn_apply" v-on:click="deliver">投个简历</a>
+                        <a id="deliverbtn" href="#loginSuccess" title="投递结果" class="inline btn fr btn_apply" v-on:click="deliver($event)">投个简历</a>
                     </dd>
                 </dl>
                 <div id="weibolist"></div>
@@ -295,6 +295,10 @@
 
             <div id="loginSuccess" class="popup" style="height:240px;">
                 <span>投递成功！</span>
+            </div>
+
+            <div id="loginFailed" class="popup" style="height:240px;">
+                <span>抱歉你已经申请过这个兼职了！</span>
             </div>
 
             <div id="infoBeforeDeliverResume" class="popup" style="height:300px; overflow:visible;">
@@ -561,6 +565,7 @@ export default {
   name: 'jobdetail',
   data: function() {
       return {
+          delivered: false,
           job: '',
           jobid: this.$route.query.jobid
       }
@@ -585,7 +590,10 @@ export default {
       });
   },
   methods: {
-      deliver: function() {
+      deliver: function(e) {
+            if(this.delivered) {
+                return
+            } 
             $.ajax({
                 url:"http://211.159.220.170:8000/tx/apply?username="+this.user.name,
                 type:'post',
@@ -597,7 +605,10 @@ export default {
                     console.log(data);
                 }
             });
-      }
+            this.delivered = true;
+            $("#deliverbtn").css("opacity","0.6");
+            $("#deliverbtn").text("已申请")
+      },
   },
   components: {
       'baiduapi': {
@@ -665,6 +676,8 @@ $(function () {
         top.location.reload();
     });
     $('#colorbox').on('click', '#cboxClose', function () {
+        //绑定一个已经申请过该职位的处理事件
+        $("#deliverbtn").attr("href","#loginFailed")
         if ($(this).siblings('#cboxLoadedContent').children('div').attr('id') == 'deliverResumesSuccess' || $(this).siblings('#cboxLoadedContent').children('div').attr('id') == 'uploadFileSuccess') {
             top.location.reload();
         }
