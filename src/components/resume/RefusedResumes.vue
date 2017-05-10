@@ -5,16 +5,16 @@
         <dl class="company_center_aside">
             <dt>我收到的简历</dt>
             <dd>
-                <a href="">待处理简历</a>
+                <router-link to="unhandleresumes">待处理简历</router-link>
             </dd>
             <dd>
                 <a href="canInterviewResumes.html">待定简历</a>
             </dd>
             <dd>
-                <a href="haveNoticeResumes.html">已通知面试简历</a>
+                <router-link to="acceptedresumes">已审核通过简历</router-link>
             </dd>
             <dd class="current">
-                <a href="haveRefuseResumes.html">不合适简历</a>
+                <router-link to="refusedresumes">不合适简历</router-link>
             </dd>
             <dd class="btm">
                 <a href="autoFilterResumes.html">自动过滤简历</a>

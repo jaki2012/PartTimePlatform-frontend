@@ -11,7 +11,7 @@
                     <a href="canInterviewResumes.html">待定简历</a>
                 </dd>
                 <dd>
-                    <a href="haveNoticeResumes.html">已通知面试简历</a>
+                    <a href="haveNoticeResumes.html">已审核通过简历</a>
                 </dd>
                 <dd>
                     <a href="haveRefuseResumes.html">不合适简历</a>

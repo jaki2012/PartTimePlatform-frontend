@@ -5,16 +5,16 @@
         <dl class="company_center_aside">
             <dt>我收到的简历</dt>
             <dd>
-                <a href="unHandleResumes.html">待处理简历</a>
+                <router-link to="unhandleresumes">待处理简历</router-link>
             </dd>
             <dd>
                 <a href="canInterviewResumes.html">待定简历</a>
             </dd>
             <dd>
-                <a href="haveNoticeResumes.html">已通知面试简历</a>
+                <router-link to="acceptedresumes">已审核通过简历</router-link>
             </dd>
             <dd>
-                <a href="haveRefuseResumes.html">不合适简历</a>
+                <router-link to="refusedresumes">不合适简历</router-link>
             </dd>
             <dd class="btm">
                 <a href="autoFilterResumes.html">自动过滤简历</a>
@@ -47,7 +47,7 @@
                                     <a target="_blank" title="随便写" href="http://www.lagou.com/jobs/149594.html">{{position.JobDetail.Title}}</a>
                                     <span>[{{position.JobDetail.Place}}]</span>
                                 </h3>
-                                <span class="receivedResumeNo"><router-link :to="{ path:'acceptedresumes', query:{jobid: position.JobID}}">应聘简历（{{position.TotalApplied}}）</router-link></span>
+                                <span class="receivedResumeNo"><router-link :to="{ path:'unhandleresumes', query:{jobid: position.JobID}}">应聘简历（{{position.TotalWaitCheck}}）</router-link></span>
                                 <div>兼职 / 1k-2k / 1-3年 / 硕士及以上</div>
                                 <div class="c9">发布时间： 2014-07-01 17:07:01</div>
                                 <div class="links">

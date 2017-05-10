@@ -5,16 +5,16 @@
         <dl class="company_center_aside">
             <dt>我收到的简历</dt>
             <dd>
-                <a href="">待处理简历</a>
+                <router-link to="unhandleresumes">待处理简历</router-link>
             </dd>
             <dd>
                 <a href="canInterviewResumes.html">待定简历</a>
             </dd>
             <dd class="current">
-                <a href="haveNoticeResumes.html">已通知面试简历</a>
+                <router-link to="acceptedresumes">已审核通过简历</router-link>
             </dd>
             <dd>
-                <a href="haveRefuseResumes.html">不合适简历</a>
+                <router-link to="refusedresumes">不合适简历</router-link>
             </dd>
             <dd class="btm">
                 <a href="autoFilterResumes.html">自动过滤简历</a>
@@ -98,7 +98,8 @@
                     </div>
                     <!-- end .filter_options -->
                     <ul class="reset resumeLists">
-                    <template v-for="resume in resumes">
+                    <template v-for="job in jobs">
+                    <template v-for="resume in job.Txs">
                     <li data-id="1686181" class="onlineResume">
                             <label class="checkbox">
 			                                    <input type="checkbox">
@@ -111,7 +112,7 @@
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            {{resume.name}}的简历
+			                                        				                                            {{resume.UserInfo.Username}}的简历
 			                                        	</a>
                                         <em></em>
                                     </h3>
@@ -121,17 +122,17 @@
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	来源高校：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.school}}</a>
-				                                       		信用积分：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">694</a>				                                        </span>
+				                                        	简历状态：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.Status}}</a>
+				                                       		信用积分：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.StuScore}}</a>			                                        </span>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.job}}</a>
+				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{job.JobDetail.Title}}</a>
 				                                       						                                        </span>
                                     </div>
                                 </div>
                                 <div class="links">
-                                    <a data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="position.Title" v-on:click="popup($event)"
+                                    <a data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="job.JobDetail.Title" v-on:click="popup($event)"
                                         data-forwardcount="1" class="resume_forward">
                                                     	结算
                                                     	                                                    </a>
@@ -139,6 +140,7 @@
                                 </div>
                             </div>
                         </li>
+                        </template>
                         </template>
                         <li v-if="false" data-id="1686182" class="onlineResume">
                             <label class="checkbox">
@@ -449,6 +451,7 @@ export default {
     data: function() {
         return {
             datanotnull: false,
+            jobs: new Array(),
             resumes: '',
             position: {
                 AgencyName:'',
@@ -464,6 +467,7 @@ export default {
         popup: function(e) {
             //$("#currentevalu").removeAttr("id");
             //console.log(e.currentTarget)
+            console.log("iamin")
             //$(e.currentTarget).attr("id","#currentevalu");
             this.evaluatingtxid = $(e.currentTarget).attr("txid");
             this.evaluatinguser = $(e.currentTarget).attr("stuname");
@@ -548,25 +552,50 @@ export default {
     mounted: function() {
         // jquery需要获取vue上下文环境
         var vuectx = this
-        $.ajax({
-            url:"http://211.159.220.170:8000/job/query",
-            type: 'get',
-            data: {
-                JobID: this.$route.query.jobid
-            },
-            dataType: 'json',
-            success: function(data) {
-                if(data.msg !=0 ) return
-                vuectx._data.resumes = data.data.Txs;
-                vuectx._data.position.AgencyName = data.data.AgencyName;
-                vuectx._data.position.Title = data.data.JobDetail.Title;
-                console.log(data);
-                //将脚本加载后置，否则提前绑定了点击事件将会失效
-                loadScript("../../../static/js/payandevaluate.min.js", function(){
-                    //console.log('Actually we do nothing here')
-                })
+        if(null != this.$route.query.jobid){
+            var params = {
+                JobID: this.$route.query.jobid,
+                State: 1
             }
-        });
+            $.ajax({
+                url:"http://211.159.220.170:8000/job/query",
+                type: 'get',
+                data: params,
+                dataType: 'json',
+                success: function(data) {
+                    if(data.msg !=0 ) return
+                    vuectx._data.jobs.push(data.data);
+                    vuectx._data.position.AgencyName = data.data.AgencyName;
+                    vuectx._data.position.Title = data.data.JobDetail.Title;
+                    console.log(data);
+                    //将脚本加载后置，否则提前绑定了点击事件将会失效
+                    loadScript("../../../static/js/payandevaluate.min.js", function(){
+                        //console.log('Actually we do nothing here')
+                    })
+                }
+            });
+        } else {
+            var params = {
+                State: 1
+            }
+            $.ajax({
+                url:"http://211.159.220.170:8000/job/agency/jobs?username="+this.user.name,
+                type: 'get',
+                data: params,
+                dataType: 'json',
+                success: function(data) {
+                    if(data.msg !=0 ) return
+                    vuectx._data.jobs = data.data;
+                    vuectx._data.position.AgencyName = data.data[0].AgencyName;
+                    vuectx._data.position.Title = data.data[0].JobDetail.Title;
+                    console.log(data);
+                    //将脚本加载后置，否则提前绑定了点击事件将会失效
+                    loadScript("../../../static/js/payandevaluate.min.js", function(){
+                        //console.log('Actually we do nothing here')
+                    })
+                }
+            });
+        }
         loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
             //console.log('Actually we do nothing here')
         });

@@ -5,16 +5,16 @@
         <dl class="company_center_aside">
             <dt>我收到的简历</dt>
             <dd class="current">
-                <a href="">待处理简历</a>
+                <router-link to="unhandleresumes">待处理简历</router-link>
             </dd>
             <dd>
                 <a href="canInterviewResumes.html">待定简历</a>
             </dd>
             <dd>
-                <a href="haveNoticeResumes.html">已通知面试简历</a>
+                <router-link to="acceptedresumes">已审核通过简历</router-link>
             </dd>
             <dd>
-                <a href="haveRefuseResumes.html">不合适简历</a>
+                <router-link to="refusedresumes">不合适简历</router-link>
             </dd>
             <dd class="btm">
                 <a href="autoFilterResumes.html">自动过滤简历</a>
@@ -35,7 +35,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 待处理简历 <span>（共{{resumes.length}}份）</span> </h1>
+                    <em></em> 待处理简历 <span>（共resumes.length份）</span> </h1>
             </dt>
             <dd>
                 <form action="haveRefuseResumes.html" method="get" id="filterForm">
@@ -98,7 +98,8 @@
                     </div>
                     <!-- end .filter_options -->
                     <ul class="reset resumeLists">
-                    <template v-for="resume in resumes">
+                    <template v-for="job in jobs">
+                    <template v-for="resume in job.Txs">
                     <li data-id="1686181" class="onlineResume">
                             <label class="checkbox">
 			                                    <input type="checkbox">
@@ -111,7 +112,7 @@
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            {{resume.UserID}}的简历
+			                                        				                                            {{resume.UserInfo.Username}}的简历
 			                                        	</a>
                                         <em></em>
                                     </h3>
@@ -126,7 +127,7 @@
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.JobID}}</a>
+				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{job.JobDetail.Title}}</a>
 				                                       						                                        </span>
                                     </div>
                                 </div>
@@ -142,6 +143,7 @@
                                 </div>
                             </div>
                         </li>
+                        </template>
                         </template>
                     </ul>
                     <!-- end .resumeLists -->
@@ -394,7 +396,8 @@ export default {
     data: function() {
         return {
             datanotnull: false,
-            resumes: ''
+            //使其变成数组
+            jobs: new Array()
         }
     },
     computed: mapState({user: state=> state.user}),
@@ -446,19 +449,50 @@ export default {
     mounted: function() {
         // jquery需要获取vue上下文环境
         var vuectx = this
-        $.ajax({
-            url:"http://211.159.220.170:8000/job/query",
-            type: 'get',
-            data: {
-                JobID: this.$route.query.jobid
-            },
-            dataType: 'json',
-            success: function(data) {
-                if(data.msg !=0 ) return
-                vuectx._data.resumes = data.data.Txs;
-                console.log(data);
+        if(null != this.$route.query.jobid){
+            var params = {
+                JobID: this.$route.query.jobid,
+                State: 0
             }
-        });
+            $.ajax({
+                url:"http://211.159.220.170:8000/job/query",
+                type: 'get',
+                data: params,
+                dataType: 'json',
+                success: function(data) {
+                    if(data.msg !=0 ) return
+                    vuectx._data.jobs.push(data.data);
+                    // vuectx._data.position.AgencyName = data.data.AgencyName;
+                    // vuectx._data.position.Title = data.data.JobDetail.Title;
+                    console.log(vuectx._data.jobs);
+                    //将脚本加载后置，否则提前绑定了点击事件将会失效
+                    loadScript("../../../static/js/payandevaluate.min.js", function(){
+                        //console.log('Actually we do nothing here')
+                    })
+                }
+            });
+        } else {
+            var params = {
+                State: 0
+            }
+            $.ajax({
+                url:"http://211.159.220.170:8000/job/agency/jobs?username="+this.user.name,
+                type: 'get',
+                data: params,
+                dataType: 'json',
+                success: function(data) {
+                    if(data.msg !=0 ) return
+                    vuectx._data.jobs = data.data;
+                    // vuectx._data.position.AgencyName = data.data[0].AgencyName;
+                    // vuectx._data.position.Title = data.data[0].JobDetail.Title;
+                    console.log(vuectx._data.jobs);
+                    //将脚本加载后置，否则提前绑定了点击事件将会失效
+                    loadScript("../../../static/js/payandevaluate.min.js", function(){
+                        //console.log('Actually we do nothing here')
+                    })
+                }
+            });
+        }
         loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
             loadScript("../../../static/js/received_resumes.js", function(){
                 //console.log('Actually we do nothing here')
