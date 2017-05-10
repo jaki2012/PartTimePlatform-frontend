@@ -40,13 +40,13 @@
                                         </h2>
                                         <h4>
                                             <a target="_blank" href="http://www.lagou.com/jobs/149594.html">
-                                                <em>{{userjob.Tx.Status}}</em>
+                                                <em>{{userjob.AgencyName}}</em>
                                                 <!--  -->
                                             </a>
                                         </h4>
                                         <div class="clear"></div>
                                         <a title="公司名称" class="d_jobname" target="_blank" href="http://www.lagou.com/c/25927.html">
-                                                {{userjob.AgencyName}} <span>[{{userjob.JobDetail.Place}}]</span> 
+                                                {{userjob.JobDetail.JobTime}} <span>[{{userjob.JobDetail.Place}}]</span> 
                                             </a>
                                         <span class="d_time">{{userjob.Tx.ApplyTime}}</span>
                                         <div class="clear"></div>
@@ -56,8 +56,8 @@
                                                                                                 在线简历
                                                                                             </span>
                                         </div>
-                                        <a class="btn_showprogress resume_forward" href="javascript:;":jobid="userjob.Tx.JobID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
-                                                                                                        userjob.downtitle
+                                        <a class="btn_showprogress resume_forward" href="javascript:;" :txid="userjob.Tx.TxID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
+                                                                                                        {{userjob.Tx.Status}}
                                                                                                 <i></i></a>
                                     </div>
                                     <div class="progress_status	dn">
@@ -191,7 +191,7 @@
                         <tr>
                             <td align="right">中介表现</td>
                             <td style="padding-bottom:0px;">
-                                <input id="input-id" data-symbol="★" type="number" class="rating" min=0 max=5 step=0.3 data-size="xs" >
+                                <input id="input-id" data-stars="10" data-symbol="★" type="number" class="rating" min=0 max=10 step=1 data-size="xs" >
                             </td>
                         </tr>
                         <tr>
@@ -217,7 +217,6 @@
         </div>
         <!--/#forwardResume-->
         </div>
-            <receivedresumesjs></receivedresumesjs>
             <starratingjs></starratingjs>
     </div>
     <!-- end #container -->
@@ -226,42 +225,47 @@
 <script>
 import { mapState } from 'vuex';
 import UserInfoSideBar from './UserInfoSideBar';
+function loadScript(url, callback){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    if(script.readyState){ // IE
+        script.onreadystatechange = function(){
+            if(script.readyState == "loaded" || script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    }else{ // FF, Chrome, Opera, ...
+        script.onload = function(){
+            callback();
+        };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
 export default {
     name: 'userinfo',
     components: {
         'userinfosidebar': UserInfoSideBar,
-        'receivedresumesjs': {
-          render(createElement) {
-              return createElement(
-                  'script', 
-                  {
-                      attrs: {
-                          type: 'text/javascript',
-                          src: '../../../static/js/evaluateagency.js'
-                      }
-                  }
-              )
-          },
-      },
-      'starratingjs': {
-          render(createElement) {
-              return createElement(
-                  'script',
-                  {
-                      attrs: {
-                          type: 'text/javascript',
-                          src: '../../../static/js/star-rating.min.js'
-                      }
-                  }
-              )
-          }
-      }
+        'starratingjs': {
+            render(createElement) {
+                return createElement(
+                    'script',
+                    {
+                        attrs: {
+                            type: 'text/javascript',
+                            src: '../../../static/js/star-rating.min.js'
+                        }
+                    }
+                )
+            }
+        }
     },
     data: function() {
         return {
             datanotnull: false,
             userjobs: '',
-            evaluatingjobid:'',
+            evaluatingtxid:'',
             evaluatingagency:'',
             evaluatingjobtitle:''
         }
@@ -277,6 +281,10 @@ export default {
             success: function(data) {
                 if(data.err != 0) return
                 vuectx._data.userjobs = data.data;
+                //将脚本加载后置，否则提前绑定了点击事件将会失效
+                loadScript("../../../static/js/evaluateagency.js", function(){
+                    //console.log('Actually we do nothing here')
+                })
             }
         });
         var perCurrent = $(".company_center_aside .current").removeClass('current');
@@ -288,7 +296,7 @@ export default {
             //$("#currentevalu").removeAttr("id");
             //console.log(e.currentTarget)
             //$(e.currentTarget).attr("id","#currentevalu");
-            this.evaluatingjobid = $(e.currentTarget).attr("jobid");
+            this.evaluatingtxid = $(e.currentTarget).attr("txid");
             this.evaluatingagency = $(e.currentTarget).attr("agency");
             this.evaluatingjobtitle = $(e.currentTarget).attr("jobtitle");
         },
@@ -296,28 +304,27 @@ export default {
             var vuectx = this;
             $("#cboxClose").click();
             $.ajax({
-                url:"http://211.159.220.170:8000/tx/student/jobs?username="+this.user.name,
-                type:'put',
+                url:"http://211.159.220.170:8000/tx/evaluate?username="+this.user.name,
+                type:'post',
                 data: {
-                    name: 'Node.js高级工程师',
-                    agency: '斗米兼职',
-                    address: '上海',
-                    uptitle:'双方已互评',
-                    downtitle:'已结算',
-                    downtitlehref:'nothing'
+                    Score: $("#input-id").val(),
+                    TxID: this.evaluatingtxid
                 },
                 dataType:'json',
                 success: function(data) {
                     alert("评价中介成功！")
                     //重新发送请求 更新数据 刷新数据
                     $.ajax({
-                        url:"http://localhost:3000/userjobs",
+                        url:"http://211.159.220.170:8000/tx/student/jobs?username="+vuectx.user.name,
                         type:'get',
                         dataType:'json',
                         success: function(data) {
-                            console.log(data[0]);
-                            vuectx._data.datanotnull = true;
-                            vuectx._data.userjob = data[0];
+                            if(data.err != 0) return
+                            vuectx._data.userjobs = data.data;
+                            //将脚本加载后置，否则提前绑定了点击事件将会失效
+                            loadScript("../../../static/js/evaluateagency.js", function(){
+                                //console.log('Actually we do nothing here')
+                            })
                         }
                     });
                 }

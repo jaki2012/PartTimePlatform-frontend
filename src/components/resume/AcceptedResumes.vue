@@ -98,7 +98,8 @@
                     </div>
                     <!-- end .filter_options -->
                     <ul class="reset resumeLists">
-                    <li v-if="datanotnull" data-id="1686181" class="onlineResume">
+                    <template v-for="resume in resumes">
+                    <li data-id="1686181" class="onlineResume">
                             <label class="checkbox">
 			                                    <input type="checkbox">
 			                                    <i></i>
@@ -130,14 +131,15 @@
                                     </div>
                                 </div>
                                 <div class="links">
-                                    <a data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
-                                        data-forwardcount="1" class="resume_forward" href="javascript:void(0)">
+                                    <a data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="position.Title" v-on:click="popup($event)"
+                                        data-forwardcount="1" class="resume_forward">
                                                     	结算
                                                     	                                                    </a>
                                     <a class="resume_del" href="javascript:void(0)">删除</a>
                                 </div>
                             </div>
                         </li>
+                        </template>
                         <li v-if="false" data-id="1686182" class="onlineResume">
                             <label class="checkbox">
 			                                    <input type="checkbox">
@@ -292,21 +294,21 @@
 
         <!--转发简历弹窗-->
         <!--将结算流程放到转发简历弹窗中-->
-        <div class="popup" style="width:480px;height:380px" id="forwardResume">
+        <div class="popup" style="width:480px;height:360px" id="forwardResume">
             <form id="forwardResumeForm" >
                 <table width="100%" class="f16" style='table-layout:fixed'>
                     <tbody>
                         <tr>
                             <td width="20%" align="right">兼职者</td>
                             <td width="80%">
-                                <input disabled type="text" :placeholder="resume.name" id="recipients" name="recipients">
+                                <input disabled type="text" :placeholder="evaluatinguser" id="recipients" name="recipients">
                                 <span id="forwardResumeError" style="display:none" class="beError"></span>
                             </td>
                         </tr>
                         <tr>
                             <td width="20%" align="right">对应兼职</td>
                             <td width="80%">
-                                <input disabled type="text" :placeholder="resume.job+resume.jobdetaillink" id="recipients" name="recipients">
+                                <input disabled type="text" :placeholder="evaluatingjobtitle" id="recipients" name="recipients">
                                 <span id="forwardResumeError" style="display:none" class="beError"></span>
                             </td>
                         </tr>
@@ -314,7 +316,7 @@
                             <td align="right">兼职表现</td>
                             <td style="padding-bottom:0px;">
                                 <!-- 查看js源码 options.stars-->
-                                <input id="input-id1" data-symbol="★" data-stars="10" type="number" class="rating" min=0 max=10 step=0.3 data-size="xs" >
+                                <input id="input-id1" data-symbol="★" data-stars="10" type="number" class="rating" min=0 max=10 step=1 data-size="xs" >
                             </td>
                         </tr>
                         <tr>
@@ -423,6 +425,7 @@
 
 <script>
 import $ from 'jquery'
+import {mapState} from 'vuex'
 function loadScript(url, callback){
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -446,44 +449,37 @@ export default {
     data: function() {
         return {
             datanotnull: false,
-            resume: ''
+            resumes: '',
+            position: {
+                AgencyName:'',
+                Title:''
+            },
+            evaluatingtxid:'',
+            evaluatinguser:'',
+            evaluatingjobtitle:''
         }
     },
+    computed: mapState({user: state => state.user}),
     methods:{
+        popup: function(e) {
+            //$("#currentevalu").removeAttr("id");
+            //console.log(e.currentTarget)
+            //$(e.currentTarget).attr("id","#currentevalu");
+            this.evaluatingtxid = $(e.currentTarget).attr("txid");
+            this.evaluatinguser = $(e.currentTarget).attr("stuname");
+            this.evaluatingjobtitle = $(e.currentTarget).attr("jobtitle");
+        },
         accept: function() {
-            $.ajax({
-                url:"http://localhost:3000/acceptedresumes",
-                type:'post',
-                data: {
-                    name: 'jaki2012',
-                    sex: '男',
-                    education: '硕士',
-                    address: '嘉定安亭',
-                    experience: '3-5年',
-                    school: '上海市同济大学',
-                    job:'Node.js高级工程师',
-                    jobdetailid:'1',
-                    jobdetaillink:'hahah',
-                    id:'1'
-                },
-                dataType:'json',
-                success: function(data) {
-                    console.log(data);
-                }
-            });
+            
         },
         evaluate: function() {
             $("#cboxClose").click();
             $.ajax({
-                url:"http://localhost:3000/userjobs/1",
-                type:'put',
+                url:"http://211.159.220.170:8000/tx/evaluate?username="+this.user.name,
+                type:'post',
                 data: {
-                    name: 'Node.js高级工程师',
-                    agency: '斗米兼职',
-                    address: '上海',
-                    uptitle:'中介已评:'+$("#input-id1").val()+'分',
-                    downtitle:'对中介评价',
-                    downtitlehref:'javascript:;',
+                    TxID: this.evaluatingtxid,
+                    Score:$("#input-id1").val(),
                 },
                 dataType:'json',
                 success: function(data) {
@@ -551,21 +547,28 @@ export default {
     },
     mounted: function() {
         // jquery需要获取vue上下文环境
-        var vuectx = this;
+        var vuectx = this
         $.ajax({
-            url:"http://localhost:3000/acceptedresumes",
-            type:'get',
-            dataType:'json',
+            url:"http://211.159.220.170:8000/job/query",
+            type: 'get',
+            data: {
+                JobID: this.$route.query.jobid
+            },
+            dataType: 'json',
             success: function(data) {
-                console.log(data[0]);
-                vuectx._data.datanotnull = true;
-                vuectx._data.resume = data[0];
+                if(data.msg !=0 ) return
+                vuectx._data.resumes = data.data.Txs;
+                vuectx._data.position.AgencyName = data.data.AgencyName;
+                vuectx._data.position.Title = data.data.JobDetail.Title;
+                console.log(data);
+                //将脚本加载后置，否则提前绑定了点击事件将会失效
+                loadScript("../../../static/js/payandevaluate.min.js", function(){
+                    //console.log('Actually we do nothing here')
+                })
             }
         });
         loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
-            loadScript("../../../static/js/payandevaluate.min.js", function(){
-                //console.log('Actually we do nothing here')
-            })
+            //console.log('Actually we do nothing here')
         });
         $(function(){
             $('#noticeDot-1').hide();
@@ -610,7 +613,6 @@ export default {
         CallCenter.init(url);
 }
 }
-
 $(function () {
     $('#weibolist .cookietxte').text('推荐本职位给好友');
     $(document).bind('cbox_complete', function () {
@@ -642,9 +644,7 @@ $(function () {
     #cboxWrapper {
         overflow: visible;
     }
-
     #forwardResumeForm {
         font-family: 'Hiragino Sans GB'!important;
     }
-
 </style>

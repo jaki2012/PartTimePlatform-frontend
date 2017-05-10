@@ -117,7 +117,7 @@
                                     </h3>
                                     <span class="fr">投递时间：2014-07-01 17:08</span>
                                     <div>
-                                        {{resume.name}} / {{resume.sex}} / {{resume.education}} / {{resume.experience}} / {{resume.address}}
+                                        
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
@@ -136,7 +136,8 @@
                                                     	转发
                                                     	                                                    	<span>(1人)</span>
                                                     	                                                    </a>
-                                    <a :txid="resume.TxID" v-on:click="accept(1,$event)">录用</a>
+                                    <a v-if="resume.State==0" :txid="resume.TxID" v-on:click="accept(1,$event)">录用</a>
+                                    <a v-if="resume.State==1" :txid="resume.TxID" v-on:click="avaluate(1,$event)">结算及评价</a>
                                     <a class="resume_del" v-on:click="accept(2,$event)">删除</a>
                                 </div>
                             </div>
@@ -446,7 +447,6 @@ export default {
         // jquery需要获取vue上下文环境
         var vuectx = this
         $.ajax({
-            //此处直接取id为1的职位
             url:"http://211.159.220.170:8000/job/query",
             type: 'get',
             data: {
