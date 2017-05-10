@@ -556,13 +556,16 @@
 
 <script>
 import $ from 'jquery'
+import { mapState } from 'vuex'
 export default {
   name: 'jobdetail',
   data: function() {
       return {
-          position: ''
+          position: '',
+          jobid: this.$route.query.jobid
       }
   },
+  computed: mapState({user: state => state.user}),
   created: function() {
       var vuectx = this
       console.log(this.$route.query.jobid)
@@ -580,19 +583,10 @@ export default {
   methods: {
       deliver: function() {
             $.ajax({
-                url:"http://localhost:3000/unhandleresumes",
+                url:"http://211.159.220.170:8000/tx/apply?username="+this.user.name,
                 type:'post',
                 data: {
-                    name: 'jaki2012',
-                    sex: '男',
-                    education: '硕士',
-                    address: '嘉定安亭',
-                    experience: '3-5年',
-                    school: '上海市同济大学',
-                    job:'Node.js高级工程师',
-                    jobdetailid:'1',
-                    jobdetaillink:'hahah',
-                    id:1
+                    JobID: this.jobid
                 },
                 dataType:'json',
                 success: function(data) {

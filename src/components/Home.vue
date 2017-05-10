@@ -627,7 +627,7 @@
                     <li :class="{'odd':index%2==0}" class="clearfix">
                         <div class="hot_pos_l">
                             <div class="mb10">
-                                <router-link to="jobdetail" target="_blank">{{position.JobInfo.JobDetail.Title}}</router-link>&nbsp;
+                                <router-link :to="{ path: 'jobdetail', query: { jobid: position.JobInfo.JobID }}" target="_blank">{{position.JobInfo.JobDetail.Title}}</router-link>&nbsp;
                                 <span class="c9">[{{position.JobInfo.JobDetail.Place}}]</span>
                             </div>
                             <span><em class="c7">工作天数：</em>{{position.JobInfo.JobDetail.Day}}</span>
@@ -1645,7 +1645,6 @@ export default {
   },
   mounted: function() {
 
-    console.log(this.$route.query.detail)
     const corejs = document.createElement('script')
     corejs.type = 'text/javascript'
     corejs.src = '../../static/js/core.min.js'

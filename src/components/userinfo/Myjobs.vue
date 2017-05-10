@@ -28,26 +28,27 @@
                         </div>
                         <form id="deliveryForm">
                             <ul class="reset my_delivery">
+                                <template v-for="(userjob,index) in userjobs">
                                 <li>
                                     <div class="d_item">
                                         <h2 title="随便写">
                                             <a target="_blank" href="http://www.lagou.com/jobs/149594.html">
-                                                <em>{{userjob.name}}</em>
-                                                <span>（3k-4k）</span>
+                                                <em>{{userjob.JobDetail.Title}}</em>
+                                                <span>({{userjob.JobDetail.Salary}} x {{userjob.JobDetail.Day}})</span>
                                                 <!--  -->
                                             </a>
                                         </h2>
                                         <h4>
                                             <a target="_blank" href="http://www.lagou.com/jobs/149594.html">
-                                                <em>{{userjob.uptitle}}</em>
+                                                <em>{{userjob.Tx.Status}}</em>
                                                 <!--  -->
                                             </a>
                                         </h4>
                                         <div class="clear"></div>
                                         <a title="公司名称" class="d_jobname" target="_blank" href="http://www.lagou.com/c/25927.html">
-                                                {{userjob.agency}} <span>[{{userjob.address}}]</span> 
+                                                {{userjob.AgencyName}} <span>[{{userjob.JobDetail.Place}}]</span> 
                                             </a>
-                                        <span class="d_time">2016-05-07 17:15</span>
+                                        <span class="d_time">{{userjob.Tx.ApplyTime}}</span>
                                         <div class="clear"></div>
                                         <div class="d_resume">
                                             使用简历：
@@ -55,8 +56,8 @@
                                                                                                 在线简历
                                                                                             </span>
                                         </div>
-                                        <a class="btn_showprogress resume_forward" href="javascript:;">
-                                                                                                        {{userjob.downtitle}}
+                                        <a class="btn_showprogress resume_forward" href="javascript:;":jobid="userjob.Tx.JobID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
+                                                                                                        userjob.downtitle
                                                                                                 <i></i></a>
                                     </div>
                                     <div class="progress_status	dn">
@@ -92,6 +93,7 @@
                                         <a class="btn_closeprogress" href="javascript:;"></a>
                                     </div>
                                 </li>
+                                </template>
                                 <li>
                                     <div class="d_item">
                                         <h2 title="随便写">
@@ -175,14 +177,14 @@
                         <tr>
                             <td width="20%" align="right">兼职中介</td>
                             <td width="80%">
-                                <input disabled type="text" :placeholder="userjob.agency" id="recipients" name="recipients">
+                                <input disabled type="text" :placeholder="evaluatingagency" id="recipients" name="recipients">
                                 <span id="forwardResumeError" style="display:none" class="beError"></span>
                             </td>
                         </tr>
                         <tr>
                             <td width="20%" align="right">对应兼职</td>
                             <td width="80%">
-                                <input disabled type="text" :placeholder="userjob.name" id="recipients" name="recipients">
+                                <input disabled type="text" :placeholder="evaluatingjobtitle" id="recipients" name="recipients">
                                 <span id="forwardResumeError" style="display:none" class="beError"></span>
                             </td>
                         </tr>
@@ -222,6 +224,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import UserInfoSideBar from './UserInfoSideBar';
 export default {
     name: 'userinfo',
@@ -234,7 +237,7 @@ export default {
                   {
                       attrs: {
                           type: 'text/javascript',
-                          src: '../../../static/js/payandevaluate.min.js'
+                          src: '../../../static/js/evaluateagency.js'
                       }
                   }
               )
@@ -257,20 +260,23 @@ export default {
     data: function() {
         return {
             datanotnull: false,
-            userjob: ''
+            userjobs: '',
+            evaluatingjobid:'',
+            evaluatingagency:'',
+            evaluatingjobtitle:''
         }
     },
+    computed: mapState({user: state => state.user}),
     mounted: function (){
         // jquery需要获取vue上下文环境
         var vuectx = this;
         $.ajax({
-            url:"http://localhost:3000/userjobs",
+            url:"http://211.159.220.170:8000/tx/student/jobs?username="+this.user.name,
             type:'get',
             dataType:'json',
             success: function(data) {
-                console.log(data[0]);
-                vuectx._data.datanotnull = true;
-                vuectx._data.userjob = data[0];
+                if(data.err != 0) return
+                vuectx._data.userjobs = data.data;
             }
         });
         var perCurrent = $(".company_center_aside .current").removeClass('current');
@@ -278,11 +284,19 @@ export default {
         current.addClass('current');
     },
     methods: {
+        popup: function(e) {
+            //$("#currentevalu").removeAttr("id");
+            //console.log(e.currentTarget)
+            //$(e.currentTarget).attr("id","#currentevalu");
+            this.evaluatingjobid = $(e.currentTarget).attr("jobid");
+            this.evaluatingagency = $(e.currentTarget).attr("agency");
+            this.evaluatingjobtitle = $(e.currentTarget).attr("jobtitle");
+        },
         evaluate: function() {
             var vuectx = this;
             $("#cboxClose").click();
             $.ajax({
-                url:"http://localhost:3000/userjobs/1",
+                url:"http://211.159.220.170:8000/tx/student/jobs?username="+this.user.name,
                 type:'put',
                 data: {
                     name: 'Node.js高级工程师',
