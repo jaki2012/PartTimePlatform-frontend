@@ -198,10 +198,10 @@ $(function() {
 		}), void 0) : !1
 	}), $(".resume_forward").bind("click", function() {
 		var a, b, c, d, e;
-		$(this).children("dl").hide(), a = $(this).attr("data-resumeKey"), b = $(this).attr("data-positionId"), c = $(this).attr("data-deliverId"), d = "（简历来自拉勾）" + $(this).attr("data-positionName") + "：" + $(this).attr("data-resumeName"), e = "以下是应聘“" + $(this).attr("data-positionName") + "”的简历。我已查阅，请您评估一下。 若觉合适，我们将安排面试，谢谢！", $('#forwardResumeForm input[name="resumeKey"]').val(a), $('#forwardResumeForm input[name="positionId"]').val(b), $('#forwardResumeForm input[name="deliverId"]').val(c), $('#forwardResumeForm input[name="title"]').val(d).removeClass("error").removeClass("valid"), $('#forwardResumeForm textarea[name="content"]').val(e).removeClass("error").removeClass("valid"), $("#forwardResumeForm span.error").remove(), $("#recipients").val(""), placeholderFn(), suggestEmail("recipients"), $.colorbox({
+		$(this).children("dl").hide(), a = $(this).attr("data-resumeKey"), b = $(this).attr("data-positionId"), c = $(this).attr("data-deliverId"), d = "（简历来自拉勾）" + $(this).attr("data-positionName") + "：" + $(this).attr("data-resumeName"), e = "评价该兼职工作的内容的真实符合程度", $('#forwardResumeForm input[name="resumeKey"]').val(a), $('#forwardResumeForm input[name="positionId"]').val(b), $('#forwardResumeForm input[name="deliverId"]').val(c), $('#forwardResumeForm input[name="title"]').val(d).removeClass("error").removeClass("valid"), $('#forwardResumeForm textarea[name="content"]').val(e).removeClass("error").removeClass("valid"), $("#forwardResumeForm span.error").remove(), $("#recipients").val(""), placeholderFn(), suggestEmail("recipients"), $.colorbox({
 			inline: !0,
 			href: $("#forwardResume"),
-			title: "操作提示"
+			title: "审核操作成功"
 		})
 	}), $("#forwardResumeForm").validate({
 		onkeyup: !1,
@@ -259,7 +259,7 @@ $(function() {
 				$("#resubmitToken").val(a.resubmitToken), a.success ? $.colorbox({
 					inline: !0,
 					href: $("#forwardResumeSuccess"),
-					title: "转发简历"
+					title: "兼职结算及评价"
 				}) : ($("#forwardResumeError").html(a.msg).addClass("error"), $("#forwardResumeForm .beError").html(a.msg).show())
 			})
 		}

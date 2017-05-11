@@ -137,8 +137,7 @@
                                                     	转发
                                                     	                                                    	<span>(1人)</span>
                                                     	                                                    </a>
-                                    <a v-if="resume.State==0" :txid="resume.TxID" v-on:click="accept(1,$event)">录用</a>
-                                    <a v-if="resume.State==1" :txid="resume.TxID" v-on:click="avaluate(1,$event)">结算及评价</a>
+                                    <a :txid="resume.TxID" class="resume_forward" v-on:click="accept(1,$event)">录用</a>
                                     <a class="resume_del" v-on:click="accept(2,$event)">删除</a>
                                 </div>
                             </div>
@@ -251,34 +250,23 @@
         <!--/#noticeInterviewSuccess-->
 
         <!--转发简历弹窗-->
-        <div class="popup" id="forwardResume">
+        <div class="popup" id="forwardResume" style="width:400px;height:120px">
             <form id="forwardResumeForm">
                 <table width="100%" class="f16">
                     <tbody>
                         <tr>
-                            <td width="20%" align="right">收件人</td>
-                            <td width="80%">
-                                <input type="text" placeholder="最多可添加两个邮箱，用“；”隔开" id="recipients" name="recipients">
-                                <span id="forwardResumeError" style="display:none" class="beError"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">主题</td>
+                            <td valign="top" align="right">审核结果：</td>
                             <td>
-                                <input type="text" value="" name="title">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td valign="top" align="right">正文</td>
-                            <td>
-                                <textarea name="content"></textarea>
+                                <p style="margin:7px 0 0 0">该学生的兼职申请已经审核通过！<br>
+                                <span style="color:#FF9933;font-size:13px">本页面将马上刷新...</span>
+                                </p>
                                 <span style="display:none;" class="beError error"></span>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" value="发送" class="btn">
+                                <input type="submit" value="确定" v-on:click="dismiss" class="btn">
                                 <a class="emial_cancel" href="javascript:;">取消</a>
                             </td>
                         </tr>
@@ -402,7 +390,11 @@ export default {
     },
     computed: mapState({user: state=> state.user}),
     methods:{
+        dismiss: function() {
+            $("#cboxClose").click()
+        },
         accept: function(result,e) {
+            return
             var vuectx = this;
             var txid = $(e.currentTarget).attr("txid");
             $.ajax({
@@ -415,7 +407,7 @@ export default {
                 },
                 success: function(data) {
                     console.log(data)
-                    alert("人工审核成功，将重新刷新本页面！")
+                    //alert("人工审核成功，将重新刷新本页面！")
                     vuectx.refreshPage();
                 }
             })
@@ -472,7 +464,7 @@ export default {
                     // vuectx._data.position.Title = data.data.JobDetail.Title;
                     console.log(vuectx._data.jobs);
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
-                    loadScript("../../../static/js/payandevaluate.min.js", function(){
+                    loadScript("../../../static/js/acceptpopup.js", function(){
                         //console.log('Actually we do nothing here')
                     })
                 }
@@ -493,7 +485,7 @@ export default {
                     // vuectx._data.position.Title = data.data[0].JobDetail.Title;
                     console.log(vuectx._data.jobs);
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
-                    loadScript("../../../static/js/payandevaluate.min.js", function(){
+                    loadScript("../../../static/js/acceptpopup.js", function(){
                         //console.log('Actually we do nothing here')
                     })
                 }
