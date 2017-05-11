@@ -14,6 +14,7 @@ import AcceptedResumes from '@/components/resume/AcceptedResumes'
 import UserResumeStates from '@/components/UserResumeStates'
 import UserJobStates from '@/components/UserJobStates'
 import SearchList from '@/components/Searchlist'
+import Refresh from '@/components/Refresh'
 import UserInfo from '@/components/userinfo/UserInfo'
 import MyResume from '@/components/userinfo/MyResume'
 import Credits from '@/components/userinfo/Credits'
@@ -138,6 +139,12 @@ export default new Router({
       path: '/mydelivery',
       name: 'mydelivery',
       component: Mydelivery
+    },
+    // 跳转空页面
+    {
+      path: '/refresh',
+      name: 'refresh',
+      component: Refresh
     }
   ]
 })

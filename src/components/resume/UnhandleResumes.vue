@@ -403,6 +403,7 @@ export default {
     computed: mapState({user: state=> state.user}),
     methods:{
         accept: function(result,e) {
+            var vuectx = this;
             var txid = $(e.currentTarget).attr("txid");
             $.ajax({
                 url: "http://211.159.220.170:8000/tx/agency/check?username="+this.user.name,
@@ -414,8 +415,13 @@ export default {
                 },
                 success: function(data) {
                     console.log(data)
+                    alert("人工审核成功，将重新刷新本页面！")
+                    vuectx.refreshPage();
                 }
             })
+        },
+        refreshPage: function() {
+            this.$router.replace({path: '/refresh', query:{jobid:this.$route.query.jobid}})
         }
     },
     components: {
