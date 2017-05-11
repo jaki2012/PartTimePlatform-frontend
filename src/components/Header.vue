@@ -8,7 +8,7 @@
         <li class="current"><router-link to="/">首页</router-link></li>
         <li><a href="companylist.html">公司</a></li>
         <li><a href="h/toForum.html" target="_blank">论坛</a></li>
-        <li><router-link to="myjob" rel="nofollow">我的申请</router-link></li>
+        <li><router-link to="myjobs" rel="nofollow">我的申请</router-link></li>
         <li><router-link to="createjob" rel="nofollow">发布职位</router-link></li>
       </ul>
       <ul class="loginTop" v-if="!user.name">

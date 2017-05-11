@@ -1697,10 +1697,10 @@ export default {
     corejs.src = '../../static/js/core.min.js'
     document.body.appendChild(corejs)
 
-    const homejs = document.createElement('script')
-    homejs.type = 'text/javascript'
-    homejs.src = '../../static/js/home.min.js'
-    document.body.appendChild(homejs)
+    // const homejs = document.createElement('script')
+    // homejs.type = 'text/javascript'
+    // homejs.src = '../../static/js/home.min.js'
+    // document.body.appendChild(homejs)
 
     var vuectx = this;
     $.ajax({

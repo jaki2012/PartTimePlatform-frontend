@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <a class="btn_create" href="create.html">继续搜索兼职</a>
+        <router-link class="btn_create" to="home">继续搜索兼职</router-link>
         <dl class="company_center_aside userinfo">
             <dt>账户基本信息</dt>
             <dd class="current">
@@ -20,13 +20,13 @@
         <dl class="company_center_aside jobinfo">
             <dt>兼职相关</dt>
             <dd>
-                <a href="positions.html">信用积分</a>
+                <router-link to="credits">信用积分</router-link>
             </dd>
             <dd>
-                <a href="positions.html">收入/提现</a>
+                <router-link to="income">收入/提现</router-link>
             </dd>
             <dd>
-                <a href="positions.html">我的兼职</a>
+                <router-link to="myjobs">我的兼职</router-link>
             </dd>
             <dd>
                 <a href="positions.html">已投简历状态</a>
