@@ -18,7 +18,7 @@
                         <a href="h/jobs/list_技术经理?labelWords=label">淘宝客服</a>
                         <a href="h/jobs/list_项目经理?labelWords=label">打字/录入</a>
                     </div>
-                    <div class="menu_sub dn">
+                    <div class="menu_sub1 dn">
                         <dl class="reset">
                             <dt>
                                 <a href="h/jobs/list_后端开发?labelWords=label">
@@ -147,7 +147,7 @@
                         <a href="h/jobs/list_无线产品经理?labelWords=label">外卖派送员</a>
                         <a href="h/jobs/list_游戏策划?labelWords=label">酒吧KTV</a>
                     </div>
-                    <div class="menu_sub dn">
+                    <div class="menu_sub1 dn">
                         <dl class="reset">
                             <dt>
                                 <a href="h/jobs/list_产品经理?labelWords=label">
@@ -210,7 +210,7 @@
                         <a href="h/jobs/list_交互设计?labelWords=label">交互设计</a>
                         <a href="h/jobs/list_数据分析?labelWords=label">数据分析</a>
                     </div>
-                    <div class="menu_sub dn">
+                    <div class="menu_sub1 dn">
                         <dl class="reset">
                             <dt>
                                 <a href="h/jobs/list_视觉设计?labelWords=label">
@@ -286,7 +286,7 @@
                         <a href="h/jobs/list_游戏运营?labelWords=label">传单派送</a>
                         <a href="h/jobs/list_编辑?labelWords=label">采访</a>
                     </div>
-                    <div class="menu_sub dn">
+                    <div class="menu_sub1 dn">
                         <dl class="reset">
                             <dt>
                                 <a href="h/jobs/list_运营?labelWords=label">
@@ -350,7 +350,7 @@
                         <a href="h/jobs/list_BD?labelWords=label">BD</a>
                         <a href="h/jobs/list_销售经理?labelWords=label">排队充场</a>
                     </div>
-                    <div class="menu_sub dn">
+                    <div class="menu_sub1 dn">
                         <dl class="reset">
                             <dt>
                                 <a href="h/jobs/list_市场 营销?labelWords=label">
@@ -422,7 +422,7 @@
                         <a href="h/jobs/list_会计?labelWords=label">编辑</a>
                         <a href="h/jobs/list_出纳?labelWords=label">校对</a>
                     </div>
-                    <div class="menu_sub dn">
+                    <div class="menu_sub1 dn">
                         <dl class="reset">
                             <dt>
                                 <a href="h/jobs/list_人力资源?labelWords=label">
@@ -522,15 +522,15 @@
             <div id="home_banner">
                 <ul class="banner_bg">
                     <li class="banner_bg_1 current">
-                        <a href="h/subject/s_buyfundation.html?utm_source=DH__lagou&utm_medium=banner&utm_campaign=haomai" target="_blank"><img src="../assets/images/d05a2cc6e6c94bdd80e074eb05e37ebd.jpg" width="612" height="160" alt="电商vs新零售"
+                        <a href="h/subject/s_buyfundation.html?utm_source=DH__lagou&utm_medium=banner&utm_campaign=haomai" target="_blank"><img src="../assets/images/d05a2cc6e6c94bdd80e074eb05e37ebd_meitu_1.jpg" width="612" height="160" alt="电商vs新零售"
                             /></a>
                     </li>
                     <li class="banner_bg_2">
-                        <a href="h/subject/s_worldcup.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=wc" target="_blank"><img src="../assets/images/c9d8a0756d1442caa328adcf28a38857.jpg" width="612" height="160" alt="梦想合伙人"
+                        <a href="h/subject/s_worldcup.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=wc" target="_blank"><img src="../assets/images/meitu_3.jpg" width="612" height="160" alt="梦想合伙人"
                             /></a>
                     </li>
                     <li class="banner_bg_3">
-                        <a href="h/subject/s_xiamen.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=xiamen" target="_blank"><img src="../assets/images/d03110162390422bb97cebc7fd2ab586.jpg" width="612" height="160" alt="种读公益活动"
+                        <a href="h/subject/s_xiamen.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=xiamen" target="_blank"><img src="../assets/images/d03110162390422bb97cebc7fd2ab586_meitu_2.jpg" width="612" height="160" alt="种读公益活动"
                             /></a>
                     </li>
                 </ul>
@@ -647,7 +647,7 @@
                             <br />                         
                             <span><em class="c7">工作要求：</em>{{position.JobInfo.JobDetail.Demand}}</span>
                             <br />
-                            <span><em class="c7">职位诱惑：</em>发展前景</span>
+                            <span><em class="c7">职位诱惑：</em>发展前景不错</span>
                             <span>1天前发布</span>
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
@@ -1697,10 +1697,11 @@ export default {
     corejs.src = '../../static/js/core.min.js'
     document.body.appendChild(corejs)
 
-    // const homejs = document.createElement('script')
-    // homejs.type = 'text/javascript'
-    // homejs.src = '../../static/js/home.min.js'
-    // document.body.appendChild(homejs)
+    //使得职位分类临时无法展示
+    const homejs = document.createElement('script')
+    homejs.type = 'text/javascript'
+    homejs.src = '../../static/js/home.min.js'
+    document.body.appendChild(homejs)
 
     var vuectx = this;
     $.ajax({
@@ -1717,6 +1718,7 @@ export default {
         }
     });
     $.ajax({
+        //目前返回的数据格式有点不一样
         url: HOST + ":" + PORT +"/job/time/all",
         type:'get',
         dataType:'json',

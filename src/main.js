@@ -10,11 +10,24 @@ Vue.config.productionTip = false
 
 router.beforeEach(({meta, path}, from, next) => {
     var { auth = true } = meta
-    //true用户已登录， false用户未登录
+    // true用户已登录， false用户未登录
     var isLogin = Boolean(store.state.user.name) 
+
+    // 判断学生用户状态
+    var userType = store.state.user.type;
 
     if (auth && !isLogin && path !== '/login') {
         return next({ path: '/login' })
+    }
+
+    if (auth && userType == 1 && (path == '/myjobs')){
+        alert("只有学生用户可以访问该板块")
+        return next({ path: '/home' })
+    }
+
+    if (auth && userType == 0 && (path == '/createjob' || path == '/position')){
+        alert("只有中介用户可以访问该板块")
+        return next({ path: '/home' })
     }
     next()
 })
