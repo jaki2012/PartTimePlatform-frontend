@@ -2,7 +2,7 @@
     <div id="container">
         <div class="clearfix">
             <div class="content_l">
-                <dl class="job_detail">
+                <dl v-if="datanotnull" class="job_detail">
                     <dt>
                         <h1 title="内容运营">
                             <em></em>
@@ -49,7 +49,8 @@
                     </div>
                     <dd>
                         <!--<a href="#loginPop" title="登录" class="inline btn fr btn_apply">投个简历</a>-->
-                        <a id="deliverbtn" href="#loginSuccess" title="投递结果" class="inline btn fr btn_apply" v-on:click="deliver($event)">投个简历</a>
+                        <a v-if="!job.IsApplied" id="deliverbtn" href="#loginSuccess" title="投递成功" class="inline btn fr btn_apply" v-on:click="deliver($event)">投个简历</a>
+                        <a v-if="job.IsApplied" id="deliverbtn2" href="#loginFailed" title="投递失败" class="inline btn fr btn_apply">已申请</a>
                     </dd>
                 </dl>
                 <div id="weibolist"></div>
@@ -565,18 +566,20 @@ export default {
   name: 'jobdetail',
   data: function() {
       return {
+          datanotnull: false,
           delivered: false,
           job: '',
           jobid: this.$route.query.jobid
       }
   },
   computed: mapState({user: state => state.user}),
-  created: function() {
+  //changed created to mounted防止组件提前渲染的错误
+  mounted: function() {
       var vuectx = this
       console.log(this.$route.query.jobid)
       $.ajax({
           //此处直接取id为1的职位
-          url:"http://211.159.220.170:8000/job/query",
+          url:"http://211.159.220.170:8000/job/query?Username="+this.user.name,
           type: 'get',
           data: {
               JobID: this.jobid
@@ -585,7 +588,8 @@ export default {
           success: function(data) {
               if(data.msg !=0 ) return
               vuectx._data.job = data.data;
-              console.log(data);
+              vuectx._data.datanotnull = true;
+              console.log(data.data.IsApplied);
           }
       });
   },
@@ -606,8 +610,6 @@ export default {
                 }
             });
             this.delivered = true;
-            $("#deliverbtn").css("opacity","0.6");
-            $("#deliverbtn").text("已申请")
       },
   },
   components: {
@@ -677,7 +679,7 @@ $(function () {
     });
     $('#colorbox').on('click', '#cboxClose', function () {
         //绑定一个已经申请过该职位的处理事件
-        $("#deliverbtn").attr("href","#loginFailed")
+        // $("#deliverbtn").attr("href","#loginFailed")
         if ($(this).siblings('#cboxLoadedContent').children('div').attr('id') == 'deliverResumesSuccess' || $(this).siblings('#cboxLoadedContent').children('div').attr('id') == 'uploadFileSuccess') {
             top.location.reload();
         }
@@ -698,5 +700,9 @@ $(function () {
     #cboxOverlay,
     #cboxWrapper {
         overflow: visible;
+    }
+
+    #deliverbtn2 {
+        opacity: 0.6;
     }
 </style>
