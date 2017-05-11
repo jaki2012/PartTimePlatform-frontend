@@ -518,7 +518,6 @@
                 <dd><a href="list.htmlUI?labelWords=label&city=">UI设计</a></dd>
                 <dd><a href="list.html运营?labelWords=label&city=">网站</a></dd>
                 <dd><a href="list.htmlBD?labelWords=label&city=">摄影师</a></dd>
-                <dd><a href="list.html?gx=实习&city=">实习</a></dd>
             </dl>
             <div id="home_banner">
                 <ul class="banner_bg">
@@ -631,8 +630,8 @@
             </ul>
 
             <ul class="reset hotabbing">
-                <li class="current">热门职位</li>
-                <li>最新职位</li>
+                <li class="current">热门兼职</li>
+                <li>最新兼职</li>
             </ul>
             <div id="hotList">
                 <ul class="hot_pos reset">
@@ -1106,6 +1105,39 @@
                     <a href="list.html" class="btn fr" target="_blank">查看更多</a>
                 </ul>
                 <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
+                    <template v-for="(position,index) in newpositions">
+                    <li :class="{'odd':index%2==0}" class="clearfix">
+                        <div class="hot_pos_l">
+                            <div class="mb10">
+                                <router-link :to="{ path: 'jobdetail', query: { jobid: position.JobInfo.JobID }}" target="_blank">{{position.JobInfo.JobDetail.Title}}</router-link>&nbsp;
+                                <span class="c9">[{{position.JobInfo.JobDetail.Place}}]</span>
+                            </div>
+                            <span><em class="c7">工作天数：</em>{{position.JobInfo.JobDetail.Day}}</span>
+                            <span><em class="c7">兼职报酬：</em>{{position.JobInfo.JobDetail.Salary}}</span>
+                            <br />                         
+                            <span><em class="c7">工作要求：</em>{{position.JobInfo.JobDetail.Demand}}</span>
+                            <br />
+                            <span><em class="c7">职位诱惑：</em>发展前景</span>
+                            <span>1天前发布</span>
+                            <!-- <a  class="wb">分享到微博</a> -->
+                        </div>
+                        <div class="hot_pos_r">
+                            <div class="mb10 recompany"><a href="h/c/399.html" target="_blank">{{position.AgencyName}}</a></div>
+                            <span><em class="c7">中介评分：</em>{{position.Score}}分</span>
+                            <span><em class="c7">总需求人数：</em>{{position.JobInfo.TotalHired}}</span>
+                            <br />
+                            <span><em class="c7">目前申请：</em>{{position.JobInfo.TotalApplied}}人</span>
+                            <span><em class="c7">目前录取：</em>{{position.JobInfo.TotalSettled}}人</span>
+                            <ul class="companyTags reset">
+                                <li>移动互联网</li>
+                                <li>五险一金</li>
+                                <li>扁平管理</li>
+                            </ul>
+                        </div>
+                    </li>
+                    </template>
+                </ul>
+                <ul v-if="false" class="hot_pos hot_posHotPosition reset" style="display:none;">
                     <li class="clearfix" v-if="!datanotnull">
                         <div class="hot_pos_l">
                             <div class="mb10">
@@ -1653,7 +1685,9 @@ export default {
   data: function() {
       return {
           datanotnull: false,
-          positions: null
+          positions: null,
+          //最新职位
+          newpositions: null
       }
   },
   mounted: function() {
@@ -1679,6 +1713,19 @@ export default {
             }
             vuectx._data.datanotnull = true;
             vuectx._data.positions = data.data;
+            console.log(data.data)
+        }
+    });
+    $.ajax({
+        url: HOST + ":" + PORT +"/job/time/all",
+        type:'get',
+        dataType:'json',
+        success: function(data) {
+            if(0 != data.err){
+                return
+            }
+            vuectx._data.datanotnull = true;
+            vuectx._data.newpositions = data.data;
             console.log(data.data)
         }
     });
