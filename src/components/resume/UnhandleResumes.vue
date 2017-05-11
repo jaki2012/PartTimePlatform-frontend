@@ -228,7 +228,7 @@
                             <td valign="top" align="right">审核结果：</td>
                             <td>
                                 <p style="margin:7px 0 0 0">该学生的兼职申请已经审核通过！<br>
-                                <span style="color:#FF9933;font-size:13px">本页面将马上刷新...</span>
+                                <span style="color:#dd4a38;font-size:13px">本页面将马上刷新...</span>
                                 </p>
                                 <span style="display:none;" class="beError error"></span>
                             </td>
@@ -369,7 +369,7 @@ export default {
             var vuectx = this;
             var txid = $(e.currentTarget).attr("txid");
             $.ajax({
-                url: "http://211.159.220.170:8000/tx/agency/check?username="+this.user.name,
+                url: HOST + ":" + PORT +"/tx/agency/check?username="+this.user.name,
                 dataType: 'json',
                 type: 'post',
                 data: {
@@ -428,7 +428,7 @@ export default {
                 State: 0
             }
             $.ajax({
-                url:"http://211.159.220.170:8000/job/query",
+                url: HOST + ":" + PORT +"/job/query",
                 type: 'get',
                 data: params,
                 dataType: 'json',
@@ -454,7 +454,7 @@ export default {
                 State: 0
             }
             $.ajax({
-                url:"http://211.159.220.170:8000/job/agency/jobs?username="+this.user.name,
+                url: HOST + ":" + PORT +"/job/agency/jobs?username="+this.user.name,
                 type: 'get',
                 data: params,
                 dataType: 'json',

@@ -288,7 +288,7 @@ export default {
             var time = myDate.getHours() + ":" + myDate.getMinutes();
             var vuectx = this;
             $.ajax({
-                url:"http://211.159.220.170:8000/job/agency/publish?username="+this.user.name,
+                url:HOST + ":" + PORT +"/job/agency/publish?username="+this.user.name,
                 type:'post',
                 data: {
                     Title: this.newJob.Title,

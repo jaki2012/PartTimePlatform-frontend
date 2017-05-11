@@ -275,7 +275,7 @@ export default {
         // jquery需要获取vue上下文环境
         var vuectx = this;
         $.ajax({
-            url:"http://211.159.220.170:8000/tx/student/jobs?username="+this.user.name,
+            url: HOST + ":" + PORT +"/tx/student/jobs?username="+this.user.name,
             type:'get',
             dataType:'json',
             success: function(data) {
@@ -304,7 +304,7 @@ export default {
             var vuectx = this;
             $("#cboxClose").click();
             $.ajax({
-                url:"http://211.159.220.170:8000/tx/evaluate?username="+this.user.name,
+                url: HOST + ":" + PORT +"/tx/evaluate?username="+this.user.name,
                 type:'post',
                 data: {
                     Score: $("#input-id").val(),
@@ -315,7 +315,7 @@ export default {
                     alert("评价中介成功！")
                     //重新发送请求 更新数据 刷新数据
                     $.ajax({
-                        url:"http://211.159.220.170:8000/tx/student/jobs?username="+vuectx.user.name,
+                        url: HOST + ":" + PORT +"/tx/student/jobs?username="+vuectx.user.name,
                         type:'get',
                         dataType:'json',
                         success: function(data) {

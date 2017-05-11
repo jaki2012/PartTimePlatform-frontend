@@ -71,7 +71,7 @@ $(function () {
 		},
 		messages: {
 			account:{
-				required: "请输入正确的手机或邮箱"
+				required: "请输入用户名"
 			},
 			password: {
 				required: "请输入密码",

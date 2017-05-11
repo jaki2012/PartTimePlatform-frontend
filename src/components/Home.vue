@@ -545,72 +545,72 @@
             <ul id="da-thumbs" class="da-thumbs">
                 <li>
                     <a href="h/c/1650.html" target="_blank">
-                        <img src="../assets/images/a254b11ecead45bda166afa8aaa9c8bc.jpg" width="113" height="113" alt="联想" />
+                        <img src="../assets/images/doumi.png" width="113" height="113" alt="斗米" />
                         <div class="hot_info">
-                            <h2 title="联想">联想</h2>
+                            <h2 title="斗米">斗米</h2>
                             <em></em>
-                            <p title="世界因联想更美好">
-                                世界因联想更美好
+                            <p title="斗米兼职只为成就你">
+                                斗米兼职<br>只为成就你
                             </p>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="h/c/9725.html" target="_blank">
-                        <img src="../assets/images/c75654bc2ab141df8218983cfe5c89f9.jpg" width="113" height="113" alt="淘米" />
+                        <img src="../assets/images/jianzhimao.png" width="113" height="113" alt="兼职猫" />
                         <div class="hot_info">
-                            <h2 title="淘米">淘米</h2>
+                            <h2 title="兼职猫">兼职猫</h2>
                             <em></em>
-                            <p title="将心注入 追求极致">
-                                将心注入 追求极致
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="h/c/1914.html" target="_blank">
-                        <img src="../assets/images/2bba2b71d0b0443eaea1774f7ee17c9f.png" width="113" height="113" alt="优酷土豆" />
-                        <div class="hot_info">
-                            <h2 title="优酷土豆">优酷土豆</h2>
-                            <em></em>
-                            <p title="专注于视频领域，是中国网络视频行业领军企业">
-                                专注于视频领域，是中国网络视频行业领军企业
-                            </p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="h/c/6630.html" target="_blank">
-                        <img src="../assets/images/f4822a445a8b495ebad81fcfad3e40e2.jpg" width="113" height="113" alt="思特沃克" />
-                        <div class="hot_info">
-                            <h2 title="思特沃克">思特沃克</h2>
-                            <em></em>
-                            <p title="一家全球信息技术服务公司">
-                                一家全球信息技术服务公司
+                            <p title="大学生蓝领喜爱的临时工软件">
+                                大学生蓝领喜爱的临时工软件
                             </p>
                         </div>
                     </a>
                 </li>
                 <li>
                     <a href="h/c/2700.html" target="_blank">
-                        <img src="../assets/images/5caf8f9631114bf990f87bb11360653e.png" width="113" height="113" alt="奇猫" />
+                        <img src="../assets/images/yimi.png" width="113" height="113" alt="一米" />
                         <div class="hot_info">
-                            <h2 title="奇猫">奇猫</h2>
+                            <h2 title="一米">一米</h2>
                             <em></em>
-                            <p title="专注于移动互联网、互联网产品研发">
-                                专注于移动互联网、互联网产品研发
+                            <p title="一米兼职 app – 让兼职更靠谱!">
+                                一米兼职 app – 让兼职更靠谱!
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="h/c/6630.html" target="_blank">
+                        <img src="../assets/images/jianzhibao.jpeg" width="113" height="113" alt="兼职宝" />
+                        <div class="hot_info">
+                            <h2 title="兼职宝">兼职宝</h2>
+                            <em></em>
+                            <p title="一款专注于大学生和社会人员兼职招聘的手机APP">
+                                一款专注于大学生和社会人员兼职招聘的手机APP
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="h/c/1914.html" target="_blank">
+                        <img src="../assets/images/jianke2.jpeg" width="113" height="113" alt="兼客兼职" />
+                        <div class="hot_info">
+                            <h2 title="兼客兼职">兼客兼职</h2>
+                            <em></em>
+                            <p title="为有能力，有空闲时间的人群提供个性化兼职定制服务">
+                                为有能力，有空闲时间的人群提供个性化兼职定制服务
                             </p>
                         </div>
                     </a>
                 </li>
                 <li class="last">
                     <a href="h/c/1335.html" target="_blank">
-                        <img src="../assets/images/c0052c69ef4546c3b7d08366d0744974.jpg" width="113" height="113" alt="堆糖网" />
+                        <img src="../assets/images/jianjia.jpeg" width="113" height="113" alt="同济兼嘉" />
                         <div class="hot_info">
-                            <h2 title="堆糖网">堆糖网</h2>
+                            <h2 title="同济兼嘉">同济兼嘉</h2>
                             <em></em>
-                            <p title="分享收集生活中的美好，遇见世界上的另外一个你">
-                                分享收集生活中的美好，遇见世界上的另外一个你
+                            <p title="希望为嘉定学子提供最高质量的兼职">
+                                希望为嘉定学子提供最高质量的兼职
                             </p>
                         </div>
                     </a>
@@ -1657,7 +1657,7 @@ export default {
 
     var vuectx = this;
     $.ajax({
-        url:"http://211.159.220.170:8000/job/all",
+        url: HOST + ":" + PORT +"/job/all",
         type:'get',
         dataType:'json',
         success: function(data) {

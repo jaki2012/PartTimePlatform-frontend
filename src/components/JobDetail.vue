@@ -597,7 +597,7 @@ export default {
       console.log(this.$route.query.jobid)
       $.ajax({
           //此处直接取id为1的职位
-          url:"http://211.159.220.170:8000/job/query?Username="+this.user.name,
+          url: HOST + ":" + PORT +"/job/query?Username="+this.user.name,
           type: 'get',
           data: {
               JobID: this.jobid
@@ -620,7 +620,7 @@ export default {
                 return
             } 
             $.ajax({
-                url:"http://211.159.220.170:8000/tx/apply?username="+this.user.name,
+                url: HOST + ":" + PORT +"/tx/apply?username="+this.user.name,
                 type:'post',
                 data: {
                     JobID: this.jobid
@@ -725,6 +725,10 @@ $(function () {
 
     #deliverbtn2 {
         opacity: 0.6;
+    }
+
+    #loginToolBar {
+        display: none;
     }
 
 </style>

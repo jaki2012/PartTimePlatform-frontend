@@ -450,7 +450,7 @@ export default {
         evaluate: function() {
             $("#cboxClose").click();
             $.ajax({
-                url:"http://211.159.220.170:8000/tx/evaluate?username="+this.user.name,
+                url: HOST + ":" + PORT +"/tx/evaluate?username="+this.user.name,
                 type:'post',
                 data: {
                     TxID: this.evaluatingtxid,
@@ -533,7 +533,7 @@ export default {
                 State: 1
             }
             $.ajax({
-                url:"http://211.159.220.170:8000/job/query",
+                url: HOST + ":" + PORT +"/job/query",
                 type: 'get',
                 data: params,
                 dataType: 'json',
@@ -554,7 +554,7 @@ export default {
                 State: 1
             }
             $.ajax({
-                url:"http://211.159.220.170:8000/job/agency/jobs?username="+this.user.name,
+                url: HOST + ":" + PORT +"/job/agency/jobs?username="+this.user.name,
                 type: 'get',
                 data: params,
                 dataType: 'json',

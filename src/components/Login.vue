@@ -10,7 +10,7 @@
 			<form id="mylogin" v-on:submit.prevent="submit">
 				<div class="form_body" data-view="loginView">
 					<div class="input_item clearfix" data-propertyname="username" data-controltype="Phone" style="display: block;">
-						<input v-model="form.name" type="text" class="input input_white" id="account" name="account" placeholder="请输入已验证手机/邮箱" data-required="required" autocomplete="off">
+						<input v-model="form.name" type="text" class="input input_white" id="account" name="account" placeholder="请输入注册的用户名" data-required="required" autocomplete="off">
 					</div>
 					<div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
 						<input v-model="form.password" type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
@@ -113,7 +113,7 @@ export default {
 			//发送请求获取用户数据
 			var vuectx = this;
 			$.ajax({
-				url: "http://211.159.220.170:8000/user/login",
+				url: "http://211.159.220.170:80/user/login",
 				data: {
 					username: this.form.name,
 					password: this.form.password,

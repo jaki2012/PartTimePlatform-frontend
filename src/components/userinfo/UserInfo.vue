@@ -187,7 +187,7 @@ export default {
         var vuectx = this;
         if(this.user.detail){
             $.ajax({
-                url: "http://211.159.220.170:8000/user/info",
+                url: HOST + ":" + PORT +"/user/info",
                 data: {
                     username: this.user.name
                 },
@@ -242,7 +242,7 @@ export default {
             var gender = $("#gender")[0].innerText == "男" ? 0 : 1;
             var telephone = $("#telephone")[0].innerText
             $.ajax({
-                url: "http://211.159.220.170:8000/user/detail?username="+this.user.name,
+                url: HOST + ":" + PORT +"/user/detail?username="+this.user.name,
                 type: "post",
                 dataType: "json",
                 data: {

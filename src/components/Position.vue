@@ -79,7 +79,7 @@ import AgencySidebar from './resume/AgencySidebar'
          current.addClass('current');
          var vuectx = this;
          $.ajax({
-             url:"http://211.159.220.170:8000/job/agency/jobs?username="+this.user.name,
+             url: HOST + ":" + PORT +"/job/agency/jobs?username="+this.user.name,
              type: "get",
              dataType: "json",
              success: function(data) {
