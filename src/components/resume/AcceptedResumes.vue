@@ -522,6 +522,9 @@ export default {
           
     },
     mounted: function() {
+        var perCurrent = $(".agencyinfo .current").removeClass('current');
+        var current = $(".agencyinfo").find("dd:eq(2)");
+        current.addClass('current');
         // jquery需要获取vue上下文环境
         var vuectx = this
         if(null != this.$route.query.jobid){

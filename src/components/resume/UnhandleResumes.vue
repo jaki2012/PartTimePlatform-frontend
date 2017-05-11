@@ -5,7 +5,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 待处理简历 <span>（共resumes.length份）</span> </h1>
+                    <em></em> 待处理简历 <span>（共{{amount}}份）</span> </h1>
             </dt>
             <dd>
                 <form action="haveRefuseResumes.html" method="get" id="filterForm">
@@ -356,7 +356,8 @@ export default {
         return {
             datanotnull: false,
             //使其变成数组
-            jobs: new Array()
+            jobs: new Array(),
+            amount: 0
         }
     },
     computed: mapState({user: state=> state.user}),
@@ -416,6 +417,9 @@ export default {
       }
     },
     mounted: function() {
+        var perCurrent = $(".agencyinfo .current").removeClass('current');
+        var current = $(".agencyinfo").find("dd:eq(0)");
+        current.addClass('current');
         // jquery需要获取vue上下文环境
         var vuectx = this
         if(null != this.$route.query.jobid){
@@ -438,6 +442,11 @@ export default {
                     loadScript("../../../static/js/acceptpopup.js", function(){
                         //console.log('Actually we do nothing here')
                     })
+                    var temp = 0;
+                    vuectx._data.jobs.forEach(function(e){
+                        temp += e.Txs.length;
+                    })
+                    vuectx._data.amount = temp;
                 }
             });
         } else {
@@ -459,6 +468,12 @@ export default {
                     loadScript("../../../static/js/acceptpopup.js", function(){
                         //console.log('Actually we do nothing here')
                     })
+                    var temp = 0;
+                    vuectx._data.jobs.forEach(function(e){
+                        console.log(e)
+                        temp += e.Txs.length;
+                    })
+                    vuectx._data.amount = temp;
                 }
             });
         }

@@ -74,6 +74,9 @@ import AgencySidebar from './resume/AgencySidebar'
       'agencysidebar': AgencySidebar
      },
      mounted: function() {
+         var perCurrent = $(".company_center_aside .current").removeClass('current');
+         var current = $(".positioninfo").find("dd:eq(0)");
+         current.addClass('current');
          var vuectx = this;
          $.ajax({
              url:"http://211.159.220.170:8000/job/agency/jobs?username="+this.user.name,

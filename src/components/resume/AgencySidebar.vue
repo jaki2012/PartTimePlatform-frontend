@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar">
         <a class="btn_create" href="create.html">发布新职位</a>
-        <dl class="company_center_aside">
+        <dl class="company_center_aside agencyinfo">
             <dt>我收到的简历</dt>
             <dd>
                 <router-link to="unhandleresumes">待处理简历</router-link>
@@ -19,7 +19,7 @@
                 <a href="autoFilterResumes.html">自动过滤简历</a>
             </dd>
         </dl>
-        <dl class="company_center_aside">
+        <dl class="company_center_aside positioninfo">
             <dt>我发布的职位</dt>
             <dd>
                 <router-link to="position">有效职位</router-link>
