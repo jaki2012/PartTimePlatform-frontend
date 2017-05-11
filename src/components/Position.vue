@@ -1,36 +1,6 @@
 <template>
 <div id="container">
-    <div class="sidebar">
-        <a class="btn_create" href="create.html">发布新职位</a>
-        <dl class="company_center_aside">
-            <dt>我收到的简历</dt>
-            <dd>
-                <router-link to="unhandleresumes">待处理简历</router-link>
-            </dd>
-            <dd>
-                <a href="canInterviewResumes.html">待定简历</a>
-            </dd>
-            <dd>
-                <router-link to="acceptedresumes">已审核通过简历</router-link>
-            </dd>
-            <dd>
-                <router-link to="refusedresumes">不合适简历</router-link>
-            </dd>
-            <dd class="btm">
-                <a href="autoFilterResumes.html">自动过滤简历</a>
-            </dd>
-        </dl>
-        <dl class="company_center_aside">
-            <dt>我发布的职位</dt>
-            <dd class="current">
-                <a href="positions.html">有效职位</a>
-            </dd>
-            <dd>
-                <a href="positions.html">已下线职位</a>
-            </dd>
-        </dl>
-    </div>
-    <!-- end .sidebar -->
+    <agencysidebar></agencysidebar>
     <div class="content">
         <dl class="company_center_content">
             <dt>
@@ -76,6 +46,7 @@
 <script>
 import { mapState } from 'vuex'
 import PositionChart from './chart/PositionChart'
+import AgencySidebar from './resume/AgencySidebar'
 
  export default {
      name: 'position',
@@ -99,7 +70,8 @@ import PositionChart from './chart/PositionChart'
               )
           }
       },
-      PositionChart
+      PositionChart,
+      'agencysidebar': AgencySidebar
      },
      mounted: function() {
          var vuectx = this;
