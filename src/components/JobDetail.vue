@@ -562,6 +562,24 @@
 <script>
 import $ from 'jquery'
 import { mapState } from 'vuex'
+function loadScript(url, callback){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    if(script.readyState){ // IE
+        script.onreadystatechange = function(){
+            if(script.readyState == "loaded" || script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    }else{ // FF, Chrome, Opera, ...
+        script.onload = function(){
+            callback();
+        };
+    }
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
 export default {
   name: 'jobdetail',
   data: function() {
@@ -590,6 +608,9 @@ export default {
               vuectx._data.job = data.data;
               vuectx._data.datanotnull = true;
               console.log(data.data.IsApplied);
+              loadScript("../../static/js/popup.min.js",function(){
+
+              })
           }
       });
   },
@@ -705,4 +726,5 @@ $(function () {
     #deliverbtn2 {
         opacity: 0.6;
     }
+
 </style>
