@@ -1,6 +1,21 @@
 # parttimeplatfrom-frontend
 
-> frontend for parttimejobplatform
+> Frontend for Tongjia PartTime-JobPlatform
+
+## Deployment Setup
+``` bash
+# install dependecies
+npm install
+# pacakge to deploy
+npm run build
+# enter the root directory
+cd dist
+# install node http-server
+npm install -g http-server 
+# deploy
+hs
+
+```
 
 ## Build Setup
 
