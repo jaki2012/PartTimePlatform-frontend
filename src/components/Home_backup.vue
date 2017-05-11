@@ -5,18 +5,18 @@
 
                 <div class="menu_box">
                     <div class="menu_main">
-                        <h2>IT/互联网<span></span></h2>
-                        <a href="h/jobs/list_Java?labelWords=label">威客任务</a>
-                        <a href="h/jobs/list_C?labelWords=label">C/C++</a>
-                        <a href="h/jobs/list_C?labelWords=label">Java</a>
+                        <h2>技术<span></span></h2>
+                        <a href="h/jobs/list_Java?labelWords=label">Java</a>
+                        <a href="h/jobs/list_PHP?labelWords=label">PHP</a>
+                        <a href="h/jobs/list_C?labelWords=label">C</a>
+                        <a href="h/jobs/list_C++?labelWords=label">C++</a>
                         <a href="h/jobs/list_Android?labelWords=label">Android</a>
                         <a href="h/jobs/list_iOS?labelWords=label">iOS</a>
                         <a href="h/jobs/list_前端开发?labelWords=label">前端开发</a>
                         <a href="h/jobs/list_测试?labelWords=label">测试</a>
-                        <a href="h/jobs/list_PHP?labelWords=label">网上销售</a>
-                        <a href="h/jobs/list_架构师?labelWords=label">网上咨询</a>
-                        <a href="h/jobs/list_技术经理?labelWords=label">淘宝客服</a>
-                        <a href="h/jobs/list_项目经理?labelWords=label">打字/录入</a>
+                        <a href="h/jobs/list_技术经理?labelWords=label">技术经理</a>
+                        <a href="h/jobs/list_项目经理?labelWords=label">项目经理</a>
+                        <a href="h/jobs/list_架构师?labelWords=label">架构师</a>
                     </div>
                     <div class="menu_sub dn">
                         <dl class="reset">
@@ -141,11 +141,11 @@
                 </div>
                 <div class="menu_box">
                     <div class="menu_main">
-                        <h2>餐饮娱乐 <span></span></h2>
-                        <a href="h/jobs/list_产品经理?labelWords=label">钟点工</a>
-                        <a href="h/jobs/list_产品助理?labelWords=label">前台店员</a>
-                        <a href="h/jobs/list_无线产品经理?labelWords=label">外卖派送员</a>
-                        <a href="h/jobs/list_游戏策划?labelWords=label">酒吧KTV</a>
+                        <h2>产品 <span></span></h2>
+                        <a href="h/jobs/list_产品经理?labelWords=label">产品经理</a>
+                        <a href="h/jobs/list_产品助理?labelWords=label">产品助理</a>
+                        <a href="h/jobs/list_无线产品经理?labelWords=label">无线产品经理</a>
+                        <a href="h/jobs/list_游戏策划?labelWords=label">游戏策划</a>
                     </div>
                     <div class="menu_sub dn">
                         <dl class="reset">
@@ -186,19 +186,6 @@
                                 <a href="h/jobs/list_%E4%BA%A7%E5%93%81%E6%80%BB%E7%9B%91?labelWords=label">产品总监</a>
                             </dd>
                         </dl>
-                    </div>
-                </div>
-                <div class="menu_box">
-                    <div class="menu_main">
-                        <h2>临时职业<span></span></h2>
-                        <a href="h/jobs/list_Java?labelWords=label">导游</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">家教</a>
-                        <a href="h/jobs/list_Java?labelWords=label">美容/护理</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">演员</a>
-                        <a href="h/jobs/list_C?labelWords=label">建筑装潢</a>
-                        <a href="h/jobs/list_C?labelWords=label">司机</a>
-                        <a href="h/jobs/list_Android?labelWords=label">家政/保姆</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">展会主持</a>
                     </div>
                 </div>
                 <div class="menu_box">
@@ -281,10 +268,10 @@
                 </div>
                 <div class="menu_box">
                     <div class="menu_main">
-                        <h2>调研 <span></span></h2>
-                        <a href="h/jobs/list_运营?labelWords=label">问卷调查</a>
-                        <a href="h/jobs/list_游戏运营?labelWords=label">传单派送</a>
-                        <a href="h/jobs/list_编辑?labelWords=label">采访</a>
+                        <h2>运营 <span></span></h2>
+                        <a href="h/jobs/list_运营?labelWords=label">运营</a>
+                        <a href="h/jobs/list_游戏运营?labelWords=label">游戏运营</a>
+                        <a href="h/jobs/list_编辑?labelWords=label">编辑</a>
                     </div>
                     <div class="menu_sub dn">
                         <dl class="reset">
@@ -343,12 +330,12 @@
                 </div>
                 <div class="menu_box">
                     <div class="menu_main">
-                        <h2>促销与销售 <span></span></h2>
+                        <h2>市场与销售 <span></span></h2>
                         <a href="h/jobs/list_市场推广?labelWords=label">市场推广</a>
-                        <a href="h/jobs/list_市场策划?labelWords=label">促销员</a>
-                        <a href="h/jobs/list_活动策划?labelWords=label">舞蹈/路演</a>
+                        <a href="h/jobs/list_市场策划?labelWords=label">市场策划</a>
+                        <a href="h/jobs/list_活动策划?labelWords=label">活动策划</a>
                         <a href="h/jobs/list_BD?labelWords=label">BD</a>
-                        <a href="h/jobs/list_销售经理?labelWords=label">排队充场</a>
+                        <a href="h/jobs/list_销售经理?labelWords=label">销售经理</a>
                     </div>
                     <div class="menu_sub dn">
                         <dl class="reset">
@@ -416,11 +403,11 @@
                 </div>
                 <div class="menu_box">
                     <div class="menu_main">
-                        <h2>文秘/助理 <span></span></h2>
-                        <a href="h/jobs/list_HR?labelWords=label">打字</a>
-                        <a href="h/jobs/list_行政?labelWords=label">翻译</a>
-                        <a href="h/jobs/list_会计?labelWords=label">编辑</a>
-                        <a href="h/jobs/list_出纳?labelWords=label">校对</a>
+                        <h2>职能 <span></span></h2>
+                        <a href="h/jobs/list_HR?labelWords=label">HR</a>
+                        <a href="h/jobs/list_行政?labelWords=label">行政</a>
+                        <a href="h/jobs/list_会计?labelWords=label">会计</a>
+                        <a href="h/jobs/list_出纳?labelWords=label">出纳</a>
                     </div>
                     <div class="menu_sub dn">
                         <dl class="reset">
@@ -490,7 +477,7 @@
                         <li data-searchtype="4">公司</li>
                     </ul>
                     <div class="searchtype_arrow"></div>
-                    <input type="text" id="search_input" name="kd" tabindex="1" value="" placeholder="请输入兼职名称，如：群众演员" />
+                    <input type="text" id="search_input" name="kd" tabindex="1" value="" placeholder="请输入职位名称，如：产品经理" />
                     <input type="hidden" name="spc" id="spcInput" value="" />
                     <input type="hidden" name="pl" id="plInput" value="" />
                     <input type="hidden" name="gj" id="gjInput" value="" />
@@ -509,15 +496,15 @@
             <!-- <script type="text/javascript" src="style/js/search.min.js"></script> -->
             <dl class="hotSearch">
                 <dt>热门搜索：</dt>
-                <dd><a href="list.htmlJava?labelWords=label&city=">家教</a></dd>
-                <dd><a href="list.htmlPHP?labelWords=label&city=">会计</a></dd>
-                <dd><a href="list.htmlAndroid?labelWords=label&city=">充场/座谈会</a></dd>
-                <dd><a href="list.htmliOS?labelWords=label&city=">派发</a></dd>
-                <dd><a href="list.html前端?labelWords=label&city=">翻译</a></dd>
-                <dd><a href="list.html产品经理?labelWords=label&city=">销售</a></dd>
-                <dd><a href="list.htmlUI?labelWords=label&city=">UI设计</a></dd>
-                <dd><a href="list.html运营?labelWords=label&city=">网站</a></dd>
-                <dd><a href="list.htmlBD?labelWords=label&city=">摄影师</a></dd>
+                <dd><a href="list.htmlJava?labelWords=label&city=">Java</a></dd>
+                <dd><a href="list.htmlPHP?labelWords=label&city=">PHP</a></dd>
+                <dd><a href="list.htmlAndroid?labelWords=label&city=">Android</a></dd>
+                <dd><a href="list.htmliOS?labelWords=label&city=">iOS</a></dd>
+                <dd><a href="list.html前端?labelWords=label&city=">前端</a></dd>
+                <dd><a href="list.html产品经理?labelWords=label&city=">产品经理</a></dd>
+                <dd><a href="list.htmlUI?labelWords=label&city=">UI</a></dd>
+                <dd><a href="list.html运营?labelWords=label&city=">运营</a></dd>
+                <dd><a href="list.htmlBD?labelWords=label&city=">BD</a></dd>
                 <dd><a href="list.html?gx=实习&city=">实习</a></dd>
             </dl>
             <div id="home_banner">
