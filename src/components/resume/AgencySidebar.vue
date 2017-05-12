@@ -2,21 +2,18 @@
     <div class="sidebar">
         <a class="btn_create" href="create.html">发布新职位</a>
         <dl class="company_center_aside agencyinfo">
-            <dt>我收到的简历</dt>
+            <dt>我收到的申请</dt>
             <dd>
-                <router-link to="unhandleresumes">待处理简历</router-link>
+                <router-link to="unhandleresumes">待处理申请</router-link>
             </dd>
             <dd>
-                <a href="canInterviewResumes.html">待定简历</a>
-            </dd>
-            <dd>
-                <router-link to="acceptedresumes">已审核通过简历</router-link>
+                <router-link to="acceptedresumes">已审核通过申请</router-link>
             </dd>
             <dd class="current">
-                <router-link to="refusedresumes">不合适简历</router-link>
+                <router-link to="refusedresumes">审核不通过申请</router-link>
             </dd>
-            <dd class="btm">
-                <a href="autoFilterResumes.html">自动过滤简历</a>
+            <dd>
+                <a>已结算申请</a>
             </dd>
         </dl>
         <dl class="company_center_aside positioninfo">

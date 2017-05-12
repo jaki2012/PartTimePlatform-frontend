@@ -290,6 +290,12 @@
                                 <!-- 查看js源码 options.stars-->
                                 <input id="input-id1" data-symbol="★" data-stars="10" type="number" class="rating" min=0 max=10 step=1 data-size="xs" >
                             </td>
+                        </tr><tr>
+                            <td align="right"></td>
+                            <td style="padding-bottom:0px;">
+                                <!-- 查看js源码 options.stars-->
+                                <p class="hint">（提示：如果兼职学生表现优秀，请打9分以上）</p>
+                            </td>
                         </tr>
                         <tr>
                             <td valign="top" align="right">评价</td>
@@ -642,13 +648,18 @@ $(function () {
    #cboxContent {
         overflow: visible;
     }
-    
-    #colorbox,
-    #cboxOverlay,
-    #cboxWrapper {
+   #colorbox,
+   #cboxOverlay,
+   #cboxWrapper {
         overflow: visible;
-    }
-    #forwardResumeForm {
+   }
+   #forwardResumeForm {
         font-family: 'Hiragino Sans GB'!important;
-    }
+   }
+
+   .hint {
+     color:#dd4a38;
+     margin: 0 0 0 4px!important;
+     font-size: 13px!important;
+   }
 </style>

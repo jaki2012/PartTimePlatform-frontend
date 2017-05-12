@@ -131,6 +131,13 @@
                             </td>
                         </tr>
                         <tr>
+                            <td align="right"></td>
+                            <td style="padding-bottom:0px;">
+                                <!-- 查看js源码 options.stars-->
+                                <p class="hint">（提示：如果对中介提供的兼职感到满意，请打9分以上）</p>
+                            </td>
+                        </tr>
+                        <tr>
                             <td valign="top" align="right">评价</td>
                             <td>
                                 <textarea style="font-size:14px;font-family: 'Hiragino Sans GB'" name="content"></textarea>
@@ -356,4 +363,9 @@ export default {
   .content {
       min-height: 550px;
   }
+  .hint {
+     color:#dd4a38;
+     margin: 0 0 0 4px!important;
+     font-size: 13px!important;
+   }
 </style>

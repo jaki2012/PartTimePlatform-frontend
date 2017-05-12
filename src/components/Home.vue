@@ -2,137 +2,6 @@
     <div id="container">
         <div id="sidebar">
             <div class="mainNavs">
-
-                <div class="menu_box">
-                    <div class="menu_main">
-                        <h2>IT/互联网<span></span></h2>
-                        <a>测试</a>
-                        <a>网上销售</a>
-                        <a>网上咨询</a>
-                        <a>淘宝客服</a>
-                        <a>打字/录入</a>
-                    </div>
-                    <div class="menu_sub1 dn">
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_后端开发?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				后端开发
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_Java?labelWords=label" class="curr">Java</a>
-                                <a href="h/jobs/list_C%2B%2B?labelWords=label" class="curr">C++</a>
-                                <a href="h/jobs/list_PHP?labelWords=label" class="curr">PHP</a>
-                                <a href="h/jobs/list_%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98?labelWords=label">数据挖掘</a>
-                                <a href="h/jobs/list_C?labelWords=label" class="curr">C</a>
-                                <a href="h/jobs/list_C%23?labelWords=label">C#</a>
-                                <a href="h/jobs/list_.NET?labelWords=label">.NET</a>
-                                <a href="h/jobs/list_Hadoop?labelWords=label">Hadoop</a>
-                                <a href="h/jobs/list_Python?labelWords=label">Python</a>
-                                <a href="h/jobs/list_Delphi?labelWords=label">Delphi</a>
-                                <a href="h/jobs/list_VB?labelWords=label">VB</a>
-                                <a href="h/jobs/list_Perl?labelWords=label">Perl</a>
-                                <a href="h/jobs/list_Ruby?labelWords=label">Ruby</a>
-                                <a href="h/jobs/list_Node.js?labelWords=label">Node.js</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_移动开发?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				移动开发
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_HTML5?labelWords=label">HTML5</a>
-                                <a href="h/jobs/list_Android?labelWords=label" class="curr">Android</a>
-                                <a href="h/jobs/list_iOS?labelWords=label" class="curr">iOS</a>
-                                <a href="h/jobs/list_WP?labelWords=label">WP</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_前端开发?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				前端开发
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_web%E5%89%8D%E7%AB%AF?labelWords=label">web前端</a>
-                                <a href="h/jobs/list_Flash?labelWords=label">Flash</a>
-                                <a href="h/jobs/list_html5?labelWords=label">html5</a>
-                                <a href="h/jobs/list_JavaScript?labelWords=label">JavaScript</a>
-                                <a href="h/jobs/list_U3D?labelWords=label">U3D</a>
-                                <a href="h/jobs/list_COCOS2D-X?labelWords=label">COCOS2D-X</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_测试?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				测试
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">测试工程师</a>
-                                <a href="h/jobs/list_%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95?labelWords=label">自动化测试</a>
-                                <a href="h/jobs/list_%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95?labelWords=label">功能测试</a>
-                                <a href="h/jobs/list_%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95?labelWords=label">性能测试</a>
-                                <a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91?labelWords=label">测试开发</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_运维?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				运维
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">运维工程师</a>
-                                <a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">运维开发工程师</a>
-                                <a href="h/jobs/list_%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">网络工程师</a>
-                                <a href="h/jobs/list_%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">系统工程师</a>
-                                <a href="h/jobs/list_IT%E6%94%AF%E6%8C%81?labelWords=label">IT支持</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_DBA?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				DBA
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_MySQL?labelWords=label">MySQL</a>
-                                <a href="h/jobs/list_SQLServer?labelWords=label">SQLServer</a>
-                                <a href="h/jobs/list_Oracle?labelWords=label">Oracle</a>
-                                <a href="h/jobs/list_DB2?labelWords=label">DB2</a>
-                                <a href="h/jobs/list_MongoDB?labelWords=label">MongoDB</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_项目管理?labelWords=label">
-					        									            								            							            								            							            								            							            								            							            								            							            								            						        				项目管理
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86?labelWords=label" class="curr">项目经理</a>
-                            </dd>
-                        </dl>
-                        <dl class="reset">
-                            <dt>
-                                <a href="h/jobs/list_高端技术职位?labelWords=label">
-					        									            								            								            							            								            							            								            							            								            							            								            							            								            						        				高端职位
-					        			</a>
-                            </dt>
-                            <dd>
-                                <a href="h/jobs/list_%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86?labelWords=label" class="curr">技术经理</a>
-                                <a href="h/jobs/list_%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91?labelWords=label">技术总监</a>
-                                <a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E7%BB%8F%E7%90%86?labelWords=label">测试经理</a>
-                                <a href="h/jobs/list_%E6%9E%B6%E6%9E%84%E5%B8%88?labelWords=label" class="curr">架构师</a>
-                                <a href="h/jobs/list_CTO?labelWords=label">CTO</a>
-                                <a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E6%80%BB%E7%9B%91?labelWords=label">运维总监</a>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>餐饮娱乐 <span></span></h2>
@@ -198,11 +67,11 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>设计 <span></span></h2>
-                        <a href="h/jobs/list_UI?labelWords=label">UI</a>
-                        <a href="h/jobs/list_UE?labelWords=label">UE</a>
-                        <a href="h/jobs/list_设计师?labelWords=label">设计师</a>
-                        <a href="h/jobs/list_交互设计?labelWords=label">交互设计</a>
-                        <a href="h/jobs/list_数据分析?labelWords=label">数据分析</a>
+                        <a>UI</a>
+                        <a>UE</a>
+                        <a>设计师</a>
+                        <a>交互设计</a>
+                        <a>数据分析</a>
                     </div>
                     <div class="menu_sub1 dn">
                         <dl class="reset">
@@ -410,6 +279,136 @@
                 </div>
                 <div class="menu_box">
                     <div class="menu_main">
+                        <h2>IT/互联网<span></span></h2>
+                        <a>测试</a>
+                        <a>网上销售</a>
+                        <a>网上咨询</a>
+                        <a>淘宝客服</a>
+                        <a>打字/录入</a>
+                    </div>
+                    <div class="menu_sub1 dn">
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_后端开发?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				后端开发
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_Java?labelWords=label" class="curr">Java</a>
+                                <a href="h/jobs/list_C%2B%2B?labelWords=label" class="curr">C++</a>
+                                <a href="h/jobs/list_PHP?labelWords=label" class="curr">PHP</a>
+                                <a href="h/jobs/list_%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98?labelWords=label">数据挖掘</a>
+                                <a href="h/jobs/list_C?labelWords=label" class="curr">C</a>
+                                <a href="h/jobs/list_C%23?labelWords=label">C#</a>
+                                <a href="h/jobs/list_.NET?labelWords=label">.NET</a>
+                                <a href="h/jobs/list_Hadoop?labelWords=label">Hadoop</a>
+                                <a href="h/jobs/list_Python?labelWords=label">Python</a>
+                                <a href="h/jobs/list_Delphi?labelWords=label">Delphi</a>
+                                <a href="h/jobs/list_VB?labelWords=label">VB</a>
+                                <a href="h/jobs/list_Perl?labelWords=label">Perl</a>
+                                <a href="h/jobs/list_Ruby?labelWords=label">Ruby</a>
+                                <a href="h/jobs/list_Node.js?labelWords=label">Node.js</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_移动开发?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				移动开发
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_HTML5?labelWords=label">HTML5</a>
+                                <a href="h/jobs/list_Android?labelWords=label" class="curr">Android</a>
+                                <a href="h/jobs/list_iOS?labelWords=label" class="curr">iOS</a>
+                                <a href="h/jobs/list_WP?labelWords=label">WP</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_前端开发?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				前端开发
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_web%E5%89%8D%E7%AB%AF?labelWords=label">web前端</a>
+                                <a href="h/jobs/list_Flash?labelWords=label">Flash</a>
+                                <a href="h/jobs/list_html5?labelWords=label">html5</a>
+                                <a href="h/jobs/list_JavaScript?labelWords=label">JavaScript</a>
+                                <a href="h/jobs/list_U3D?labelWords=label">U3D</a>
+                                <a href="h/jobs/list_COCOS2D-X?labelWords=label">COCOS2D-X</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_测试?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				测试
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">测试工程师</a>
+                                <a href="h/jobs/list_%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95?labelWords=label">自动化测试</a>
+                                <a href="h/jobs/list_%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95?labelWords=label">功能测试</a>
+                                <a href="h/jobs/list_%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95?labelWords=label">性能测试</a>
+                                <a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E5%BC%80%E5%8F%91?labelWords=label">测试开发</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_运维?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				运维
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">运维工程师</a>
+                                <a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">运维开发工程师</a>
+                                <a href="h/jobs/list_%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">网络工程师</a>
+                                <a href="h/jobs/list_%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B%E5%B8%88?labelWords=label">系统工程师</a>
+                                <a href="h/jobs/list_IT%E6%94%AF%E6%8C%81?labelWords=label">IT支持</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_DBA?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				DBA
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_MySQL?labelWords=label">MySQL</a>
+                                <a href="h/jobs/list_SQLServer?labelWords=label">SQLServer</a>
+                                <a href="h/jobs/list_Oracle?labelWords=label">Oracle</a>
+                                <a href="h/jobs/list_DB2?labelWords=label">DB2</a>
+                                <a href="h/jobs/list_MongoDB?labelWords=label">MongoDB</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_项目管理?labelWords=label">
+					        									            								            							            								            							            								            							            								            							            								            							            								            						        				项目管理
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_%E9%A1%B9%E7%9B%AE%E7%BB%8F%E7%90%86?labelWords=label" class="curr">项目经理</a>
+                            </dd>
+                        </dl>
+                        <dl class="reset">
+                            <dt>
+                                <a href="h/jobs/list_高端技术职位?labelWords=label">
+					        									            								            								            							            								            							            								            							            								            							            								            							            								            						        				高端职位
+					        			</a>
+                            </dt>
+                            <dd>
+                                <a href="h/jobs/list_%E6%8A%80%E6%9C%AF%E7%BB%8F%E7%90%86?labelWords=label" class="curr">技术经理</a>
+                                <a href="h/jobs/list_%E6%8A%80%E6%9C%AF%E6%80%BB%E7%9B%91?labelWords=label">技术总监</a>
+                                <a href="h/jobs/list_%E6%B5%8B%E8%AF%95%E7%BB%8F%E7%90%86?labelWords=label">测试经理</a>
+                                <a href="h/jobs/list_%E6%9E%B6%E6%9E%84%E5%B8%88?labelWords=label" class="curr">架构师</a>
+                                <a href="h/jobs/list_CTO?labelWords=label">CTO</a>
+                                <a href="h/jobs/list_%E8%BF%90%E7%BB%B4%E6%80%BB%E7%9B%91?labelWords=label">运维总监</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="menu_box">
+                    <div class="menu_main">
                         <h2>文秘/助理 <span></span></h2>
                         <a href="h/jobs/list_HR?labelWords=label">打字</a>
                         <a href="h/jobs/list_行政?labelWords=label">翻译</a>
@@ -474,7 +473,7 @@
                     </div>
                 </div>
             </div>
-            <a class="subscribe" href="subscribe.html" target="_blank">订阅兼职</a>
+            <a class="subscribe" target="_blank">订阅兼职</a>
         </div>
         <div class="content">
             <div id="search_box">
@@ -645,19 +644,24 @@
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
                         <div class="hot_pos_r">
-                            <div class="mb10 recompany"><a href="h/c/399.html" target="_blank">{{position.AgencyName}}</a></div>
+                            <div class="mb10 recompany"><a target="_blank">{{position.AgencyName}}</a></div>
                             <span><em class="c7">兼职总需求：</em>{{position.JobInfo.TotalApplied}} 人</span>                           
                             <br />
-                            <span><em class="c7">目前申请人数：</em>{{position.JobInfo.TotalApplied}}</span>
-                            <span><em class="c7">目前录取人数：</em>{{position.JobInfo.TotalHired}}</span>
+                            <span><em class="c7">申请人数：</em>{{position.JobInfo.TotalApplied}}</span>
+                            <span><em class="c7">录取人数：</em>{{position.JobInfo.TotalHired}}</span>
                             <ul class="companyTags reset">
-                                <li>中介评分: {{position.Score}}</li>
+                                <li>优质兼职</li>
                                 <li>认证中介</li>
                             </ul>
+                            <!--自加分数-->
+                            <div style="float:right; margin-top:-40px; font-size:40px">
+                                <span style="padding-right:20px;color:#00b38a;"><em style="font-style: italic;margin-right:5px">{{position.Score}}.0</em>分</span><br>
+                                <span style="margin-left:26px;font-size:13px">中介评分</span>
+                            </div>
                         </div>
                     </li>
                     </template>
-                    <a href="list.html" class="btn fr" target="_blank">查看更多</a>
+                    <a class="btn fr" target="_blank">查看更多</a>
                 </ul>           
                 <ul v-if="false" class="hot_pos reset">
                     <li class="clearfix">
@@ -676,7 +680,7 @@
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
                         <div class="hot_pos_r">
-                            <div class="mb10 recompany"><a href="h/c/399.html" target="_blank">节操精选</a></div>
+                            <div class="mb10 recompany"><a target="_blank">节操精选</a></div>
                             <span><em class="c7">领域：</em> 移动互联网</span>
                             <span><em class="c7">创始人：</em>陈桦</span>
                             <br />
@@ -1093,7 +1097,7 @@
                         </div>
                     </li>
 
-                    <a href="list.html" class="btn fr" target="_blank">查看更多</a>
+                    <a class="btn fr" target="_blank">查看更多</a>
                 </ul>
                 <ul class="hot_pos hot_posHotPosition reset" style="display:none;">
                     <template v-for="(position,index) in newpositions">
@@ -1112,20 +1116,24 @@
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
                         <div class="hot_pos_r">
-                            <div class="mb10 recompany"><a href="h/c/399.html" target="_blank">{{position.AgencyName}}</a></div>
-                            <span><em class="c7">中介评分：</em>{{position.Score}}分</span>
-                            <span><em class="c7">总需求人数：</em>{{position.JobInfo.TotalHired}}</span>
+                            <div class="mb10 recompany"><a target="_blank">{{position.AgencyName}}</a></div>
+                            <span><em class="c7">兼职总需求：</em>{{position.JobInfo.TotalApplied}} 人</span>                           
                             <br />
-                            <span><em class="c7">目前申请：</em>{{position.JobInfo.TotalApplied}}人</span>
-                            <span><em class="c7">目前录取：</em>{{position.JobInfo.TotalSettled}}人</span>
+                            <span><em class="c7">申请人数：</em>{{position.JobInfo.TotalApplied}}</span>
+                            <span><em class="c7">录取人数：</em>{{position.JobInfo.TotalHired}}</span>
                             <ul class="companyTags reset">
-                                <li>移动互联网</li>
-                                <li>五险一金</li>
-                                <li>扁平管理</li>
+                                <li>优质兼职</li>
+                                <li>认证中介</li>
                             </ul>
+                            <!--自加分数-->
+                            <div style="float:right; margin-top:-40px; font-size:40px">
+                                <span style="padding-right:20px;color:#00b38a;"><em style="font-style: italic;margin-right:5px">{{position.Score}}.0</em>分</span><br>
+                                <span style="margin-left:26px;font-size:13px">中介评分</span>
+                            </div>
                         </div>
                     </li>
                     </template>
+                    <a class="btn fr" target="_blank">查看更多</a>
                 </ul>
                 <ul v-if="false" class="hot_pos hot_posHotPosition reset" style="display:none;">
                     <li class="clearfix" v-if="!datanotnull">
@@ -1561,7 +1569,7 @@
                             </ul>
                         </div>
                     </li>
-                    <a href="list.html?city=%E5%85%A8%E5%9B%BD" class="btn fr" target="_blank">查看更多</a>
+                    <a class="btn fr" target="_blank">查看更多</a>
                 </ul>
             </div>
 

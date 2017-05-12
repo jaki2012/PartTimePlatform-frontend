@@ -1,11 +1,11 @@
 <template>
   <div id="footer">
     <div class="wrapper">
-      <a href="h/about.html" target="_blank" rel="nofollow">联系我们</a>
-      <a href="h/af/zhaopin.html" target="_blank">互联网公司导航</a>
-      <a href="http://e.weibo.com/lagou720" target="_blank" rel="nofollow">同嘉微博</a>
+      <a target="_blank" rel="nofollow">联系我们</a>
+      <a target="_blank">互联网公司导航</a>
+      <a target="_blank" rel="nofollow">同嘉微博</a>
       <a class="footer_qr" href="javascript:void(0)" rel="nofollow">同嘉微信<i></i></a>
-      <div class="copyright">&copy;2016-2017 Tongjia <a target="_blank" href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action">京ICP备14023790号-2</a></div>
+      <div class="copyright">&copy;2016-2017 Tongjia <a target="_blank">京ICP备14023790号-2</a></div>
     </div>
   </div>
 </template>

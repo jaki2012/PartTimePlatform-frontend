@@ -1,47 +1,6 @@
 <template>
     <div id="container">
-        <div class="sidebar">
-            <a class="btn_create" href="create.html">发布新兼职</a>
-            <dl class="company_center_aside">
-                <dt>我收到的简历</dt>
-                <dd>
-                    <a href="">待处理简历</a>
-                </dd>
-                <dd>
-                    <a href="canInterviewResumes.html">待定简历</a>
-                </dd>
-                <dd>
-                    <a href="haveNoticeResumes.html">已审核通过简历</a>
-                </dd>
-                <dd>
-                    <a href="haveRefuseResumes.html">不合适简历</a>
-                </dd>
-                <dd class="btm">
-                    <a href="autoFilterResumes.html">自动过滤简历</a>
-                </dd>
-            </dl>
-            <dl class="company_center_aside">
-                <dt>我发布的兼职</dt>
-                <dd>
-                    <a href="positions.html">有效职位</a>
-                </dd>
-                <dd>
-                    <a href="positions.html">已下线职位</a>
-                </dd>
-            </dl>
-            <div class="subscribe_side mt20">
-                <div class="f14">想收到更多更好的简历？</div>
-                <div class="f18 mb10">就用拉勾招聘加速助手 </div>
-                <div>咨询：<a class="f16" href="mailto:jessica@lagou.com">jessica@lagou.com</a></div>
-                <div class="f18 ti2em">010-57286512</div>
-            </div>
-            <div class="subscribe_side mt20">
-                <div class="f14">加入互联网HR交流群</div>
-                <div class="f18 mb10">跟同行聊聊</div>
-                <div class="f24">338167634</div>
-            </div>
-        </div>
-        <!-- end .sidebar -->
+        <agencysidebar></agencysidebar>
         <div class="content">
             <dl class="company_center_content">
                 <dt>
@@ -238,6 +197,7 @@
 
 <script>
 import {mapState} from 'vuex'
+import AgencySideBar from './resume/AgencySidebar'
 export default {
     name: 'create',
     data: function() {
@@ -254,6 +214,7 @@ export default {
     },
     computed: mapState({user: state => state.user}),
     components: {
+      'agencysidebar': AgencySideBar,
       'jobsjs': {
           render(createElement) {
               return createElement(

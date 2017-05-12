@@ -603,7 +603,10 @@ export default {
           },
           dataType: 'json',
           success: function(data) {
-              if(data.msg !=0 ) return
+              if(data.err !=0 ) {
+                  alert("网络连接似乎出了点问题，请刷新页面重试")
+                  return
+              }
               vuectx._data.job = data.data;
               vuectx._data.delivered = data.data.IsApplied;
               vuectx._data.datanotnull = true;

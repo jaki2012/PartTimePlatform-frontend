@@ -29,7 +29,7 @@
           <!-- end中介用户 -->
           <!-- 学生用户 -->
           <dd v-if="user.type===0" style="display: none;"><router-link :to="{ path: 'userinfo', query: { userid: user.type }}">我的个人资料</router-link></dd>
-          <dd v-if="user.type===0" style="display: none;"><router-link :to="{ path: 'myresume', query: { userid: user.type }}">我的个人简历</router-link></dd>
+          <dd v-if="false" style="display: none;"><router-link :to="{ path: 'myresume', query: { userid: user.type }}">我的个人简历</router-link></dd>
           <dd v-if="user.type===0" style="display: none;"><router-link to="myjobs">我的兼职状态</router-link></dd>
           <!-- end学生用户 -->
           <dd style="display: none;"><a>帐号设置</a></dd>

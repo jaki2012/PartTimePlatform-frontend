@@ -20,13 +20,13 @@
         <dl class="company_center_aside jobinfo">
             <dt>兼职相关</dt>
             <dd>
+                <router-link to="myjobs">我的兼职</router-link>
+            </dd>
+            <dd>
                 <router-link to="credits">信用积分</router-link>
             </dd>
             <dd>
                 <router-link to="income">收入/提现</router-link>
-            </dd>
-            <dd>
-                <router-link to="myjobs">我的兼职</router-link>
             </dd>
         </dl>
     </div>
