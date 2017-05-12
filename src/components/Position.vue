@@ -17,9 +17,9 @@
                                     <a target="_blank" title="随便写" href="http://www.lagou.com/jobs/149594.html">{{position.JobDetail.Title}}</a>
                                     <span>[{{position.JobDetail.Place}}]</span>
                                 </h3>
-                                <span class="receivedResumeNo"><router-link :to="{ path:'unhandleresumes', query:{jobid: position.JobID}}">应聘简历（{{position.TotalWaitCheck}}）</router-link></span>
-                                <div>兼职 / 1k-2k / 1-3年 / 硕士及以上</div>
-                                <div class="c9">发布时间： 2014-07-01 17:07:01</div>
+                                <span class="receivedResumeNo"><router-link :to="{ path:'unhandleresumes', query:{jobid: position.JobID}}">应聘简历（{{position.TotalApplied}}）</router-link></span>
+                                <div>兼职 / {{position.JobDetail.Salary}}元每天 / {{position.JobDetail.Day}} / {{position.JobDetail.JobTime}}</div>
+                                <div class="c9">发布时间： {{position.PublishTime}}</div>
                                 <div class="links">
                                     <a class="job_refresh" :chartid="position.JobID" v-on:click="showapplydetail($event)" href="javascript:void(0)">刷新<span>每个职位7天内只能刷新一次</span></a>
                                     <a target="_blank" class="job_edit" href="create.html?positionId=149594">编辑</a>
@@ -84,6 +84,7 @@ import AgencySidebar from './resume/AgencySidebar'
              dataType: "json",
              success: function(data) {
                  vuectx._data.positions = data.data;
+                 console.log(data)
              }
          })
      },

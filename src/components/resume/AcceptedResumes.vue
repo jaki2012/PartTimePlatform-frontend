@@ -86,7 +86,7 @@
 			                                        	</a>
                                         <em></em>
                                     </h3>
-                                    <span class="fr">投递时间：2014-07-01 17:08</span>
+                                    <span class="fr">申请时间：{{resume.ApplyTime}}</span>
                                     <div>
                                         {{resume.name}} / {{resume.sex}} / {{resume.education}} / {{resume.experience}} / {{resume.address}}
                                     </div>
@@ -104,7 +104,7 @@
                                 <div class="links">
                                     <a data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="job.JobDetail.Title" v-on:click="popup($event)"
                                         data-forwardcount="1" class="resume_forward">
-                                                    	结算
+                                                    	评价
                                                     	                                                    </a>
                                     <a class="resume_del" href="javascript:void(0)">删除</a>
                                 </div>

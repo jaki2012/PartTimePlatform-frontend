@@ -4,16 +4,16 @@
         <dl class="company_center_aside userinfo">
             <dt>账户基本信息</dt>
             <dd class="current">
-                <a href="">个人资料</a>
+                <router-link to="userinfo">个人资料</router-link>
             </dd>
-            <dd>
-                <a href="canInterviewResumes.html">个人简历</a>
+            <dd style="display:none">
+                <router-link to="/myresume">个人简历</router-link>
             </dd>
-            <dd>
+            <dd style="display:none">
                 <a href="haveNoticeResumes.html">账号绑定</a>
             </dd>
             <dd >
-                <a href="haveRefuseResumes.html">修改密码</a>
+                <a >修改密码</a>
             </dd>
 
         </dl>
@@ -27,9 +27,6 @@
             </dd>
             <dd>
                 <router-link to="myjobs">我的兼职</router-link>
-            </dd>
-            <dd>
-                <a href="positions.html">已投简历状态</a>
             </dd>
         </dl>
     </div>

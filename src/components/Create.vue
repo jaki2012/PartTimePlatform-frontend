@@ -46,11 +46,11 @@
             <dl class="company_center_content">
                 <dt>
                     <h1>
-                        <em></em> 发布新职位
+                        <em></em> 发布新兼职
                     </h1>
                 </dt>
                 <dd>
-                    <div class="ccc_tr">今日已发布 <span>0</span> 个职位 还可发布 <span>5</span> 个职位</div>
+                    <div class="ccc_tr">今日已发布 <span>0</span> 个兼职 还可发布 <span>5</span> 个兼职</div>
                     <form action="http://www.lagou.com/corpPosition/preview.html" method="post" id="jobForm">
                         <input type="hidden" value="" name="id">
                         <input type="hidden" value="create" name="preview">

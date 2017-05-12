@@ -22,7 +22,8 @@ router.beforeEach(({meta, path}, from, next) => {
 
     if (auth && userType == 1 && (path == '/myjobs')){
         alert("只有学生用户可以访问该板块")
-        return next({ path: '/home' })
+        return 
+        //return next({ path: '/home' })
     }
 
     if (auth && userType == 0 && (path == '/createjob' || path == '/position')){

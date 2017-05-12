@@ -6,10 +6,10 @@
       </a>
       <ul class="reset" id="navheader">
         <li class="current"><router-link to="/">首页</router-link></li>
-        <li><a href="companylist.html">公司</a></li>
-        <li><a href="h/toForum.html" target="_blank">论坛</a></li>
+        <li><a>关于同嘉</a></li>
+        <li style="display:none"><a>论坛</a></li>
         <li><router-link to="myjobs" rel="nofollow">我的申请</router-link></li>
-        <li><router-link to="createjob" rel="nofollow">发布职位</router-link></li>
+        <li><router-link to="createjob" rel="nofollow">发布兼职</router-link></li>
       </ul>
       <ul class="loginTop" v-if="!user.name">
         <li><router-link to="login" rel="nofollow">登录</router-link></li>

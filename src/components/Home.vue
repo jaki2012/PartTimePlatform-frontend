@@ -6,17 +6,17 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>IT/互联网<span></span></h2>
-                        <a href="h/jobs/list_Java?labelWords=label">威客任务</a>
-                        <a href="h/jobs/list_C?labelWords=label">C/C++</a>
-                        <a href="h/jobs/list_C?labelWords=label">Java</a>
-                        <a href="h/jobs/list_Android?labelWords=label">Android</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">iOS</a>
-                        <a href="h/jobs/list_前端开发?labelWords=label">前端开发</a>
-                        <a href="h/jobs/list_测试?labelWords=label">测试</a>
-                        <a href="h/jobs/list_PHP?labelWords=label">网上销售</a>
-                        <a href="h/jobs/list_架构师?labelWords=label">网上咨询</a>
-                        <a href="h/jobs/list_技术经理?labelWords=label">淘宝客服</a>
-                        <a href="h/jobs/list_项目经理?labelWords=label">打字/录入</a>
+                        <a>威客任务</a>
+                        <a>C/C++</a>
+                        <a>Java</a>
+                        <a>Android</a>
+                        <a>iOS</a>
+                        <a>前端开发</a>
+                        <a>测试</a>
+                        <a>网上销售</a>
+                        <a>网上咨询</a>
+                        <a>淘宝客服</a>
+                        <a>打字/录入</a>
                     </div>
                     <div class="menu_sub1 dn">
                         <dl class="reset">
@@ -647,8 +647,7 @@
                             <br />                         
                             <span><em class="c7">工作要求：</em>{{position.JobInfo.JobDetail.Demand}}</span>
                             <br />
-                            <span><em class="c7">职位诱惑：</em>发展前景不错</span>
-                            <span>1天前发布</span>
+                            <span>{{position.JobInfo.PublishTime}} 发布</span>
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
                         <div class="hot_pos_r">
@@ -1117,8 +1116,7 @@
                             <br />                         
                             <span><em class="c7">工作要求：</em>{{position.JobInfo.JobDetail.Demand}}</span>
                             <br />
-                            <span><em class="c7">职位诱惑：</em>发展前景</span>
-                            <span>1天前发布</span>
+                            <span>{{position.JobInfo.PublishTime}} 发布</span>
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
                         <div class="hot_pos_r">

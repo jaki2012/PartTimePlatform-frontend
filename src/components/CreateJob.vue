@@ -1,7 +1,7 @@
 <template>
     <div id="container">
         <div class="sidebar">
-            <a class="btn_create" href="create.html">发布新职位</a>
+            <a class="btn_create" href="create.html">发布新兼职</a>
             <dl class="company_center_aside">
                 <dt>我收到的简历</dt>
                 <dd>
@@ -21,7 +21,7 @@
                 </dd>
             </dl>
             <dl class="company_center_aside">
-                <dt>我发布的职位</dt>
+                <dt>我发布的兼职</dt>
                 <dd>
                     <a href="positions.html">有效职位</a>
                 </dd>
@@ -46,11 +46,11 @@
             <dl class="company_center_content">
                 <dt>
                     <h1>
-                        <em></em> 发布新职位
+                        <em></em> 发布新兼职
                     </h1>
                 </dt>
                 <dd>
-                    <div class="ccc_tr">今日已发布 <span>0</span> 个职位 还可发布 <span>5</span> 个职位</div>
+                    <div class="ccc_tr">今日已发布 <span>0</span> 个兼职 还可发布 <span>5</span> 个兼职</div>
                     <form action="http://www.lagou.com/corpPosition/preview.html" method="post" id="jobForm">
                         <input type="hidden" value="" name="id">
                         <input type="hidden" value="create" name="preview">
@@ -60,14 +60,14 @@
                             <tbody>
                                 <tr>
                                     <td><span class="redstar">*</span></td>
-                                    <td>职位名称</td>
+                                    <td>兼职名称</td>
                                     <td>
-                                        <input type="text" v-model="newJob.Title" placeholder="请输入职位名称，如：产品经理" value="" name="positionName" id="positionName">
+                                        <input type="text" v-model="newJob.Title" placeholder="请输入兼职名称，如：群众演员" value="" name="positionName" id="positionName">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>工作天数</td>
+                                    <td>兼职天数</td>
                                     <td>
                                         <input type="text" v-model="newJob.Day" placeholder="请输入一共需要的工作天数" value="" name="JobDay" id="JobDay">
                                     </td>
@@ -84,12 +84,12 @@
 
                         <table class="btm">
                             <tbody>
-                                <tr>
+                                <tr style="display:none">
                                     <td width="25"><span class="redstar">*</span></td>
                                     <td width="85">结算方式</td>
                                     <td>
                                         <ul class="profile_radio clearfix reset">
-                                            <li>
+                                            <li >
                                                 时结<em></em>
                                                 <input type="radio" id="full" name="jobNature" value="全职">
                                             </li>
@@ -155,7 +155,7 @@
 
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style="display:none">
                                     <td><span class="redstar">*</span></td>
                                     <td>工作地址</td>
                                     <td>

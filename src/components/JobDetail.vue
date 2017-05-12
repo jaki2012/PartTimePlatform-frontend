@@ -14,24 +14,21 @@
                     </dt>
                     <dd class="job_request">
                         <span class="red">{{job.JobDetail.Salary}} x {{job.JobDetail.Day}}</span>
+                        <span>{{job.JobDetail.JobTime}} </span>
                         <span>{{job.JobDetail.Place}}</span>
-                        <span>经验3-5年 </span>
-                        <span> 本科及以上</span>
-                        <span>全职</span><br /> 职位诱惑 : 大家都来了 你还在等什么！！
-                        <div>发布时间：3天前发布</div>
+                        <div>发布时间：{{job.PublishTime}}发布</div>
                     </dd>
                     <dd class="job_bt">
-                        <h3 class="description">职位描述</h3>
-                        <p>岗位职责： <br />1、参与管理和维护立方网，保证网络社区健康、有序地运转，负责网站信息安全； <br />2、强化团队建设，提高团队工作效率，做好领导与员工直接沟通的桥梁； <br />3、制定和完善客服体系规章制度,培训新人。</p>
-                        <p>&nbsp;岗位要求： <br />{{job.JobDetail.Demand}} <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
+                        <h3 class="description">兼职描述</h3>
+                        <p style="margin-bottom:10px">&nbsp;岗位要求： <br />1、{{job.JobDetail.Demand}} <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
                     </dd>
 
-                    <dd class="unresume">
+                    <!--<dd class="unresume">
                         <div>
-                            你在拉勾还没有简历呢，你可以<a href="login.html" target="_blank" title="完善在线简历">完善在线简历</a>，也可<a class="inline"
+                            你在同嘉还没有简历呢，你可以<a href="login.html" target="_blank" title="完善在线简历">完善在线简历</a>，也可<a class="inline"
                                 href="#loginPop" title="登录">上传附件简历</a>直接投递
                         </div>
-                    </dd>
+                    </dd> 
                     <div class="saoma saoma_btm">
                         <div class="dropdown_menu">
                             <div class="drop_l">
@@ -47,9 +44,9 @@
                             </div>
                         </div>
                     </div>
-                    <dd>
+                    <dd>-->
                         <!--<a href="#loginPop" title="登录" class="inline btn fr btn_apply">投个简历</a>-->
-                        <a v-if="!job.IsApplied" id="deliverbtn" href="#loginSuccess" title="投递成功" class="inline btn fr btn_apply" v-on:click="deliver($event)">投个简历</a>
+                        <a v-if="!job.IsApplied" id="deliverbtn" href="#loginSuccess" title="投递成功" class="inline btn fr btn_apply" v-on:click="deliver($event)">申请兼职</a>
                         <a v-if="job.IsApplied" id="deliverbtn2" href="#loginFailed" title="投递失败" class="inline btn fr btn_apply">已申请</a>
                     </dd>
                 </dl>
@@ -59,13 +56,13 @@
                 <dl class="job_company">
                     <dt>
                         <a href="h/c/683.html" target="_blank">
-                            <img class="b2" src="../assets/images/ff80808140ac5ed90140b953972e0215.png" width="80" height="80" alt="北京立方网信息技术有限公司" />
+                            <img class="b2" src="../assets/images/agencylogo.png" width="80" height="80" alt="北京立方网信息技术有限公司" />
                             <div>
                                 <h2 class="fl">
-                                    立方网
+                                    {{agency.AgencyName}}
 
-                                    <img src="../assets/images/valid.png" width="15" height="19" alt="拉勾认证企业" />
-                                    <span class="dn">拉勾认证企业</span>
+                                    <img src="../assets/images/valid.png" width="15" height="19" alt="同嘉认证中介" />
+                                    <span class="dn">同嘉认证中介</span>
 
                                 </h2>
                             </div>
@@ -73,19 +70,23 @@
                     </dt>
                     <dd>
                         <ul class="c_feature reset">
-                            <li><span>领域</span> 移动互联网,游戏</li>
-                            <li><span>规模</span> 50-150人</li>
+                            <li><span>已发布</span> {{agency.JobsCount}}个职位</li>
+                            <li><span>中介评分</span> {{agency.Score}}</li>
+                            <li><span>中介用户名</span> {{agency.Username}}</li>
+                            <li><span>中介真实姓名</span> {{agency.RealName}}</li>
+                            <li><span>中介电话</span> {{agency.Tele}}</li>
                             <li>
                                 <span>主页</span>
-                                <a href="http://L99.com" target="_blank" title="http://L99.com" rel="nofollow">http://L99.com</a>
+                                <a target="_blank" title="http://L99.com" rel="nofollow">http://{{agency.Username}}.com</a>
                             </li>
                         </ul>
 
-                        <h4>发展阶段</h4>
+                        <!--<h4>发展阶段</h4>
                         <ul class="c_feature reset">
                             <li><span>目前阶段</span> A轮</li>
                             <li><span>投资机构</span> IDG(A轮)，腾讯(A轮)</li>
                         </ul>
+                        -->
 
                         <!--	                    	<h4>公司产品</h4>
 	                        <ul class="c_feature reset">
@@ -110,13 +111,13 @@
                             <input type="submit" id="add" value="贴上" />
                         </div> -->
 
-                        <h4>工作地址</h4>
-                        <div>武汉市武昌区螃蟹岬凤凰大厦A1-1301</div>
-                        <div id="smallmap"></div>
-                        <a href="javascript:;" id="mapPreview">查看完整地图</a>
+                        <!-- <h4>工作地址</h4> -->
+                        <!-- <div>武汉市武昌区螃蟹岬凤凰大厦A1-1301</div> -->
+                        <!-- <div id="smallmap"></div> -->
+                        <!-- <a href="javascript:;" id="mapPreview">查看完整地图</a> -->
                     </dd>
                 </dl>
-                <a href="h/subject/s_zhouyou.html?utm_source=BD__lagou&utm_medium=&utm_campaign=zhouyou" target="_blank" class="eventAd">
+                <a target="_blank" class="eventAd">
                     <img src="../assets/images/zhouyou.jpg" width="280" height="135" />
                 </a>
             </div>
@@ -552,7 +553,6 @@
         <input type="hidden" id="resubmitToken" value="6e1925fdbe7142468f154abd1d33f5a8" />
         <a id="backtop" title="回到顶部" rel="nofollow"></a>
         <jobdetailjs></jobdetailjs>
-        <baiduinitjs></baiduinitjs>
         <popupjs></popupjs>
     </div>
     <!-- end #container -->
@@ -586,6 +586,7 @@ export default {
       return {
           datanotnull: false,
           delivered: false,
+          agency: '',
           job: '',
           jobid: this.$route.query.jobid
       }
@@ -596,7 +597,6 @@ export default {
       var vuectx = this
       console.log(this.$route.query.jobid)
       $.ajax({
-          //此处直接取id为1的职位
           url: HOST + ":" + PORT +"/job/query?Username="+this.user.name,
           type: 'get',
           data: {
@@ -607,10 +607,23 @@ export default {
               if(data.msg !=0 ) return
               vuectx._data.job = data.data;
               vuectx._data.datanotnull = true;
-              console.log(data.data.IsApplied);
               loadScript("../../static/js/popup.min.js",function(){
 
               })
+          }
+      });
+
+      $.ajax({
+          url: HOST + ":" + PORT +"/user/agency",
+          type: 'get',
+          data: {
+              JobID: this.jobid
+          },
+          dataType: 'json',
+          success: function(data) {
+              if(data.msg !=0 ) return
+              vuectx._data.agency = data.data;
+              console.log(data.data);
           }
       });
   },
@@ -655,19 +668,6 @@ export default {
                       attrs: {
                           type: 'text/javascript',
                           src: 'https://g.alicdn.com/dingding/dinglogin/0.0.2/ddLogin.js'
-                      }
-                  }
-              )
-          }
-      },
-      'baiduinitjs': {
-          render(createElement) {
-              return createElement(
-                  'script',
-                  {
-                      attrs: {
-                          type: 'text/javascript',
-                          src: '../../static/js/baidu.js'
                       }
                   }
               )

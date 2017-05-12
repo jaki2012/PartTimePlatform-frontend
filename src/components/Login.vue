@@ -2,7 +2,7 @@
 <div id='login'>
 	<!-- 页面主体START -->
 	<header class="sso_header">
-		<a href="http://www.lagou.com/" class="logo ">
+		<a class="logo ">
 		</a>
 	</header>
 	<section class="content_box cleafix">
@@ -128,11 +128,10 @@ export default {
 					vuectx._data.userdata = data;
 					vuectx._data.form.token = vuectx._data.userdata.data.token;
 					vuectx._data.form.detail = vuectx._data.userdata.data.detail;
-					alert(vuectx._data.userdata.data.token+" 登录成功")
 					vuectx.jumptohome()
 				},
 				error: function(data) {
-					alert("账号密码错误，请重新输入")
+					alert("账号密码错误或登录身份选择错误，请重新登录")
 					return 
 				}
 			})
@@ -181,14 +180,10 @@ export default {
         code = code + "require(['pc/page/login/main']);"+'\n';
         code = code + "require(['pc/modules/event/happy-3rd-birthday/main']);";
 		this.enterLoginPage();
-        // document.getElementById('header').style.display='none'
-        // document.getElementById('footer').style.display='none'
 
     },
     destroyed: function(){
 		this.leaveLoginPage();
-        // document.getElementById('header').style.display='block'
-        // document.getElementById('footer').style.display='block'
     }
 }
 </script>
@@ -619,7 +614,7 @@ body {
 	display: inline-block;
 	width: 128px;
 	height: 54px;
-	background: url(//img.lagou.com/passport/static/pc/modules/common/img/logo_13bcdf6.png) left top no-repeat
+	
 }
 
 .vender_login {
@@ -695,7 +690,6 @@ body {
 
 @media only screen and (-o-min-device-pixel-ratio:2/1),only screen and (min--moz-device-pixel-ratio:2),only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:240dpi),only screen and (min-resolution:2dppx) {
 	.sso_header .logo {
-		background-image: url(//img.lagou.com/passport/static/pc/modules/common/img/logo@2x_7750e17.png);
 		background-image: url('../assets/images/loginpagelogo.png');
 		background-size: 128px 54px
 	}
