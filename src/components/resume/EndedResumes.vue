@@ -5,7 +5,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 待处理申请 <span>（共{{amount}}份）</span> </h1>
+                    <em></em> 已结算申请 <span>（共1份）</span> </h1>
             </dt>
             <dd>
                 <form action="haveRefuseResumes.html" method="get" id="filterForm">
@@ -75,7 +75,7 @@
 			                                    <input type="checkbox">
 			                                    <i></i>
 			                                </label>
-                            <div style="height:90px" class="resumeShow">
+                            <div class="resumeShow">
                                 <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
                                     <img src="../../assets/images/default_headpic.png">
                                 </a>
@@ -87,22 +87,56 @@
                                         <em></em>
                                     </h3>
                                     <span class="fr">申请时间：{{resume.ApplyTime}}</span>
-                                    <div>
-                                        
+                                    <div class="jdpublisher">
+                                        <span>互评结果：
+				                                        	<a title="随便写" target="_blank" >中介评分:{{resume.AgencyScore}}</a>
+				                                       		<a title="随便写" target="_blank" >学生评分:{{resume.StuScore}}</a>			                                        </span>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
 				                                        	简历状态：<a title="随便写" target="_blank">{{resume.Status}}</a>
-				                                       						                                        </span>
-                                    </div>
-                                    <div class="jdpublisher">
-                                        <span>
-				                                        	
-				                                       		信用积分：<a title="随便写" target="_blank">{{resume.UserInfo.Score}}</a>				                                        </span>
+                                                            </span>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
 				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{job.JobDetail.Title}}</a>
+				                                       						                                        </span>
+                                    </div>
+                                </div>
+                                <div class="links">
+                                    <a v-if="false" data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="job.JobDetail.Title" v-on:click="popup($event)"
+                                        data-forwardcount="1" class="resume_forward">
+                                                    	查看互评结果
+                                                    	                                                    </a>
+                                    <a class="resume_del" href="javascript:void(0)">删除</a>
+                                </div>
+                            </div>
+                        </li>
+                        </template>
+                        </template>
+                        <li v-if="false" data-id="1686182" class="onlineResume">
+                            <label class="checkbox">
+			                                    <input type="checkbox">
+			                                    <i></i>
+			                                </label>
+                            <div class="resumeShow">
+                                <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
+                                    <img src="../../assets/images/default_headpic.png">
+                                </a>
+                                <div class="resumeIntro">
+                                    <h3 class="unread">
+                                        <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
+			                                        				                                            jason的简历
+			                                        	</a>
+                                        <em></em>
+                                    </h3>
+                                    <span class="fr">投递时间：2014-07-01 17:08</span>
+                                    <div>
+                                        jason / 男 / 大专 / 3年 / 广州 <br> 高级产品经理 · 上海辉硕科技有限公司 | 本科 · 北京大学
+                                    </div>
+                                    <div class="jdpublisher">
+                                        <span>
+				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">随便写</a>
 				                                       						                                        </span>
                                     </div>
                                 </div>
@@ -112,13 +146,11 @@
                                                     	转发
                                                     	                                                    	<span>(1人)</span>
                                                     	                                                    </a>
-                                    <a :txid="resume.TxID" class="resume_forward" v-on:click="accept(1,$event)">录用</a>
-                                    <a class="resume_del" v-on:click="accept(2,$event)">删除</a>
+                                    <a class="resume_del" href="javascript:void(0)">录用</a>
+                                    <a class="resume_del" href="javascript:void(0)">删除</a>
                                 </div>
                             </div>
                         </li>
-                        </template>
-                        </template>
                     </ul>
                     <!-- end .resumeLists -->
                 </form>
@@ -205,6 +237,16 @@
         </div>
         <!--/#noticeInterviewPreview-->
 
+        <!--结算及评价弹窗-->
+        <div class="popup" id="payandevaluate" style="height:240px;">
+            <div class="f18">拉勾网：产品经理面试通知 </div>
+            <div class="c9">发给：<span>vivi@lagou.com</span></div>
+            <div id="emailText"></div>
+            <input type="button" value="提交" class="btn fl">
+            <a title="通知面试" class="inline fl cboxElement" href="#noticeInterview">返回修改</a>
+        </div>
+        <!--/#payandevaluate-->
+
         <!--通知面试成功弹窗-->
         <div class="popup" id="noticeInterviewSuccess">
             <table width="100%" class="f16">
@@ -225,23 +267,49 @@
         <!--/#noticeInterviewSuccess-->
 
         <!--转发简历弹窗-->
-        <div class="popup" id="forwardResume" style="width:400px;height:120px">
-            <form id="forwardResumeForm">
-                <table width="100%" class="f16">
+        <!--将结算流程放到转发简历弹窗中-->
+        <div class="popup" style="width:480px;height:360px" id="forwardResume">
+            <form id="forwardResumeForm" >
+                <table width="100%" class="f16" style='table-layout:fixed'>
                     <tbody>
                         <tr>
-                            <td valign="top" align="right">审核结果：</td>
+                            <td width="20%" align="right">兼职者</td>
+                            <td width="80%">
+                                <input disabled type="text" :placeholder="evaluatinguser" id="recipients" name="recipients">
+                                <span id="forwardResumeError" style="display:none" class="beError"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" align="right">对应兼职</td>
+                            <td width="80%">
+                                <input disabled type="text" :placeholder="evaluatingjobtitle" id="recipients" name="recipients">
+                                <span id="forwardResumeError" style="display:none" class="beError"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">兼职表现</td>
+                            <td style="padding-bottom:0px;">
+                                <!-- 查看js源码 options.stars-->
+                                <input id="input-id1" data-symbol="★" data-stars="10" type="number" class="rating" min=0 max=10 step=1 data-size="xs" >
+                            </td>
+                        </tr><tr>
+                            <td align="right"></td>
+                            <td style="padding-bottom:0px;">
+                                <!-- 查看js源码 options.stars-->
+                                <p class="hint">（提示：如果兼职学生表现优秀，请打9分以上）</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align="right">评价</td>
                             <td>
-                                <p style="margin:7px 0 0 0">该学生的兼职申请已经审核通过！<br>
-                                <span style="color:#dd4a38;font-size:13px">本页面将马上刷新...</span>
-                                </p>
+                                <textarea style="font-size:14px; font-family:'Hiragino Sans GB'" name="content"></textarea>
                                 <span style="display:none;" class="beError error"></span>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" value="确定" v-on:click="dismiss" class="btn">
+                                <input type="submit" v-on:click="evaluate" value="发送" class="btn">
                                 <a class="emial_cancel" href="javascript:;">取消</a>
                             </td>
                         </tr>
@@ -329,14 +397,16 @@
     <div class="clear"></div>
     <input type="hidden" value="9421e33d3091428796fec127b07b6c5b" id="resubmitToken">
     <a rel="nofollow" title="回到顶部" id="backtop"></a>
+    <popupjs></popupjs>
+    <starratingjs></starratingjs>
 </div>
 <!-- end #container -->
 </template>
 
 <script>
-import {mapState} from 'vuex'
-import AgencySidebar from './AgencySidebar'
 import $ from 'jquery'
+import AgencySidebar from './AgencySidebar'
+import {mapState} from 'vuex'
 function loadScript(url, callback){
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -360,40 +430,52 @@ export default {
     data: function() {
         return {
             datanotnull: false,
-            //使其变成数组
             jobs: new Array(),
-            amount: 0
+            resumes: '',
+            amount,
+            position: {
+                AgencyName:'',
+                Title:''
+            },
+            evaluatingtxid:'',
+            evaluatinguser:'',
+            evaluatingjobtitle:''
         }
     },
-    computed: mapState({user: state=> state.user}),
+    computed: mapState({user: state => state.user}),
     methods:{
-        dismiss: function() {
-            $("#cboxClose").click()
+        popup: function(e) {
+            //$("#currentevalu").removeAttr("id");
+            //console.log(e.currentTarget)
+            console.log("iamin")
+            //$(e.currentTarget).attr("id","#currentevalu");
+            this.evaluatingtxid = $(e.currentTarget).attr("txid");
+            this.evaluatinguser = $(e.currentTarget).attr("stuname");
+            this.evaluatingjobtitle = $(e.currentTarget).attr("jobtitle");
         },
-        accept: function(result,e) {
-            var vuectx = this;
-            var txid = $(e.currentTarget).attr("txid");
+        accept: function() {
+            
+        },
+        evaluate: function() {
+            $("#cboxClose").click();
             $.ajax({
-                url: HOST + ":" + PORT +"/tx/agency/check?username="+this.user.name,
-                dataType: 'json',
-                type: 'post',
+                url: HOST + ":" + PORT +"/tx/evaluate?username="+this.user.name,
+                type:'post',
                 data: {
-                    TxID: txid,
-                    Result: 1,
+                    TxID: this.evaluatingtxid,
+                    Score:$("#input-id1").val(),
                 },
+                dataType:'json',
                 success: function(data) {
-                    console.log(data)
-                    //alert("人工审核成功，将重新刷新本页面！")
-                    vuectx.refreshPage();
+                    alert("评价成功！")
+                    console.log(data);
                 }
-            })
-        },
-        refreshPage: function() {
-            this.$router.replace({path: '/refresh', query:{jobid:this.$route.query.jobid}})
+            });
+            this._data.datanotnull = false;
         }
     },
     components: {
-      'agencysidebar' : AgencySidebar,
+      'agencysidebar': AgencySidebar,
       'receivedresumesjs': {
           render(createElement) {
               return createElement(
@@ -401,7 +483,7 @@ export default {
                   {
                       attrs: {
                           type: 'text/javascript',
-                          src: '../../../static/js/received_resumes.js'
+                          src: '../../../static/js/payandevaluate.min.js'
                       }
                   }
               )
@@ -419,19 +501,46 @@ export default {
                   }
               )
           }
+      },
+      'popupjs': {
+          render(createElement) {
+              return createElement(
+                  'script',
+                  {
+                      attrs: {
+                          type: 'text/javascript',
+                          src: '../../../static/js/popup.min.js'
+                      }
+                  }
+              )
+          }
+      },
+      'starratingjs': {
+          render(createElement) {
+              return createElement(
+                  'script',
+                  {
+                      attrs: {
+                          type: 'text/javascript',
+                          src: '../../../static/js/star-rating.min.js'
+                      }
+                  }
+              )
+          }
       }
+          
     },
     mounted: function() {
         $(".userinfo .current").removeClass('current');
         var perCurrent = $(".agencyinfo .current").removeClass('current');
-        var current = $(".agencyinfo").find("dd:eq(0)");
+        var current = $(".agencyinfo").find("dd:eq(3)");
         current.addClass('current');
         // jquery需要获取vue上下文环境
         var vuectx = this
         if(null != this.$route.query.jobid){
             var params = {
                 JobID: this.$route.query.jobid,
-                State: 0
+                State: 3
             }
             $.ajax({
                 url: HOST + ":" + PORT +"/job/query",
@@ -441,11 +550,11 @@ export default {
                 success: function(data) {
                     if(data.msg !=0 ) return
                     vuectx._data.jobs.push(data.data);
-                    // vuectx._data.position.AgencyName = data.data.AgencyName;
-                    // vuectx._data.position.Title = data.data.JobDetail.Title;
-                    console.log(vuectx._data.jobs);
+                    vuectx._data.position.AgencyName = data.data.AgencyName;
+                    vuectx._data.position.Title = data.data.JobDetail.Title;
+                    console.log(data);
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
-                    loadScript("../../../static/js/acceptpopup.js", function(){
+                    loadScript("../../../static/js/payandevaluate.min.js", function(){
                         //console.log('Actually we do nothing here')
                     })
                     var temp = 0;
@@ -457,7 +566,7 @@ export default {
             });
         } else {
             var params = {
-                State: 0
+                State: 3
             }
             $.ajax({
                 url: HOST + ":" + PORT +"/job/agency/jobs?username="+this.user.name,
@@ -467,16 +576,15 @@ export default {
                 success: function(data) {
                     if(data.msg !=0 ) return
                     vuectx._data.jobs = data.data;
-                    // vuectx._data.position.AgencyName = data.data[0].AgencyName;
-                    // vuectx._data.position.Title = data.data[0].JobDetail.Title;
-                    console.log(vuectx._data.jobs);
+                    vuectx._data.position.AgencyName = data.data[0].AgencyName;
+                    vuectx._data.position.Title = data.data[0].JobDetail.Title;
+                    console.log(data);
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
-                    loadScript("../../../static/js/acceptpopup.js", function(){
+                    loadScript("../../../static/js/payandevaluate.min.js", function(){
                         //console.log('Actually we do nothing here')
                     })
                     var temp = 0;
                     vuectx._data.jobs.forEach(function(e){
-                        console.log(e)
                         temp += e.Txs.length;
                     })
                     vuectx._data.amount = temp;
@@ -484,9 +592,7 @@ export default {
             });
         }
         loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
-            loadScript("../../../static/js/received_resumes.js", function(){
-                //console.log('Actually we do nothing here')
-            })
+            //console.log('Actually we do nothing here')
         });
         $(function(){
             $('#noticeDot-1').hide();
@@ -531,9 +637,43 @@ export default {
         CallCenter.init(url);
 }
 }
+$(function () {
+    $('#weibolist .cookietxte').text('推荐本职位给好友');
+    $(document).bind('cbox_complete', function () {
+        hbzxJQ("#gaosutapt .pttui a").trigger("click");
+        hbzxJQ("#mepingpt .pttui a").trigger("click");
+    });
+    $('#cboxOverlay').bind('click', function () {
+        top.location.reload();
+    });
+    $('#colorbox').on('click', '#cboxClose', function () {
+        if ($(this).siblings('#cboxLoadedContent').children('div').attr('id') == 'deliverResumesSuccess' || $(this).siblings('#cboxLoadedContent').children('div').attr('id') == 'uploadFileSuccess') {
+            top.location.reload();
+        }
+    });
+})
 </script>
 
 <style scoped>
    @import '../../assets/css/style.css';
    @import '../../assets/css/popup.css';
+   @import '../../assets/css/external.min.css';
+   @import '../../assets/css/star-rating.min.css';
+   #cboxContent {
+        overflow: visible;
+    }
+   #colorbox,
+   #cboxOverlay,
+   #cboxWrapper {
+        overflow: visible;
+   }
+   #forwardResumeForm {
+        font-family: 'Hiragino Sans GB'!important;
+   }
+
+   .hint {
+     color:#dd4a38;
+     margin: 0 0 0 4px!important;
+     font-size: 13px!important;
+   }
 </style>

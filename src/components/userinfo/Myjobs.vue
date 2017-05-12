@@ -37,6 +37,7 @@
                                                 <span>({{userjob.JobDetail.Salary}} x {{userjob.JobDetail.Day}})</span>
                                                 <!--  -->
                                             </a>
+                                            <span style="color:#999">[{{userjob.JobDetail.Place}}]</span> 
                                         </h2>
                                         <h4>
                                             <a target="_blank" href="http://www.lagou.com/jobs/149594.html">
@@ -45,9 +46,18 @@
                                             </a>
                                         </h4>
                                         <div class="clear"></div>
-                                        <a title="公司名称" class="d_jobname" target="_blank" href="http://www.lagou.com/c/25927.html">
-                                                {{userjob.JobDetail.JobTime}} <span>[{{userjob.JobDetail.Place}}]</span> 
-                                            </a>
+                                        <a v-if="userjob.Tx.AgencyScore==0 && userjob.Tx.StuScore==0" title="公司名称" class="d_jobname" target="_blank">
+                                                <span>申请状态：</span>{{userjob.Tx.Status}} 
+                                        </a>
+                                        <a v-if="userjob.Tx.AgencyScore==0 && userjob.Tx.StuScore!=0" title="公司名称" class="d_jobname" target="_blank">
+                                                <span>申请状态：</span>兼职中介方已评
+                                        </a>
+                                        <a v-if="userjob.Tx.AgencyScore!=0 && userjob.Tx.StuScore==0" title="公司名称" class="d_jobname" target="_blank">
+                                                <span>申请状态：</span>我已评价 
+                                        </a>
+                                        <a v-if="userjob.Tx.AgencyScore!=0 && userjob.Tx.StuScore!=0" title="公司名称" class="d_jobname" target="_blank">
+                                                <span>申请状态：</span>{{userjob.Tx.Status}} 
+                                        </a>
                                         <span class="d_time">{{userjob.Tx.ApplyTime}}</span>
                                         <div class="clear"></div>
                                         <div class="d_resume">
@@ -56,9 +66,19 @@
                                                                                                 在线简历
                                                                                             </span>
                                         </div>
-                                        <a class="btn_showprogress resume_forward" href="javascript:;" :txid="userjob.Tx.TxID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
-                                                                                                        {{userjob.Tx.Status}}
+                                        <div v-if="userjob.Tx.State!=0">
+                                        <a v-if="userjob.Tx.AgencyScore==0" class="btn_showprogress resume_forward" href="javascript:;" :txid="userjob.Tx.TxID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
+                                                                                                        评价
                                                                                                 <i></i></a>
+                                        <a v-if="userjob.Tx.AgencyScore!=0" class="btn_showprogress" href="javascript:;" :txid="userjob.Tx.TxID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
+                                                                                                        已评价
+                                                                                                <i></i></a>
+                                        </div>
+                                        <div v-if="userjob.Tx.State==0">
+                                        <a class="btn_showprogress" href="javascript:;" :txid="userjob.Tx.TxID" :agency="userjob.AgencyName" :jobtitle="userjob.JobDetail.Title" v-on:click="popup($event)">
+                                                                                                        等待审核
+                                                                                                <i></i></a>
+                                        </div>
                                     </div>
                                     <div class="progress_status	dn">
                                         <ul class="status_steps">
@@ -231,7 +251,7 @@ export default {
             }
         });
         var perCurrent = $(".company_center_aside .current").removeClass('current');
-        var current = $(".jobinfo").find("dd:eq(2)");
+        var current = $(".jobinfo").find("dd:eq(0)");
         current.addClass('current');
     },
     methods: {

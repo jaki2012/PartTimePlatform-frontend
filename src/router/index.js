@@ -11,10 +11,12 @@ import Position from '@/components/Position'
 import RefusedResumes from '@/components/resume/RefusedResumes'
 import UnhandleResumes from '@/components/resume/UnhandleResumes'
 import AcceptedResumes from '@/components/resume/AcceptedResumes'
+import EndedResumes from '@/components/resume/EndedResumes'
 import UserResumeStates from '@/components/UserResumeStates'
 import UserJobStates from '@/components/UserJobStates'
 import SearchList from '@/components/Searchlist'
 import Refresh from '@/components/Refresh'
+import Refreshac from '@/components/Refreshac'
 import UserInfo from '@/components/userinfo/UserInfo'
 import MyResume from '@/components/userinfo/MyResume'
 import Credits from '@/components/userinfo/Credits'
@@ -79,6 +81,12 @@ export default new Router({
       path: '/acceptedresumes',
       name: 'acceptedresumes',
       component: AcceptedResumes
+    },
+    // 已结算简历页面（双方评价结束）
+    {
+      path: '/endedresumes',
+      name: 'endedresumes',
+      component: EndedResumes
     },
     // 不合适简历页面
     {
@@ -145,6 +153,12 @@ export default new Router({
       path: '/refresh',
       name: 'refresh',
       component: Refresh
+    },
+    // 跳转空页面
+    {
+      path: '/refreshac',
+      name: 'refreshac',
+      component: Refreshac
     }
   ]
 })

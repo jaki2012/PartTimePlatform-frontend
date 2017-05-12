@@ -1,9 +1,9 @@
 <template>
   <div id="header">
     <div class="wrapper">
-      <a href="index.html" class="logo">
+      <router-link to='/' class="logo">
         <img src="../assets/images/logo3.png" width="229" height="43" alt="同嘉招聘-专注大学生互联网兼职" />
-      </a>
+      </router-link>
       <ul class="reset" id="navheader">
         <li class="current"><router-link to="/">首页</router-link></li>
         <li><a>关于同嘉</a></li>
@@ -25,12 +25,14 @@
           <!-- 中介用户 -->
           <dd v-if="user.type===1" style="display: none;"><router-link to="position">我发布的职位</router-link></dd>
           <dd v-if="user.type===1" style="display: none;"><router-link to="unhandleresumes">我收到的简历</router-link></dd>
-          <dd v-if="user.type===1" class="btm" style="display: none;"><a href="myhome.html">我的公司主页</a></dd>
+          <dd v-if="user.type===1" style="display: none;"><router-link :to="{ path: 'userinfo', query: { userid: user.type }}">我的个人资料</router-link></dd>
+          <dd v-if="user.type===1" class="btm" style="display:none;"><a >我的公司主页</a></dd>
           <!-- end中介用户 -->
           <!-- 学生用户 -->
           <dd v-if="user.type===0" style="display: none;"><router-link :to="{ path: 'userinfo', query: { userid: user.type }}">我的个人资料</router-link></dd>
           <dd v-if="false" style="display: none;"><router-link :to="{ path: 'myresume', query: { userid: user.type }}">我的个人简历</router-link></dd>
           <dd v-if="user.type===0" style="display: none;"><router-link to="myjobs">我的兼职状态</router-link></dd>
+          <dd v-if="user.type===0" style="display: none;"><router-link to="credits">我的信用积分</router-link></dd>
           <!-- end学生用户 -->
           <dd style="display: none;"><a>帐号设置</a></dd>
           <dd class="logout" style="display: none;"><a rel="nofollow" v-on:click="submit">退出当前账号</a></dd>

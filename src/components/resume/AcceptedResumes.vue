@@ -5,7 +5,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 已录取简历 <span>（共1份）</span> </h1>
+                    <em></em> 已审核通过申请 <span>（共{{amount}}份）</span> </h1>
             </dt>
             <dd>
                 <form action="haveRefuseResumes.html" method="get" id="filterForm">
@@ -75,7 +75,7 @@
 			                                    <input type="checkbox">
 			                                    <i></i>
 			                                </label>
-                            <div class="resumeShow">
+                            <div style="height:90px" class="resumeShow">
                                 <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
                                     <img src="../../assets/images/default_headpic.png">
                                 </a>
@@ -88,12 +88,23 @@
                                     </h3>
                                     <span class="fr">申请时间：{{resume.ApplyTime}}</span>
                                     <div>
-                                        {{resume.name}} / {{resume.sex}} / {{resume.education}} / {{resume.experience}} / {{resume.address}}
+                                        
+                                    </div>
+                                    <div style="margin-top:3px" class="jdpublisher">
+                                        <span v-if="resume.StuScore==0 && resume.AgencyScore==0">
+				                                        	简历状态：<a title="随便写" target="_blank">{{resume.Status}}</a>
+				                                       						                                        </span>
+                                        <span v-if="resume.StuScore!=0 && resume.AgencyScore==0">
+				                                        	简历状态：<a title="随便写" target="_blank">兼职中介方已评</a>
+				                                       						                                        </span>
+                                        <span v-if="resume.StuScore==0 && resume.AgencyScore!=0">
+				                                        	简历状态：<a title="随便写" target="_blank">学生方已评价</a>
+				                                       						                                        </span>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	简历状态：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.Status}}</a>
-				                                       		信用积分：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.StuScore}}</a>			                                        </span>
+				                                        	
+				                                       		信用积分：<a title="随便写" target="_blank">{{resume.UserInfo.Score}}</a>				                                        </span>
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
@@ -102,10 +113,11 @@
                                     </div>
                                 </div>
                                 <div class="links">
-                                    <a data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="job.JobDetail.Title" v-on:click="popup($event)"
+                                    <a  v-if="resume.StuScore==0" data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="job.JobDetail.Title" v-on:click="popup($event)"
                                         data-forwardcount="1" class="resume_forward">
                                                     	评价
                                                     	                                                    </a>
+                                    <a v-if="resume.StuScore!=0">已评价</a>
                                     <a class="resume_del" href="javascript:void(0)">删除</a>
                                 </div>
                             </div>
@@ -429,6 +441,7 @@ export default {
         return {
             datanotnull: false,
             jobs: new Array(),
+            amount: 0,
             resumes: '',
             position: {
                 AgencyName:'',
@@ -455,6 +468,7 @@ export default {
         },
         evaluate: function() {
             $("#cboxClose").click();
+            var vuectx = this;
             $.ajax({
                 url: HOST + ":" + PORT +"/tx/evaluate?username="+this.user.name,
                 type:'post',
@@ -465,10 +479,13 @@ export default {
                 dataType:'json',
                 success: function(data) {
                     alert("评价成功！")
-                    console.log(data);
+                    vuectx.refreshPage();
                 }
             });
             this._data.datanotnull = false;
+        },
+        refreshPage: function() {
+            this.$router.replace({path: '/refreshac'})
         }
     },
     components: {
@@ -528,8 +545,9 @@ export default {
           
     },
     mounted: function() {
+        $(".userinfo .current").removeClass('current');
         var perCurrent = $(".agencyinfo .current").removeClass('current');
-        var current = $(".agencyinfo").find("dd:eq(2)");
+        var current = $(".agencyinfo").find("dd:eq(1)");
         current.addClass('current');
         // jquery需要获取vue上下文环境
         var vuectx = this
@@ -553,6 +571,11 @@ export default {
                     loadScript("../../../static/js/payandevaluate.min.js", function(){
                         //console.log('Actually we do nothing here')
                     })
+                    var temp = 0;
+                    vuectx._data.jobs.forEach(function(e){
+                        temp += e.Txs.length;
+                    })
+                    vuectx._data.amount = temp;
                 }
             });
         } else {
@@ -565,15 +588,21 @@ export default {
                 data: params,
                 dataType: 'json',
                 success: function(data) {
+                    console.log(data);
                     if(data.msg !=0 ) return
                     vuectx._data.jobs = data.data;
                     vuectx._data.position.AgencyName = data.data[0].AgencyName;
                     vuectx._data.position.Title = data.data[0].JobDetail.Title;
-                    console.log(data);
+                    
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
                     loadScript("../../../static/js/payandevaluate.min.js", function(){
                         //console.log('Actually we do nothing here')
                     })
+                    var temp = 0;
+                    vuectx._data.jobs.forEach(function(e){
+                        temp += e.Txs.length;
+                    })
+                    vuectx._data.amount = temp;
                 }
             });
         }

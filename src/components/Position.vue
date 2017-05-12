@@ -5,7 +5,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 有效职位 <span>（共<i style="color:#fff;font-style:normal" id="positionNumber">{{positions.length}}</i>个）</span> </h1>
+                    <em></em> 有效兼职 <span>（共<i style="color:#fff;font-style:normal" id="positionNumber">{{positions.length}}</i>个）</span> </h1>
             </dt>
             <dd>
                 <form id="searchForm">

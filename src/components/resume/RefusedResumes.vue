@@ -5,7 +5,7 @@
         <dl class="company_center_content">
             <dt>
                 <h1>
-                    <em></em> 不合适简历 <span>（共1份）</span> </h1>
+                    <em></em> 未通过审核申请 <span>（共0份）</span> </h1>
             </dt>
             <dd>
                 <form action="haveRefuseResumes.html" method="get" id="filterForm">
@@ -68,42 +68,50 @@
                     </div>
                     <!-- end .filter_options -->
                     <ul class="reset resumeLists">
-                        <li data-id="1686182" class="onlineResume">
+                    <template v-for="job in jobs">
+                    <template v-for="resume in job.Txs">
+                    <li data-id="1686181" class="onlineResume">
                             <label class="checkbox">
 			                                    <input type="checkbox">
 			                                    <i></i>
 			                                </label>
                             <div class="resumeShow">
                                 <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
-                                    <img src="style/images/default_headpic.png">
+                                    <img src="../../assets/images/default_headpic.png">
                                 </a>
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            jason的简历
+			                                        				                                            {{resume.UserInfo.Username}}的简历
 			                                        	</a>
                                         <em></em>
                                     </h3>
-                                    <span class="fr">投递时间：2014-07-01 17:08</span>
+                                    <span class="fr">申请时间：{{resume.ApplyTime}}</span>
                                     <div>
-                                        jason / 男 / 大专 / 3年 / 广州 <br> 高级产品经理 · 上海辉硕科技有限公司 | 本科 · 北京大学
+                                        {{resume.name}} / {{resume.sex}} / {{resume.education}} / {{resume.experience}} / {{resume.address}}
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">随便写</a>
+				                                        	简历状态：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.Status}}</a>
+				                                       		信用积分：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{resume.StuScore}}</a>			                                        </span>
+                                    </div>
+                                    <div class="jdpublisher">
+                                        <span>
+				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{job.JobDetail.Title}}</a>
 				                                       						                                        </span>
                                     </div>
                                 </div>
                                 <div class="links">
-                                    <a data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
-                                        data-forwardcount="1" class="resume_forward" href="javascript:void(0)">
-                                                    	转发
-                                                    	                                                    	<span>(1人)</span>
+                                    <a data-resumename="jason的简历" :stuname="resume.UserInfo.Username" :txid="resume.TxID" :jobtitle="job.JobDetail.Title" v-on:click="popup($event)"
+                                        data-forwardcount="1" class="resume_forward">
+                                                    	评价
                                                     	                                                    </a>
                                     <a class="resume_del" href="javascript:void(0)">删除</a>
                                 </div>
                             </div>
                         </li>
+                        </template>
+                        </template>
                     </ul>
                     <!-- end .resumeLists -->
                 </form>
@@ -352,6 +360,11 @@ function loadScript(url, callback){
 }
 export default {
     name: 'create',
+    data() {
+        return {
+            jobs:''
+        }
+    },
     components: {
       'agencysidebar': AgencySidebar,
       'receivedresumesjs': {
@@ -382,6 +395,10 @@ export default {
       }
     },
     mounted: function() {
+        $(".userinfo .current").removeClass('current');
+        var perCurrent = $(".agencyinfo .current").removeClass('current');
+        var current = $(".agencyinfo").find("dd:eq(2)");
+        current.addClass('current');
     loadScript("../../../static/js/jquery.ui.datetimepicker.min.js", function(){
         loadScript("../../../static/js/received_resumes.js", function(){
             //console.log('Actually we do nothing here')
@@ -396,38 +413,38 @@ export default {
     var index = Math.floor(Math.random() * 2);
     var ipArray = new Array('42.62.79.226','42.62.79.227');
     var url = "ws://" + ipArray[index] + ":18080/wsServlet?code=314873";
-    var CallCenter = {
-            init:function(url){
-                var _websocket = new WebSocket(url);
-                _websocket.onopen = function(evt) {
-                    console.log("Connected to WebSocket server.");
-                };
-                _websocket.onclose = function(evt) {
-                    console.log("Disconnected");
-                };
-                _websocket.onmessage = function(evt) {
-                    //alert(evt.data);
-                    var notice = jQuery.parseJSON(evt.data);
-                    if(notice.status[0] == 0){
-                        $('#noticeDot-0').hide();
-                        $('#noticeTip').hide();
-                        $('#noticeNo').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                        $('#noticeNoPage').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                    }else{
-                        $('#noticeDot-0').show();
-                        $('#noticeTip strong').text(notice.status[0]);
-                        $('#noticeTip').show();
-                        $('#noticeNo').text('('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                        $('#noticeNoPage').text(' ('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                    }
-                    $('#noticeDot-1').hide();
-                };
-                _websocket.onerror = function(evt) {
-                    console.log('Error occured: ' + evt);
-                };
-            }
-    };
-    CallCenter.init(url);
+    // var CallCenter = {
+    //         init:function(url){
+    //             var _websocket = new WebSocket(url);
+    //             _websocket.onopen = function(evt) {
+    //                 console.log("Connected to WebSocket server.");
+    //             };
+    //             _websocket.onclose = function(evt) {
+    //                 console.log("Disconnected");
+    //             };
+    //             _websocket.onmessage = function(evt) {
+    //                 //alert(evt.data);
+    //                 var notice = jQuery.parseJSON(evt.data);
+    //                 if(notice.status[0] == 0){
+    //                     $('#noticeDot-0').hide();
+    //                     $('#noticeTip').hide();
+    //                     $('#noticeNo').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+    //                     $('#noticeNoPage').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+    //                 }else{
+    //                     $('#noticeDot-0').show();
+    //                     $('#noticeTip strong').text(notice.status[0]);
+    //                     $('#noticeTip').show();
+    //                     $('#noticeNo').text('('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+    //                     $('#noticeNoPage').text(' ('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+    //                 }
+    //                 $('#noticeDot-1').hide();
+    //             };
+    //             _websocket.onerror = function(evt) {
+    //                 console.log('Error occured: ' + evt);
+    //             };
+    //         }
+    // };
+    // CallCenter.init(url);
 }
 }
 </script>

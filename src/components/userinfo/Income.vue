@@ -141,7 +141,7 @@ export default {
     },
     mounted: function(){
          var perCurrent = $(".company_center_aside .current").removeClass('current');
-         var current = $(".jobinfo").find("dd:eq(1)");
+         var current = $(".jobinfo").find("dd:eq(2)");
          current.addClass('current');
          this.showscoredetail();
          var ctx = document.getElementById("myChart");

@@ -25,14 +25,14 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td><span class="redstar">*</span></td>
                                     <td>兼职天数</td>
                                     <td>
                                         <input type="text" v-model="newJob.Day" placeholder="请输入一共需要的工作天数" value="" name="JobDay" id="JobDay">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td><span class="redstar">*</span></td>
                                     <td>每日工时</td>
                                     <td>
                                         <input type="text" v-model="newJob.JobTime" placeholder="请输入每天的工作时间(/h)" value="" name="JobTime" id="JobTime">
@@ -91,7 +91,7 @@
                         <table class="btm">
                             <tbody>
                                 <tr>
-                                    <td width="25"><span class="redstar">*</span></td>
+                                    <td width="25"></td>
                                     <td width="85">职位诱惑</td>
                                     <td>
                                         <input type="text" placeholder="20字描述该职位的吸引力，如：福利待遇、发展前景等" value="" name="positionAdvantage" class="input_520" id="positionAdvantage">
@@ -105,7 +105,7 @@
                                     </td>
                                 </tr
                                 <tr>
-                                    <td><span class="redstar">*</span></td>
+                                    <td></td>
                                     <td>职位描述</td>
                                     <td>
                                         <span class="c9 f14">(建议分条描述工作职责等。请勿输入公司邮箱、联系电话及其他外链，否则将自动删除)</span>
@@ -271,6 +271,7 @@ export default {
         }
     },
     mounted: function() {
+        $(".userinfo .current").removeClass('current');
         tinymce.init({
         selector: 'textarea',
         skin: 'lightgray',

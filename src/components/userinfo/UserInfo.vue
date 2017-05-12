@@ -1,6 +1,7 @@
 <template>
     <div id="container">
-        <userinfosidebar></userinfosidebar>
+        <agencysidebar v-if="user.type==1"></agencysidebar>
+        <userinfosidebar v-if="user.type==0"></userinfosidebar>
         <!-- end .sidebar -->
         <div class="content">
             <dl class="company_center_content">
@@ -178,10 +179,12 @@
 <script>
 import { mapState } from 'vuex'
 import UserInfoSideBar from './UserInfoSideBar'
+import AgencySideBar from '../resume/AgencySidebar'
 export default {
     name: 'userinfo',
     components: {
-        'userinfosidebar': UserInfoSideBar
+        'userinfosidebar': UserInfoSideBar,
+        'agencysidebar': AgencySideBar
     },
     computed: mapState({user: state=>state.user}),
     data: function() {
