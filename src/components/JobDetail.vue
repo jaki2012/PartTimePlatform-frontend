@@ -9,18 +9,20 @@
                             <div>{{job.AgencyName}}招聘</div>
                             {{job.JobDetail.Title}}
                         </h1>
-                        <a class="inline jd_collection" href="#loginPop" title="登录">
+                        <a style="display:none" class="inline jd_collection" title="收藏">
                         </a>
                     </dt>
                     <dd class="job_request">
-                        <span class="red">{{job.JobDetail.Salary}} x {{job.JobDetail.Day}}</span>
-                        <span>{{job.JobDetail.JobTime}} </span>
-                        <span>{{job.JobDetail.Place}}</span>
+                        <span class="red">{{job.JobDetail.Salary}} x {{job.JobDetail.Day}} </span>
+                        <span>每天工时：{{job.JobDetail.JobTime}} </span>
+                        <span>工作地点：{{job.JobDetail.Place}}</span><br>
                         <div>发布时间：{{job.PublishTime}}发布</div>
                     </dd>
                     <dd class="job_bt">
                         <h3 class="description">兼职描述</h3>
-                        <p style="margin-bottom:10px">&nbsp;岗位要求： <br />1、{{job.JobDetail.Demand}} <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
+                        <p style="margin-bottom:10px; line-height:30px">&nbsp;岗位要求： <br />1、{{job.JobDetail.Demand}} <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
+                        <a v-if="!delivered" id="deliverbtn" style="margin-top:100px" href="#loginSuccess" title="申请成功" class="inline btn fr btn_apply" v-on:click="deliver($event)">申请兼职</a>
+                        <a v-if="delivered" id="deliverbtn2" style="margin-top:100px" href="#loginFailed" title="申请失败" class="inline btn fr btn_apply">已申请</a>
                     </dd>
 
                     <!--<dd class="unresume">
@@ -45,9 +47,7 @@
                         </div>
                     </div>
                     <dd>-->
-                        <!--<a href="#loginPop" title="登录" class="inline btn fr btn_apply">投个简历</a>-->
-                        <a v-if="!job.IsApplied" id="deliverbtn" href="#loginSuccess" title="投递成功" class="inline btn fr btn_apply" v-on:click="deliver($event)">申请兼职</a>
-                        <a v-if="job.IsApplied" id="deliverbtn2" href="#loginFailed" title="投递失败" class="inline btn fr btn_apply">已申请</a>
+
                     </dd>
                 </dl>
                 <div id="weibolist"></div>
@@ -70,10 +70,9 @@
                     </dt>
                     <dd>
                         <ul class="c_feature reset">
-                            <li><span>已发布</span> {{agency.JobsCount}}个职位</li>
+                            <li><span>发布职位</span> {{agency.JobsCount}}个</li>
                             <li><span>中介评分</span> {{agency.Score}}</li>
-                            <li><span>中介用户名</span> {{agency.Username}}</li>
-                            <li><span>中介真实姓名</span> {{agency.RealName}}</li>
+                            <li><span>中介用户</span> {{agency.Username}}</li>
                             <li><span>中介电话</span> {{agency.Tele}}</li>
                             <li>
                                 <span>主页</span>
@@ -297,7 +296,7 @@
 
             <div id="loginSuccess" class="popup" style="height:240px;">
                 <span>投递成功！</span>
-            </div>
+            </div>loginS
 
             <div id="loginFailed" class="popup" style="height:240px;">
                 <span>抱歉你已经申请过这个兼职了！</span>
@@ -606,6 +605,7 @@ export default {
           success: function(data) {
               if(data.msg !=0 ) return
               vuectx._data.job = data.data;
+              vuectx._data.delivered = data.data.IsApplied;
               vuectx._data.datanotnull = true;
               loadScript("../../static/js/popup.min.js",function(){
 
@@ -632,6 +632,7 @@ export default {
             if(this.delivered) {
                 return
             } 
+            var vuectx = this;
             $.ajax({
                 url: HOST + ":" + PORT +"/tx/apply?username="+this.user.name,
                 type:'post',
@@ -640,10 +641,10 @@ export default {
                 },
                 dataType:'json',
                 success: function(data) {
+                    vuectx._data.delivered = true;
                     console.log(data);
                 }
             });
-            this.delivered = true;
       },
   },
   components: {
@@ -729,6 +730,14 @@ $(function () {
 
     #loginToolBar {
         display: none;
+    }
+
+    #loginSuccess {
+        font-family: 'Hiragino Sans GB'
+    }
+
+    #loginFailed {
+        font-family: 'Hiragino Sans GB'
     }
 
 </style>

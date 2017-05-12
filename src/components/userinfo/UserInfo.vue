@@ -10,8 +10,8 @@
                     </h1>
                 </dt>
                 <dd>
-                    <div class="ccc_tr">账号类别： <span>学生用户</span></div>
-                    <div class="ccc_tr bcid number">智能合约id (BCID)： <span>PC9527</span></div>
+                    <div class="ccc_tr">账号类别： <span>{{usertype}}</span></div>
+                    <div style="display:none" class="ccc_tr bcid number">智能合约id (BCID)： <span>PC9527</span></div>
                     <form v-if="!user.detail" action="http://www.lagou.com/corpPosition/preview.html" method="post" id="jobForm">
                         <input type="hidden" value="" name="id">
                         <input type="hidden" value="create" name="preview">
@@ -41,6 +41,13 @@
                                         <span id="realname" class="concre_content" >{{userinfo.realname}}</span>
                                     </td>
                                 </tr>
+                                <tr v-if="user.type==1">
+                                    <td><span class="redstar">*</span></td>
+                                    <td>中介名称:</td>
+                                    <td>
+                                        <span id="agencyname" class="concre_content" >{{userinfo.AgencyName}}</span>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td></td>
                                     <td>性别:</td>
@@ -48,14 +55,14 @@
                                         <span id="gender" class="concre_content">{{userinfo.gender}}</span>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-if="user.type==0">
                                     <td></td>
                                     <td>学校:</td>
                                     <td>
                                         <span id="school" class="concre_content">{{userinfo.school}}</span>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-if="user.type==0">
                                     <td></td>
                                     <td>学号:</td>
                                     <td>
@@ -63,7 +70,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td></td>
+                                    <td><span class="redstar">*</span></td>
                                     <td>手机:</td>
                                     <td>
                                         <span id="telephone" class="concre_content number">{{userinfo.telephone}}</span>
@@ -104,9 +111,16 @@
                                 </tr>
                                 <tr>
                                     <td><span class="redstar">*</span></td>
-                                    <td>真实:</td>
+                                    <td>真实名字:</td>
                                     <td>
                                         <span class="concre_content" >{{userinfo.RealName}}</span>
+                                    </td>
+                                </tr>
+                                <tr v-if="user.type==1">
+                                    <td><span class="redstar">*</span></td>
+                                    <td>中介名称:</td>
+                                    <td>
+                                        <span class="concre_content" >{{userinfo.AgencyName}}</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -116,14 +130,14 @@
                                         <span class="concre_content">{{userinfo.Gender}}</span>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-if="user.type==0">
                                     <td></td>
                                     <td>学校:</td>
                                     <td>
                                         <span class="concre_content">{{userinfo.School}}</span>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-if="user.type==0">
                                     <td></td>
                                     <td>学号:</td>
                                     <td>
@@ -139,7 +153,7 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td>状态:</td>
+                                    <td>当前状态码:</td>
                                     <td>
                                         <span class="concre_content">{{userinfo.Status}}</span>
                                     </td>
@@ -174,10 +188,12 @@ export default {
         return {
             //覆盖了原有数据！
             //user: ''
+            usertype: '',
             userinfo: ''
         }
     },
     mounted: function() {
+        this.usertype = this.user.type==0 ? "学生用户": "中介用户";
         //core.min.js 确保菜单能够正常收缩
         const corejs = document.createElement('script')
         corejs.type = 'text/javascript'
@@ -195,6 +211,8 @@ export default {
                 dataType: 'json',
                 success: function(data) {
                     vuectx._data.userinfo = data.data.UserInfo
+                    // 设置男女
+                    vuectx._data.userinfo.Gender = data.data.UserInfo.Gender == 0? "男":"女"
                     console.log(data)
                 }
             });
@@ -223,7 +241,6 @@ export default {
                 var obj = document.createTextNode(value);
                 contents[i].parentNode.appendChild(obj);
                 arrObj[arrObj.length] = contents[i];
-                console.log(value)
             }
             // contents[i]不能先执行remove 否则会导致数组索引跳级
             for(var i=0; i<arrObj.length; i++) {
@@ -237,24 +254,38 @@ export default {
             //数据绑定不生效的原因在于动态生成了input
             var userid = $("#userid")[0].innerText
             var realname = $("#realname")[0].innerText
-            var school = $("#school")[0].innerText
-            var stuid = $("#stuid")[0].innerText
-            var gender = $("#gender")[0].innerText == "男" ? 0 : 1;
+            var gender = $("#gender")[0].innerText == "男" ? 0 : 1
             var telephone = $("#telephone")[0].innerText
-            $.ajax({
-                url: HOST + ":" + PORT +"/user/detail?username="+this.user.name,
-                type: "post",
-                dataType: "json",
-                data: {
+            var params;
+            if(this.user.type==0) {
+                var school = $("#school")[0].innerText
+                var stuid = $("#stuid")[0].innerText
+                params = {
                     UserID: userid,
                     RealName: realname,
                     School: school,
                     StuID: stuid,
                     Gender: gender,
                     Tele: telephone
-                },
+                }
+            } else {
+                var agencyname = $("#agencyname")[0].innerText
+                params = {
+                    UserID:userid,
+                    RealName: realname,
+                    AgencyName: agencyname,
+                    Gender: gender,
+                    Tele: telephone
+                }              
+            }
+
+            $.ajax({
+                url: HOST + ":" + PORT +"/user/detail?username="+this.user.name,
+                type: "post",
+                dataType: "json",
+                data: params,
                 success: function(data) {
-                    console.log(data)
+                    alert("完善个人资料成功！");
                 }
             })
         }

@@ -15,7 +15,7 @@
 					<div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
 						<input v-model="form.password" type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
 					</div>
-					<div style="margin-top:10px; margin-left:40px">
+					<div style="margin-top:10px; margin-left:40px; color:#777">
 						学生用户  <input checked type="radio" id="student" name="usertype" value="0">
 						中介用户  <input type="radio" id="agency" name="usertype" value="1">
 					</div>
@@ -49,21 +49,21 @@
 			<h5>使用以下帐号直接登录:</h5>
 			<ul class="vender_login clearfix">
 				<li>
-					<a rel="nofollow" href="https://passport.lagou.com/oauth20/auth_sinaWeiboProvider.html" title="使用新浪微博帐号登录" class="vender_icon icon_sina"
+					<a rel="nofollow" title="使用新浪微博帐号登录" class="vender_icon icon_sina"
 					 target="_blank" data-lg-tj-id="1jb0" data-lg-tj-no="idnull" data-lg-tj-cid="idnull"></a>
 				</li>
 				<li>
-					<a rel="nofollow" href="https://passport.lagou.com/oauth20/auth_qqProvider.html" title="使用腾讯QQ帐号登录" class="vender_icon icon_tencent"
+					<a rel="nofollow" title="使用腾讯QQ帐号登录" class="vender_icon icon_tencent"
 					 target="_blank" data-lg-tj-id="1jc0" data-lg-tj-no="idnull" data-lg-tj-cid="idnull"></a>
 				</li>
 				<li class="last_child">
-					<a rel="nofollow" href="https://passport.lagou.com/oauth20/auth_weixinProvider.html" class="vender_icon icon_wechat"
+					<a rel="nofollow" class="vender_icon icon_wechat"
 					 title="使用微信帐号登录" target="_blank" data-lg-tj-id="1jd0" data-lg-tj-no="idnull" data-lg-tj-cid="idnull"></a>
 				</li>
 			</ul>
 			<div class="qrcode">
-				<img src="../assets/images/qrcode_0ec6bff.jpg" alt="二维码">
-				<p>[ 扫码下载同嘉APP ]</p>
+				<img src="../assets/images/qrcodejianjia.jpeg" alt="二维码">
+				<p>[ 扫码访问同嘉微信号 ]</p>
 			</div>
 		</div>
 	</section>
@@ -823,7 +823,7 @@ body {
 	margin-top: 39px;
 	padding-bottom: 0px;
 	margin-bottom:0px;
-	margin-left:-20px;
+	margin-left:15px;
 }
 
 .content_box .qrcode img {

@@ -2,7 +2,7 @@
   <div id="header">
     <div class="wrapper">
       <a href="index.html" class="logo">
-        <img src="../assets/images/logo3.png" width="229" height="43" alt="拉勾招聘-专注互联网招聘" />
+        <img src="../assets/images/logo3.png" width="229" height="43" alt="同嘉招聘-专注大学生互联网兼职" />
       </a>
       <ul class="reset" id="navheader">
         <li class="current"><router-link to="/">首页</router-link></li>
@@ -32,7 +32,7 @@
           <dd v-if="user.type===0" style="display: none;"><router-link :to="{ path: 'myresume', query: { userid: user.type }}">我的个人简历</router-link></dd>
           <dd v-if="user.type===0" style="display: none;"><router-link to="myjobs">我的兼职状态</router-link></dd>
           <!-- end学生用户 -->
-          <dd style="display: none;"><a href="accountBind.html">帐号设置</a></dd>
+          <dd style="display: none;"><a>帐号设置</a></dd>
           <dd class="logout" style="display: none;"><a rel="nofollow" v-on:click="submit">退出当前账号</a></dd>
       </dl>
     </div>

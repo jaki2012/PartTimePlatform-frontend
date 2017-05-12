@@ -6,12 +6,6 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>IT/互联网<span></span></h2>
-                        <a>威客任务</a>
-                        <a>C/C++</a>
-                        <a>Java</a>
-                        <a>Android</a>
-                        <a>iOS</a>
-                        <a>前端开发</a>
                         <a>测试</a>
                         <a>网上销售</a>
                         <a>网上咨询</a>
@@ -142,10 +136,10 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>餐饮娱乐 <span></span></h2>
-                        <a href="h/jobs/list_产品经理?labelWords=label">钟点工</a>
-                        <a href="h/jobs/list_产品助理?labelWords=label">前台店员</a>
-                        <a href="h/jobs/list_无线产品经理?labelWords=label">外卖派送员</a>
-                        <a href="h/jobs/list_游戏策划?labelWords=label">酒吧KTV</a>
+                        <a>钟点工</a>
+                        <a>前台店员</a>
+                        <a>外卖派送员</a>
+                        <a>酒吧KTV</a>
                     </div>
                     <div class="menu_sub1 dn">
                         <dl class="reset">
@@ -191,14 +185,14 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>临时职业<span></span></h2>
-                        <a href="h/jobs/list_Java?labelWords=label">导游</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">家教</a>
-                        <a href="h/jobs/list_Java?labelWords=label">美容/护理</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">演员</a>
-                        <a href="h/jobs/list_C?labelWords=label">建筑装潢</a>
-                        <a href="h/jobs/list_C?labelWords=label">司机</a>
-                        <a href="h/jobs/list_Android?labelWords=label">家政/保姆</a>
-                        <a href="h/jobs/list_iOS?labelWords=label">展会主持</a>
+                        <a>导游</a>
+                        <a>家教</a>
+                        <a>美容/护理</a>
+                        <a>演员</a>
+                        <a>建筑装潢</a>
+                        <a>司机</a>
+                        <a>家政/保姆</a>
+                        <a>展会主持</a>
                     </div>
                 </div>
                 <div class="menu_box">
@@ -282,9 +276,9 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>调研 <span></span></h2>
-                        <a href="h/jobs/list_运营?labelWords=label">问卷调查</a>
-                        <a href="h/jobs/list_游戏运营?labelWords=label">传单派送</a>
-                        <a href="h/jobs/list_编辑?labelWords=label">采访</a>
+                        <a>问卷调查</a>
+                        <a>传单派送</a>
+                        <a>采访</a>
                     </div>
                     <div class="menu_sub1 dn">
                         <dl class="reset">
@@ -334,9 +328,9 @@
 					        			</a>
                             </dt>
                             <dd>
-                                <a href="h/jobs/list_%E4%B8%BB%E7%BC%96?labelWords=label">主编</a>
-                                <a href="h/jobs/list_%E8%BF%90%E8%90%A5%E6%80%BB%E7%9B%91?labelWords=label">运营总监</a>
-                                <a href="h/jobs/list_COO?labelWords=label">COO</a>
+                                <a>主编</a>
+                                <a>运营总监</a>
+                                <a>COO</a>
                             </dd>
                         </dl>
                     </div>
@@ -344,11 +338,11 @@
                 <div class="menu_box">
                     <div class="menu_main">
                         <h2>促销与销售 <span></span></h2>
-                        <a href="h/jobs/list_市场推广?labelWords=label">市场推广</a>
-                        <a href="h/jobs/list_市场策划?labelWords=label">促销员</a>
-                        <a href="h/jobs/list_活动策划?labelWords=label">舞蹈/路演</a>
-                        <a href="h/jobs/list_BD?labelWords=label">BD</a>
-                        <a href="h/jobs/list_销售经理?labelWords=label">排队充场</a>
+                        <a>市场推广</a>
+                        <a>促销员</a>
+                        <a>舞蹈/路演</a>
+                        <a>BD</a>
+                        <a>排队充场</a>
                     </div>
                     <div class="menu_sub1 dn">
                         <dl class="reset">
@@ -446,10 +440,10 @@
 					        			</a>
                             </dt>
                             <dd>
-                                <a href="h/jobs/list_%E5%8A%A9%E7%90%86?labelWords=label">助理</a>
-                                <a href="h/jobs/list_%E5%89%8D%E5%8F%B0?labelWords=label">前台</a>
-                                <a href="h/jobs/list_%E6%B3%95%E5%8A%A1?labelWords=label">法务</a>
-                                <a href="h/jobs/list_%E8%A1%8C%E6%94%BF?labelWords=label" class="curr">行政</a>
+                                <a>助理</a>
+                                <a>前台</a>
+                                <a>法务</a>
+                                <a> class="curr">行政</a>
                             </dd>
                         </dl>
                         <dl class="reset">
@@ -480,7 +474,7 @@
                     </div>
                 </div>
             </div>
-            <a class="subscribe" href="subscribe.html" target="_blank">订阅职位</a>
+            <a class="subscribe" href="subscribe.html" target="_blank">订阅兼职</a>
         </div>
         <div class="content">
             <div id="search_box">
@@ -490,7 +484,7 @@
                         <li data-searchtype="4">公司</li>
                     </ul>
                     <div class="searchtype_arrow"></div>
-                    <input type="text" id="search_input" name="kd" tabindex="1" value="" placeholder="请输入兼职名称，如：群众演员" />
+                    <input type="text" id="search_input" name="kd" tabindex="1" value="" placeholder="请输入兼职名称，如：传单派送" />
                     <input type="hidden" name="spc" id="spcInput" value="" />
                     <input type="hidden" name="pl" id="plInput" value="" />
                     <input type="hidden" name="gj" id="gjInput" value="" />
@@ -502,35 +496,35 @@
                     <input type="hidden" name="lc" id="lc" value="" />
                     <input type="hidden" name="workAddress" id="workAddress" value="" />
                     <input type="hidden" name="city" id="cityInput" value="" />
-                    <router-link :to="{ path: 'searchlist', query: { word: '前端开发' }}"><input type="submit" id="search_button" value="搜索" /></router-link>
+                    <router-link :to="{ path: '/home' }"><input type="submit" id="search_button" value="搜索" /></router-link>
 
                 </form>
             </div>
             <!-- <script type="text/javascript" src="style/js/search.min.js"></script> -->
             <dl class="hotSearch">
                 <dt>热门搜索：</dt>
-                <dd><a href="list.htmlJava?labelWords=label&city=">家教</a></dd>
-                <dd><a href="list.htmlPHP?labelWords=label&city=">会计</a></dd>
-                <dd><a href="list.htmlAndroid?labelWords=label&city=">充场/座谈会</a></dd>
-                <dd><a href="list.htmliOS?labelWords=label&city=">派发</a></dd>
-                <dd><a href="list.html前端?labelWords=label&city=">翻译</a></dd>
-                <dd><a href="list.html产品经理?labelWords=label&city=">销售</a></dd>
-                <dd><a href="list.htmlUI?labelWords=label&city=">UI设计</a></dd>
-                <dd><a href="list.html运营?labelWords=label&city=">网站</a></dd>
-                <dd><a href="list.htmlBD?labelWords=label&city=">摄影师</a></dd>
+                <dd><a>家教</a></dd>
+                <dd><a>会计</a></dd>
+                <dd><a>充场/座谈会</a></dd>
+                <dd><a>派发</a></dd>
+                <dd><a>翻译</a></dd>
+                <dd><a>销售</a></dd>
+                <dd><a>UI设计</a></dd>
+                <dd><a>网站</a></dd>
+                <dd><a>摄影师</a></dd>
             </dl>
             <div id="home_banner">
                 <ul class="banner_bg">
                     <li class="banner_bg_1 current">
-                        <a href="h/subject/s_buyfundation.html?utm_source=DH__lagou&utm_medium=banner&utm_campaign=haomai" target="_blank"><img src="../assets/images/d05a2cc6e6c94bdd80e074eb05e37ebd_meitu_1.jpg" width="612" height="160" alt="电商vs新零售"
+                        <a target="_blank"><img src="../assets/images/d05a2cc6e6c94bdd80e074eb05e37ebd_meitu_1.jpg" width="612" height="160" alt="电商vs新零售"
                             /></a>
                     </li>
                     <li class="banner_bg_2">
-                        <a href="h/subject/s_worldcup.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=wc" target="_blank"><img src="../assets/images/meitu_3.jpg" width="612" height="160" alt="梦想合伙人"
+                        <a target="_blank"><img src="../assets/images/meitu_3.jpg" width="612" height="160" alt="梦想合伙人"
                             /></a>
                     </li>
                     <li class="banner_bg_3">
-                        <a href="h/subject/s_xiamen.html?utm_source=DH__lagou&utm_medium=home&utm_campaign=xiamen" target="_blank"><img src="../assets/images/d03110162390422bb97cebc7fd2ab586_meitu_2.jpg" width="612" height="160" alt="种读公益活动"
+                        <a target="_blank"><img src="../assets/images/d03110162390422bb97cebc7fd2ab586_meitu_2.jpg" width="612" height="160" alt="种读公益活动"
                             /></a>
                     </li>
                 </ul>
@@ -556,7 +550,7 @@
 
             <ul id="da-thumbs" class="da-thumbs">
                 <li>
-                    <a href="h/c/1650.html" target="_blank">
+                    <a target="_blank">
                         <img src="../assets/images/doumi.png" width="113" height="113" alt="斗米" />
                         <div class="hot_info">
                             <h2 title="斗米">斗米</h2>
@@ -568,7 +562,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="h/c/9725.html" target="_blank">
+                    <a target="_blank">
                         <img src="../assets/images/jianzhimao.png" width="113" height="113" alt="兼职猫" />
                         <div class="hot_info">
                             <h2 title="兼职猫">兼职猫</h2>
@@ -580,7 +574,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="h/c/2700.html" target="_blank">
+                    <a target="_blank">
                         <img src="../assets/images/yimi.png" width="113" height="113" alt="一米" />
                         <div class="hot_info">
                             <h2 title="一米">一米</h2>
@@ -592,7 +586,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="h/c/6630.html" target="_blank">
+                    <a target="_blank">
                         <img src="../assets/images/jianzhibao.jpeg" width="113" height="113" alt="兼职宝" />
                         <div class="hot_info">
                             <h2 title="兼职宝">兼职宝</h2>
@@ -604,7 +598,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="h/c/1914.html" target="_blank">
+                    <a target="_blank">
                         <img src="../assets/images/jianke2.jpeg" width="113" height="113" alt="兼客兼职" />
                         <div class="hot_info">
                             <h2 title="兼客兼职">兼客兼职</h2>
@@ -616,7 +610,7 @@
                     </a>
                 </li>
                 <li class="last">
-                    <a href="h/c/1335.html" target="_blank">
+                    <a target="_blank">
                         <img src="../assets/images/jianjia.jpeg" width="113" height="113" alt="同济兼嘉" />
                         <div class="hot_info">
                             <h2 title="同济兼嘉">同济兼嘉</h2>
@@ -647,20 +641,18 @@
                             <br />                         
                             <span><em class="c7">工作要求：</em>{{position.JobInfo.JobDetail.Demand}}</span>
                             <br />
-                            <span>{{position.JobInfo.PublishTime}} 发布</span>
+                            <span><em class="c7">发布时间：</em>{{position.JobInfo.PublishTime}}</span>
                             <!-- <a  class="wb">分享到微博</a> -->
                         </div>
                         <div class="hot_pos_r">
                             <div class="mb10 recompany"><a href="h/c/399.html" target="_blank">{{position.AgencyName}}</a></div>
-                            <span><em class="c7">中介评分：</em>{{position.Score}}分</span>
-                            <span><em class="c7">总需求人数：</em>{{position.JobInfo.TotalHired}}</span>
+                            <span><em class="c7">兼职总需求：</em>{{position.JobInfo.TotalApplied}} 人</span>                           
                             <br />
-                            <span><em class="c7">目前申请：</em>{{position.JobInfo.TotalApplied}}人</span>
-                            <span><em class="c7">目前录取：</em>{{position.JobInfo.TotalSettled}}人</span>
+                            <span><em class="c7">目前申请人数：</em>{{position.JobInfo.TotalApplied}}</span>
+                            <span><em class="c7">目前录取人数：</em>{{position.JobInfo.TotalHired}}</span>
                             <ul class="companyTags reset">
-                                <li>移动互联网</li>
-                                <li>五险一金</li>
-                                <li>扁平管理</li>
+                                <li>中介评分: {{position.Score}}</li>
+                                <li>认证中介</li>
                             </ul>
                         </div>
                     </li>
