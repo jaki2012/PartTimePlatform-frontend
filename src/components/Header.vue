@@ -42,6 +42,24 @@
 </template>
 
 <script>
+  function loadScript(url, callback){
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      if(script.readyState){ // IE
+          script.onreadystatechange = function(){
+              if(script.readyState == "loaded" || script.readyState == "complete"){
+                  script.onreadystatechange = null;
+                  callback();
+              }
+          };
+      }else{ // FF, Chrome, Opera, ...
+          script.onload = function(){
+              callback();
+          };
+      }
+      script.src = url;
+      document.getElementsByTagName("head")[0].appendChild(script);
+  }
   import { mapState, mapActions} from 'vuex'
   import { USER_SIGNOUT} from '../vuex/store/user'
   export default {
@@ -55,8 +73,8 @@
       }
     },
     created: function() {
-
-      console.log(HOST)
+        loadScript("../../static/js/core.min.js",function(){
+        })
     }
   }
 </script>

@@ -1712,7 +1712,6 @@ export default {
             }
             vuectx._data.datanotnull = true;
             vuectx._data.positions = data.data;
-            console.log(data.data)
         }
     });
     $.ajax({
@@ -1726,7 +1725,6 @@ export default {
             }
             vuectx._data.datanotnull = true;
             vuectx._data.newpositions = data.data;
-            console.log(data.data)
         }
     });
   }
