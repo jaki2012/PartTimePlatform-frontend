@@ -3,6 +3,7 @@
 	<!-- 页面主体START -->
 	<header class="sso_header">
 		<a class="logo ">
+		<img src="../assets/images/loginpagelogo.png" height="54px" width="128px"></img>
 		</a>
 	</header>
 	<section class="content_box cleafix">
@@ -690,8 +691,9 @@ body {
 
 @media only screen and (-o-min-device-pixel-ratio:2/1),only screen and (min--moz-device-pixel-ratio:2),only screen and (-webkit-min-device-pixel-ratio:2),only screen and (min-resolution:240dpi),only screen and (min-resolution:2dppx) {
 	.sso_header .logo {
-		background-image: url('../assets/images/loginpagelogo.png');
+		/* background-image: url('../assets/images/loginpagelogo.png');
 		background-size: 128px 54px
+		*/
 	}
 
 	.vender_login li .icon_sina {
