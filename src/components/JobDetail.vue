@@ -21,7 +21,7 @@
                     <dd class="job_bt">
                         <h3 class="description">兼职描述</h3>
                         <p style="margin-bottom:10px; line-height:30px">&nbsp;岗位要求： <br />1、{{job.JobDetail.Demand}} <br />2、良好的沟通和协调能力、人际交往能力和语言表达能力； <br />3、较强的责任心和执行力，富有工作热情和团队协作能力。</p>
-                        <a v-if="!delivered" id="deliverbtn" style="margin-top:100px" href="#loginSuccess" title="申请成功" class="inline btn fr btn_apply" v-on:click="deliver($event)">申请兼职</a>
+                        <a v-if="!delivered" id="deliverbtn" style="margin-top:100px" href="#applyPending" title="正在投递" class="inline btn fr btn_apply" v-on:click="deliver($event)">申请兼职</a>
                         <a v-if="delivered" id="deliverbtn2" style="margin-top:100px" href="#loginFailed" title="申请失败" class="inline btn fr btn_apply">已申请</a>
                     </dd>
 
@@ -296,10 +296,46 @@
 
             <div id="loginSuccess" class="popup" style="height:240px;">
                 <span>投递成功！</span>
-            </div>loginS
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+            </div>
 
-            <div id="loginFailed" class="popup" style="height:240px;">
-                <span>抱歉你已经申请过这个兼职了！</span>
+            <div id="loginFailed" class="popup" style="width:380px;height:180px;">
+                <div class="spinner">
+                    <img src="../assets/images/失败.png" width="80px" height="80px"></img>
+                </div>
+                <div style="text-align:center">
+                <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">申请失败：您已提交过申请，请耐心等候</span>
+                 </div>
+            </div>
+
+            <div id="applyPending" class="popup" style="width:380px;height:180px;">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+                <div style="text-align:center">
+                <img src="../assets/images/跑酷 (1).png" width="20px" height="20px"></img>
+                <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">同嘉小使正在全力帮你投递申请...</span>
+                </div>
+            </div>
+
+            <div id="applyFinished" class="popup" style="width:380px;height:180px;">
+                <div class="spinner">
+                    <img src="../assets/images/成功.png" width="80px" height="80px"></img>
+                </div>
+                <div style="text-align:center">
+                <span v-if="applyState==0" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">您的申请已发送到相关中介审核，请耐心等待消息！</span>
+                <span v-if="applyState==1" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">由于您信用较高，申请已通过自动审核！</span>
+                </div>
             </div>
 
             <div id="infoBeforeDeliverResume" class="popup" style="height:300px; overflow:visible;">
@@ -585,6 +621,7 @@ export default {
       return {
           datanotnull: false,
           delivered: false,
+          applyState: 0,
           agency: '',
           job: '',
           jobid: this.$route.query.jobid
@@ -645,6 +682,12 @@ export default {
                 dataType:'json',
                 success: function(data) {
                     vuectx._data.delivered = true;
+                    vuectx._data.applyState = data.data.State;
+                    var title = document.getElementById("cboxTitle");
+                    title.innerText = "申请成功"
+                    var oldcontent = document.getElementById("cboxLoadedContent");
+                    var newcontent = document.getElementById("applyFinished");
+                    oldcontent.innerHTML = newcontent.outerHTML;
                     console.log(data);
                 }
             });
@@ -743,4 +786,57 @@ $(function () {
         font-family: 'Hiragino Sans GB'
     }
 
+    /* 等待加载的滚动条 */
+    .spinner {
+    margin: 40px auto;
+    width: 70px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+    }
+    
+    .spinner > div {
+    background-color: #019875;
+    height: 100%;
+    width: 7px;
+    display: inline-block;
+    
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+    }
+    
+    .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+    }
+    
+    .spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+    }
+    
+    .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+    }
+    
+    .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+    }
+    
+    @-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+    20% { -webkit-transform: scaleY(1.0) }
+    }
+    
+    @keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+    }
 </style>

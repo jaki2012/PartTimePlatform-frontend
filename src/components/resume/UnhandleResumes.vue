@@ -82,7 +82,7 @@
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            {{resume.UserInfo.Username}}的简历
+			                                        				                                            {{resume.UserInfo.Username}}的申请
 			                                        	</a>
                                         <em></em>
                                     </h3>
@@ -107,13 +107,13 @@
                                     </div>
                                 </div>
                                 <div class="links">
-                                    <a data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
+                                    <a v-if="false" data-resumename="jason的简历" data-positionname="随便写" data-deliverid="1686182" data-positionid="149594" data-resumekey="1ccca806e13637f7b1a4560f80f08057"
                                         data-forwardcount="1" class="resume_forward" href="javascript:void(0)">
                                                     	转发
                                                     	                                                    	<span>(1人)</span>
                                                     	                                                    </a>
                                     <a :txid="resume.TxID" class="resume_forward" v-on:click="accept(1,$event)">录用</a>
-                                    <a class="resume_del" v-on:click="accept(2,$event)">删除</a>
+                                    <a class="resume_del" v-on:click="accept(2,$event)">回绝</a>
                                 </div>
                             </div>
                         </li>

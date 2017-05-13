@@ -82,7 +82,7 @@
                                 <div class="resumeIntro">
                                     <h3 class="unread">
                                         <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
-			                                        				                                            {{resume.UserInfo.Username}}的简历
+			                                        				                                            {{resume.UserInfo.Username}}的申请
 			                                        	</a>
                                         <em></em>
                                     </h3>
