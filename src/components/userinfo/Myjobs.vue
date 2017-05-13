@@ -312,6 +312,7 @@ function Coin(opts){
 		_createCanvas:function(){
 			var _self=this;
 			this.canvas=document.createElement('canvas');
+            this.canvas.setAttribute("id","coincanvas");
 			this.canvas.setAttribute("data-id",Date.now());
 			if(!this.canvas.getContext){
 				alert("您的浏览器不支持canvas");
@@ -868,8 +869,8 @@ export default {
         /*opacity:0.6; -moz-opacity:0.5;*/     
     }
 
-    input{position:absolute;z-index:1000}
-	canvas{
+    #btn1{position:absolute;z-index:1000}
+	#coincanvas{
         position:absolute;top:0;left:0;
     }
 

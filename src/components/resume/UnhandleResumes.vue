@@ -76,12 +76,12 @@
 			                                    <i></i>
 			                                </label>
                             <div style="height:90px" class="resumeShow">
-                                <a title="预览在线简历" target="_blank" class="resumeImg" href="resumeView.html?deliverId=1686182">
+                                <a title="预览在线简历" target="_blank" class="resumeImg">
                                     <img src="../../assets/images/default_headpic.png">
                                 </a>
                                 <div class="resumeIntro">
                                     <h3 class="unread">
-                                        <a target="_blank" title="预览jason的简历" href="resumeView.html?deliverId=1686182">
+                                        <a target="_blank" title="预览简历">
 			                                        				                                            {{resume.UserInfo.Username}}的申请
 			                                        	</a>
                                         <em></em>
