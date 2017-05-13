@@ -225,34 +225,43 @@
         <!--/#noticeInterviewSuccess-->
 
         <!--转发简历弹窗-->
-        <div class="popup" id="forwardResume" style="width:400px;height:120px">
-            <form id="forwardResumeForm">
-                <table width="100%" class="f16">
-                    <tbody>
-                        <tr>
-                            <td valign="top" align="right">审核结果：</td>
-                            <td>
-                                <p style="margin:7px 0 0 0">该学生的兼职申请已经审核通过！<br>
-                                <span style="color:#dd4a38;font-size:13px">本页面将马上刷新...</span>
-                                </p>
-                                <span style="display:none;" class="beError error"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <input type="submit" value="确定" v-on:click="dismiss" class="btn">
-                                <a class="emial_cancel" href="javascript:;">取消</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <input type="hidden" value="" name="resumeKey">
-                <input type="hidden" value="" name="positionId">
-                <input type="hidden" value="" name="deliverId">
-            </form>
+        <div class="popup" id="forwardResume" style="width:380px;height:180px;">
+                <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                </div>
+                <div style="text-align:center">
+                <img src="../../assets/images/跑酷 (1).png" width="20px" height="20px"></img>
+                <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">同嘉小使正在全力帮你处理结果...</span>
+                </div>
         </div>
         <!--/#forwardResume-->
+
+        <div id="applyPending" class="popup" style="width:380px;height:180px;display:none">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            <div style="text-align:center">
+            <img src="../../assets/images/跑酷 (1).png" width="20px" height="20px"></img>
+            <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">同嘉小使正在全力帮你处理结果...</span>
+            </div>
+        </div>
+
+        <div id="applyFinished" class="popup" style="width:380px;height:180px;display:none">
+            <div class="spinner">
+                <img src="../../assets/images/成功.png" width="80px" height="80px"></img>
+            </div>
+            <div style="text-align:center">
+            <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">该学生的兼职申请已经审核通过！</span>
+            </div>
+        </div>
 
         <!--转发简历成功弹窗-->
         <div class="popup" id="forwardResumeSuccess">
@@ -371,6 +380,8 @@ export default {
             $("#cboxClose").click()
         },
         accept: function(result,e) {
+            var title = document.getElementById("cboxTitle");
+            title.innerText = "审核操作正在进行"
             var vuectx = this;
             var txid = $(e.currentTarget).attr("txid");
             $.ajax({
@@ -384,6 +395,10 @@ export default {
                 success: function(data) {
                     console.log(data)
                     //alert("人工审核成功，将重新刷新本页面！")
+                    var oldcontent = document.getElementById("forwardResume")
+                    var newcontent = document.getElementById("applyFinished");
+                    $("#applyFinished").css("display","block")
+                    oldcontent.innerHTML = newcontent.innerHTML;
                     vuectx.refreshPage();
                 }
             })
@@ -497,38 +512,38 @@ export default {
         var index = Math.floor(Math.random() * 2);
         var ipArray = new Array('42.62.79.226','42.62.79.227');
         var url = "ws://" + ipArray[index] + ":18080/wsServlet?code=314873";
-        var CallCenter = {
-                init:function(url){
-                    var _websocket = new WebSocket(url);
-                    _websocket.onopen = function(evt) {
-                        console.log("Connected to WebSocket server.");
-                    };
-                    _websocket.onclose = function(evt) {
-                        console.log("Disconnected");
-                    };
-                    _websocket.onmessage = function(evt) {
-                        //alert(evt.data);
-                        var notice = jQuery.parseJSON(evt.data);
-                        if(notice.status[0] == 0){
-                            $('#noticeDot-0').hide();
-                            $('#noticeTip').hide();
-                            $('#noticeNo').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                            $('#noticeNoPage').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                        }else{
-                            $('#noticeDot-0').show();
-                            $('#noticeTip strong').text(notice.status[0]);
-                            $('#noticeTip').show();
-                            $('#noticeNo').text('('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                            $('#noticeNoPage').text(' ('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
-                        }
-                        $('#noticeDot-1').hide();
-                    };
-                    _websocket.onerror = function(evt) {
-                        console.log('Error occured: ' + evt);
-                    };
-                }
-        };
-        CallCenter.init(url);
+        // var CallCenter = {
+        //         init:function(url){
+        //             var _websocket = new WebSocket(url);
+        //             _websocket.onopen = function(evt) {
+        //                 console.log("Connected to WebSocket server.");
+        //             };
+        //             _websocket.onclose = function(evt) {
+        //                 console.log("Disconnected");
+        //             };
+        //             _websocket.onmessage = function(evt) {
+        //                 //alert(evt.data);
+        //                 var notice = jQuery.parseJSON(evt.data);
+        //                 if(notice.status[0] == 0){
+        //                     $('#noticeDot-0').hide();
+        //                     $('#noticeTip').hide();
+        //                     $('#noticeNo').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+        //                     $('#noticeNoPage').text('').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+        //                 }else{
+        //                     $('#noticeDot-0').show();
+        //                     $('#noticeTip strong').text(notice.status[0]);
+        //                     $('#noticeTip').show();
+        //                     $('#noticeNo').text('('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+        //                     $('#noticeNoPage').text(' ('+notice.status[0]+')').show().parent('a').attr('href',ctx+'/mycenter/delivery.html');
+        //                 }
+        //                 $('#noticeDot-1').hide();
+        //             };
+        //             _websocket.onerror = function(evt) {
+        //                 console.log('Error occured: ' + evt);
+        //             };
+        //         }
+        // };
+        // CallCenter.init(url);
 }
 }
 </script>
@@ -536,4 +551,57 @@ export default {
 <style scoped>
    @import '../../assets/css/style.css';
    @import '../../assets/css/popup.css';
+    /* 等待加载的滚动条 */
+    .spinner {
+    margin: 40px auto;
+    width: 70px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+    }
+    
+    .spinner > div {
+    background-color: #019875;
+    height: 100%;
+    width: 7px;
+    display: inline-block;
+    
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+    }
+    
+    .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+    }
+    
+    .spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+    }
+    
+    .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+    }
+    
+    .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+    }
+    
+    @-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+    20% { -webkit-transform: scaleY(1.0) }
+    }
+    
+    @keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+    }
 </style>

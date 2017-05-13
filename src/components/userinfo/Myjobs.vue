@@ -179,6 +179,28 @@
             </form>
         </div>
         <!--/#forwardResume-->
+        <div id="applyPending" class="popup" style="width:380px;height:180px;display:none">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            <div style="text-align:center">
+            <img src="../../assets/images/跑酷 (1).png" width="20px" height="20px"></img>
+            <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">同嘉小使正在全力帮你处理结果...</span>
+            </div>
+        </div>
+
+        <div id="applyFinished" class="popup" style="width:380px;height:180px;display:none">
+            <div class="spinner">
+                <img src="../../assets/images/成功.png" width="80px" height="80px"></img>
+            </div>
+            <div style="text-align:center">
+            <span style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">您的评价已成功提交！</span>
+            </div>
+        </div>
         </div>
             <starratingjs></starratingjs>
     </div>
@@ -230,7 +252,9 @@ export default {
             userjobs: '',
             evaluatingtxid:'',
             evaluatingagency:'',
-            evaluatingjobtitle:''
+            evaluatingjobtitle:'',
+            //临时存储表单的
+            tempform: null,
         }
     },
     computed: mapState({user: state => state.user}),
@@ -253,6 +277,7 @@ export default {
         var perCurrent = $(".company_center_aside .current").removeClass('current');
         var current = $(".jobinfo").find("dd:eq(0)");
         current.addClass('current');
+        
     },
     methods: {
         popup: function(e) {
@@ -264,34 +289,55 @@ export default {
             this.evaluatingjobtitle = $(e.currentTarget).attr("jobtitle");
         },
         evaluate: function() {
+            
+            $("#applyPending").css("display","block");
+            var score = $("#input-id").val()
+            var oldcontent = document.getElementById("cboxLoadedContent")
+            var newcontent = document.getElementById("applyPending")
+            oldcontent.innerHTML = newcontent.outerHTML;
             var vuectx = this;
-            $("#cboxClose").click();
+            //$("#cboxClose").click();
             $.ajax({
                 url: HOST + ":" + PORT +"/tx/evaluate?username="+this.user.name,
                 type:'post',
                 data: {
-                    Score: $("#input-id").val(),
+                    Score: score,
                     TxID: this.evaluatingtxid
                 },
                 dataType:'json',
                 success: function(data) {
-                    alert("评价中介成功！")
+                    //alert("评价中介成功！")
+                    newcontent = document.getElementById("applyFinished")
+                    $("#applyFinished").css("display","block");
+                    oldcontent.innerHTML = newcontent.outerHTML;
+                    //$("#cboxClose").on("click",vuectx.test);
                     //重新发送请求 更新数据 刷新数据
-                    $.ajax({
-                        url: HOST + ":" + PORT +"/tx/student/jobs?username="+vuectx.user.name,
-                        type:'get',
-                        dataType:'json',
-                        success: function(data) {
-                            if(data.err != 0) return
-                            vuectx._data.userjobs = data.data;
-                            //将脚本加载后置，否则提前绑定了点击事件将会失效
-                            loadScript("../../../static/js/evaluateagency.js", function(){
-                                //console.log('Actually we do nothing here')
-                            })
-                        }
-                    });
+                    vuectx.refreshPage();
+                    // $.ajax({
+                    //     url: HOST + ":" + PORT +"/tx/student/jobs?username="+vuectx.user.name,
+                    //     type:'get',
+                    //     dataType:'json',
+                    //     success: function(data) {
+                    //         if(data.err != 0) return
+                    //         vuectx._data.userjobs = data.data;
+                    //         //将脚本加载后置，否则提前绑定了点击事件将会失效
+                    //         loadScript("../../../static/js/evaluateagency.js", function(){
+                    //             //console.log('Actually we do nothing here')
+                    //         })
+                    //     }
+                    // });
                 }
             });
+        },
+        refreshPage: function() {
+            this.$router.replace({path: '/refreshmj'})
+        },
+        test: function() {
+            //console.log("fuckyou")
+            //var oldcontent = document.getElementById("cboxLoadedContent")
+            //oldcontent.innerHTML = this.tempform; 
+            //this.refreshPage();
+            //$("#cboxClose").off("click",this.test)
         },
         edit: function() {
             var contents = document.getElementsByClassName('concre_content');
@@ -388,4 +434,65 @@ export default {
      margin: 0 0 0 4px!important;
      font-size: 13px!important;
    }
+
+      #applyPending {
+       margin:50px auto;
+   }
+
+   #applyFinished {
+       margin:50px auto;
+   }
+    /* 等待加载的滚动条 */
+    .spinner {
+    margin: 40px auto;
+    width: 70px;
+    height: 60px;
+    text-align: center;
+    font-size: 10px;
+    }
+    
+    .spinner > div {
+    background-color: #019875;
+    height: 100%;
+    width: 7px;
+    display: inline-block;
+    
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+    }
+    
+    .spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+    }
+    
+    .spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+    }
+    
+    .spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+    }
+    
+    .spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+    }
+    
+    @-webkit-keyframes stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) } 
+    20% { -webkit-transform: scaleY(1.0) }
+    }
+    
+    @keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+    }
 </style>

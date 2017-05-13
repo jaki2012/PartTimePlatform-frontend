@@ -201,7 +201,7 @@ $(function() {
 		$(this).children("dl").hide(), a = $(this).attr("data-resumeKey"), b = $(this).attr("data-positionId"), c = $(this).attr("data-deliverId"), d = "（简历来自拉勾）" + $(this).attr("data-positionName") + "：" + $(this).attr("data-resumeName"), e = "评价该兼职工作的内容的真实符合程度", $('#forwardResumeForm input[name="resumeKey"]').val(a), $('#forwardResumeForm input[name="positionId"]').val(b), $('#forwardResumeForm input[name="deliverId"]').val(c), $('#forwardResumeForm input[name="title"]').val(d).removeClass("error").removeClass("valid"), $('#forwardResumeForm textarea[name="content"]').val(e).removeClass("error").removeClass("valid"), $("#forwardResumeForm span.error").remove(), $("#recipients").val(""), placeholderFn(), suggestEmail("recipients"), $.colorbox({
 			inline: !0,
 			href: $("#forwardResume"),
-			title: "审核操作成功"
+			title: "审核操作提示"
 		})
 	}), $("#forwardResumeForm").validate({
 		onkeyup: !1,

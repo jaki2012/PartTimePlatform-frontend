@@ -333,10 +333,19 @@
                     <img src="../assets/images/成功.png" width="80px" height="80px"></img>
                 </div>
                 <div style="text-align:center">
-                <span v-if="applyState==0" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">您的申请已发送到相关中介审核，请耐心等待消息！</span>
-                <span v-if="applyState==1" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">由于您信用较高，申请已通过自动审核！</span>
+                <span id="alertinfo" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">您的申请已发送到相关中介审核，请耐心等待消息！</span>
                 </div>
             </div>
+
+            <div id="applyFinished2" class="popup" style="width:380px;height:180px;">
+                <div class="spinner">
+                    <img src="../assets/images/成功.png" width="80px" height="80px"></img>
+                </div>
+                <div style="text-align:center">
+                <span id="alertinfo" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">由于您信用较高，申请已通过自动审核！</span>
+                </div>
+            </div>
+            
 
             <div id="infoBeforeDeliverResume" class="popup" style="height:300px; overflow:visible;">
                 <div class="f18">为方便所投递企业HR查阅，请确认个人信息</div>
@@ -621,7 +630,7 @@ export default {
       return {
           datanotnull: false,
           delivered: false,
-          applyState: 0,
+          alertinfo: '',
           agency: '',
           job: '',
           jobid: this.$route.query.jobid
@@ -669,10 +678,12 @@ export default {
   },
   methods: {
       deliver: function(e) {
+          console.log(this);
             if(this.delivered) {
                 return
             } 
             var vuectx = this;
+            
             $.ajax({
                 url: HOST + ":" + PORT +"/tx/apply?username="+this.user.name,
                 type:'post',
@@ -682,13 +693,16 @@ export default {
                 dataType:'json',
                 success: function(data) {
                     vuectx._data.delivered = true;
-                    vuectx._data.applyState = data.data.State;
                     var title = document.getElementById("cboxTitle");
                     title.innerText = "申请成功"
                     var oldcontent = document.getElementById("cboxLoadedContent");
-                    var newcontent = document.getElementById("applyFinished");
+                    console.log(data.data.State)
+                    if(data.data.State == 0) {
+                        var newcontent = document.getElementById("applyFinished");
+                    } else {
+                        var newcontent = document.getElementById("applyFinished2");
+                    }
                     oldcontent.innerHTML = newcontent.outerHTML;
-                    console.log(data);
                 }
             });
       },

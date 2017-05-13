@@ -17,6 +17,7 @@ import UserJobStates from '@/components/UserJobStates'
 import SearchList from '@/components/Searchlist'
 import Refresh from '@/components/Refresh'
 import Refreshac from '@/components/Refreshac'
+import Refreshmj from '@/components/Refreshmj'
 import UserInfo from '@/components/userinfo/UserInfo'
 import MyResume from '@/components/userinfo/MyResume'
 import Credits from '@/components/userinfo/Credits'
@@ -159,6 +160,12 @@ export default new Router({
       path: '/refreshac',
       name: 'refreshac',
       component: Refreshac
+    },
+    // 跳转空页面
+    {
+      path: '/refreshmj',
+      name: 'refreshmj',
+      component: Refreshmj
     }
   ]
 })
