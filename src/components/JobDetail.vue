@@ -330,7 +330,7 @@
 
             <div id="applyFinished" class="popup" style="width:380px;height:180px;">
                 <div class="spinner">
-                    <img src="../assets/images/成功.png" width="80px" height="80px"></img>
+                    <img src="../assets/images/等待审核.png" width="80px" height="80px"></img>
                 </div>
                 <div style="text-align:center">
                 <span id="alertinfo" style="font-size:16px;vertical-align:text-bottom; color:#dd4a38">您的申请已发送到相关中介审核，请耐心等待消息！</span>
@@ -803,6 +803,7 @@ $(function () {
     /* 等待加载的滚动条 */
     .spinner {
     margin: 40px auto;
+    margin-bottom: 60px;
     width: 70px;
     height: 60px;
     text-align: center;
