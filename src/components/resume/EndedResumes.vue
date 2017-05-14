@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{job.JobDetail.Title}}</a>
+				                                        	应聘职位：<router-link title="随便写" target="_blank" :to="{path:'/jobdetail', query:{jobid: job.JobID} }">{{job.JobDetail.Title}}</router-link>
 				                                       						                                        </span>
                                     </div>
                                 </div>

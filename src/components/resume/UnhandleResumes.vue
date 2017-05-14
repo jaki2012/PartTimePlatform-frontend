@@ -102,7 +102,7 @@
                                     </div>
                                     <div class="jdpublisher">
                                         <span>
-				                                        	应聘职位：<a title="随便写" target="_blank" href="http://www.lagou.com/jobs/149594.html">{{job.JobDetail.Title}}</a>
+				                                        	应聘职位：<router-link title="随便写" target="_blank" :to="{path:'/jobdetail', query:{jobid: job.JobID} }">{{job.JobDetail.Title}}</router-link>
 				                                       						                                        </span>
                                     </div>
                                 </div>
@@ -393,7 +393,6 @@ export default {
                     Result: 1,
                 },
                 success: function(data) {
-                    console.log(data)
                     //alert("人工审核成功，将重新刷新本页面！")
                     var oldcontent = document.getElementById("forwardResume")
                     var newcontent = document.getElementById("applyFinished");
@@ -458,7 +457,6 @@ export default {
                     vuectx._data.jobs.push(data.data);
                     // vuectx._data.position.AgencyName = data.data.AgencyName;
                     // vuectx._data.position.Title = data.data.JobDetail.Title;
-                    console.log(vuectx._data.jobs);
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
                     loadScript("../../../static/js/acceptpopup.js", function(){
                         //console.log('Actually we do nothing here')
@@ -481,10 +479,10 @@ export default {
                 dataType: 'json',
                 success: function(data) {
                     if(data.msg !=0 ) return
+                    console.log(data)
                     vuectx._data.jobs = data.data;
                     // vuectx._data.position.AgencyName = data.data[0].AgencyName;
                     // vuectx._data.position.Title = data.data[0].JobDetail.Title;
-                    console.log(vuectx._data.jobs);
                     //将脚本加载后置，否则提前绑定了点击事件将会失效
                     loadScript("../../../static/js/acceptpopup.js", function(){
                         //console.log('Actually we do nothing here')

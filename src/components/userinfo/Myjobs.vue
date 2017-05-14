@@ -15,23 +15,29 @@
                         <div class="delivery_tabs">
                             <ul class="reset">
                                 <li class="current">
-                                    <a href="delivery.html?tag=-1">全部</a>
+                                    <a v-on:click="checkAll">全部</a>
                                 </li>
                                 <li>
-                                    <a href="#">兼职进行中</a>
+                                    <a v-on:click="checkPending">等待审核</a>
                                 </li>
                                 <li>
-                                    <a href="delivery.html?tag=1">中介互评</a>
+                                    <a v-on:click="checkEvaluating">等待互评</a>
                                 </li>
                                 <li>
-                                    <a href="delivery.html?tag=2">已结算</a>
+                                    <a v-on:click="checkFinished">已结算</a>
+                                </li>
+                                <li>
+                                    <a v-on:click="checkFailed">未通过结算</a>
+                                </li>
+                                <li>
+                                    <a v-on:click="checkRejected">已被否决</a>
                                 </li>
                             </ul>
                         </div>
                         <form id="deliveryForm">
                             <ul class="reset my_delivery">
                                 <template v-for="(userjob,index) in userjobs">
-                                <li>
+                                <li v-if="showall || userjob.Tx.State==condition">
                                     <div class="d_item">
                                         <h2 title="随便写">
                                             <a target="_blank" href="http://www.lagou.com/jobs/149594.html">
@@ -226,7 +232,7 @@ function Coin(opts){
 			// audioSrc:"http://download.taobaocdn.com/freedom/26370/media/shake.mp3",	//金币音频地址
 			coinWidth:50,           //金币宽度
 			coinHeight:50,          //金币高度
-			density:10,  // 金币个数
+			density:15,  // 金币个数
 			time:2000
 		};
 		this.settings=this._extendDeep(this.defaults,opts);   //深拷贝
@@ -596,6 +602,8 @@ export default {
             evaluatingjobtitle:'',
             //临时存储表单的
             tempform: null,
+            showall: true,
+            condition: 10
         }
     },
     computed: mapState({user: state => state.user}),
@@ -726,6 +734,30 @@ export default {
         },
         hideMask: function() {
             $("#mask").hide();  
+        },
+        checkAll: function() {
+            this.showall = true;
+            this.condition = 10;
+        },
+        checkPending: function() {
+            this.condition = 0;
+            this.showall = false;
+        },
+        checkEvaluating: function(){
+            this.condition = 1
+            this.showall = false;
+        },
+        checkFailed: function() {
+            this.condition = 2;
+            this.showall = false;
+        },
+        checkFinished: function() {
+            this.condition = 3;
+            this.showall = false;
+        },
+        checkRejected: function() {
+            this.condition = 4;
+            this.showall = false;
         }
     }
 }
@@ -871,6 +903,10 @@ export default {
     #btn1{position:absolute;z-index:1000}
 	#coincanvas{
         position:absolute;top:0;left:0;
+    }
+
+    .delivery_tabs li a {
+        padding: 3px 18px;
     }
 
 </style>

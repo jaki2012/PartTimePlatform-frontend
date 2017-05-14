@@ -727,6 +727,16 @@ export default {
                         var newcontent = document.getElementById("applyFinished2");
                     }
                     oldcontent.innerHTML = newcontent.outerHTML;
+
+                    // 请求刷新缓存
+                    $.ajax({
+                        url: HOST + ":" + PORT + '/job/query?JobID=' + vuectx.jobid,
+                        type: 'get',
+                        dataType: 'json',
+                        success: function () {
+                            console.log("cache refreshed!!")
+                        }
+                    });
                 }
             });
       },

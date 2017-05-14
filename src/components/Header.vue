@@ -24,7 +24,7 @@
           </dt>
           <!-- 中介用户 -->
           <dd v-if="user.type===1" style="display: none;"><router-link to="position">我发布的职位</router-link></dd>
-          <dd v-if="user.type===1" style="display: none;"><router-link to="unhandleresumes">我收到的简历</router-link></dd>
+          <dd v-if="user.type===1" style="display: none;"><router-link to="unhandleresumes">我收到的申请</router-link></dd>
           <dd v-if="user.type===1" style="display: none;"><router-link :to="{ path: 'userinfo', query: { userid: user.type }}">我的个人资料</router-link></dd>
           <dd v-if="user.type===1" class="btm" style="display:none;"><a >我的公司主页</a></dd>
           <!-- end中介用户 -->
