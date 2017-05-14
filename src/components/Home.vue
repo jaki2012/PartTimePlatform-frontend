@@ -1617,7 +1617,7 @@
                         <a href="https://www.teambition.com/" target="_blank">Teambition</a>
                         <a href="http://oupeng.com/" target="_blank">欧朋浏览器</a><span>|</span>
                         <a href="http://iwebad.com/" target="_blank">网络广告人社区</a>
-                        <a href="h/af/flink.html" target="_blank" class="more">更多</a>
+                        <a target="_blank" class="more">更多</a>
                     </dd>
                 </dl>
             </div>
@@ -1650,15 +1650,15 @@
                     <input type="password" id="password" name="password" tabindex="2" placeholder="请输入密码" />
                     <span class="error" style="display:none;" id="beError"></span>
                     <label class="fl" for="remember"><input type="checkbox" id="remember" value="" checked="checked" name="autoLogin" /> 记住我</label>
-                    <a href="h/reset.html" class="fr">忘记密码？</a>
+                    <a class="fr">忘记密码？</a>
                     <input type="submit" id="submitLogin" value="登 &nbsp; &nbsp; 录" />
                 </form>
                 <div class="login_right">
                     <div>还没有拉勾帐号？</div>
                     <a href="register.html" class="registor_now">立即注册</a>
                     <div class="login_others">使用以下帐号直接登录:</div>
-                    <a href="h/ologin/auth/sina.html" target="_blank" id="icon_wb" class="icon_wb" title="使用新浪微博帐号登录"></a>
-                    <a href="h/ologin/auth/qq.html" class="icon_qq" id="icon_qq" target="_blank" title="使用腾讯QQ帐号登录"></a>
+                    <a target="_blank" id="icon_wb" class="icon_wb" title="使用新浪微博帐号登录"></a>
+                    <a class="icon_qq" id="icon_qq" target="_blank" title="使用腾讯QQ帐号登录"></a>
                 </div>
             </div>
             <!--/#loginPop-->

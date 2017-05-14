@@ -221,6 +221,7 @@ export default {
             });
         }else {
             //mounted 才会有组件渲染
+            alert("您的个人资料还没进行首次完善，请先进行补充信息")
             $("#edit").click();
         }
     },

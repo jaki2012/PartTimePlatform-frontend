@@ -13,12 +13,15 @@
                 <h2>信用一览</h2>
                 <div id="resumeScore">
                     <div class="score fl">
-                        <canvas height="120" width="120" id="doughnutChartCanvas" style="width: 120px; height: 120px;"></canvas>
-                        <div style="" class="scoreVal"><span style="display:block;font-size:14px;margin-bottom:8px">最新信用分</span><span  style="font-size:21px;color:#019875">694</span></div>
+                        <div style="" class="scoreVal"><span id="newestScoreTitle"> 最新信用分 </span>
+                            <div id="newestScoreContent">
+                                <span id="newestScore">{{newestScore}}.0</span>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="which fl">
-                        <div class="level">信用等级:<em> 优秀</em></div>
+                        <div class="level">信用等级:<em style="color:#dd4a38"> 良好</em></div>
                         <div class="evaTime">评估时间:<em> 2017-04-06</em></div>
                         <span class="startbtn scorebtn"><a>晒晒分</a></span>
                         <span class="scorebtn"><a id="detailbtn" v-on:click="showscoredetail">收起来</a></span>
@@ -26,10 +29,11 @@
                 </div>
                 <!-- creditsChart -->
                 <div id="creditsChart">
-                    <creditsChart></creditsChart>
+                    <canvas id="myChart" width="704" height="400"></canvas>
                 </div>
                 </div>
                 <!--end #resumeScore-->
+                <!-- mock信用数据 -->
                 <div class="profile_box" id="basicInfo">
                     <h2>信用足迹</h2>
                     <div class="basicShow">
@@ -115,6 +119,7 @@
                     </ul>
                     <!-- end .resumeLists -->
                     </div>
+                    <!-- mock信用数据 -->
                     <!--end .basicShow-->
                 </div>
                 </dd>
@@ -125,40 +130,86 @@
 
 <script>
 import UserInfoSideBar from './UserInfoSideBar'
+import { mapState } from 'vuex'
 import CreditsChart from '../chart/CreditsChart'
+import Chart from 'chart.js';
+import CreditshistoryChart from '../chart/CreditshistoryChart'
 export default {
     name: 'credits',
     components: {
         'userinfosidebar': UserInfoSideBar,
         'creditsChart': CreditsChart,
+        'creditshistoryChart': CreditshistoryChart
     },
+    computed: mapState({user: state => state.user}),
     data: function () {
         return {
-            showing: true
+            showing: true,
+            newestScore: 0
         }
     },
     mounted: function(){
+         var vuectx = this;
+         $.ajax({
+             url: HOST+ ":" + PORT+ "/user/score?username=" + this.user.name,
+             type: "get",
+             dataType: "json",
+             success: function(data) {
+                 vuectx.newestScore = data.data.CurrentCreditScore;
+                 vuectx.drawChart();
+             }
+         })
+         
          var perCurrent = $(".company_center_aside .current").removeClass('current');
          var current = $(".jobinfo").find("dd:eq(1)");
          current.addClass('current');
          this.showscoredetail();
+         
     },
     methods: {
+        drawChart: function() {
+            var ctx = document.getElementById("myChart");
+            //mock 信用分数据
+            var mockdata = [6, 8, 7, this.newestScore];
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2017.04.23', '2017.04.30', '2017.05.07', '2017.05.14'],
+                    datasets: [{
+                        label: '信用积分成长情况（最近4次兼职）',
+                        fill: false,
+                        lineTension:0,
+                        borderColor: '#FF6666',
+                        backgroundColor: '#FF6666',
+                        data: mockdata,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:false
+                            }
+                        }]
+                    } 
+                }
+            });
+        },
         showscoredetail: function() {
             var a = document.getElementById('detailbtn');
             if(this.showing){
               a.innerText = "了解分"
-              //$("#creditsChart").hide();
-              $('#line-chart').css('height','0px');
+              $("#myChart").hide();
+              //$('#line-chart').css('height','0px');
               this.showing = !this.showing;
             } else {
               a.innerText = "收起来"
               //一开始就hide的话，会导致vue-chartjs不渲染
-              //$("#creditsChart").show();
-              $('#line-chart').css('height','400px');
+              $("#myChart").show();
+              //$('#line-chart').css('height','400px');
               this.showing = !this.showing;
             }
-            
         }
     }
 }
@@ -224,5 +275,23 @@ export default {
     #resumeScore div.fl {
         background-color: white;
     }
+
+    #newestScoreContent {
+        /* 分数改成斜体后的修正位移 */
+        margin-right:10px;  
+    }
+
+    #newestScore {
+        font-size:50px;
+        font-style:italic;
+        color:#019875;
+    }
+
+    #newestScoreTitle {
+        display:block;
+        font-size:14px;
+        margin-bottom:18px
+    }
+    
 
 </style>

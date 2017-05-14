@@ -492,12 +492,12 @@ function Coin(opts){
 window.onload=function(){
     var oBtn=document.getElementById('btn1');
     init();
-    oBtn.onclick=function(){      
-        $("#mask").css("height",$(document).height());     
-        $("#mask").css("width",$(document).width());     
-        $("#mask").show();  
-        var coin=new Coin();
-    }
+    // oBtn.onclick=function(){      
+    //     // $("#mask").css("height",$(document).height());     
+    //     // $("#mask").css("width",$(document).width());     
+    //     // $("#mask").show();  
+    //     var coin=new Coin();
+    // }
     var SHAKE_THRESHOLD = 400;
     var last_update = 0;
     var index=0;
@@ -689,7 +689,6 @@ export default {
             $("#mask").css("width",$(document).width());     
             $("#mask").show();  
             var coin=new Coin();
-            console.log("haha");
             $("#cboxClose").off("click",this.test)
         },
         edit: function() {

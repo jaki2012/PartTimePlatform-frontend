@@ -28,14 +28,14 @@
 						<a rel="nofollow" href="javascript:;" class="reflash"></a>
 					</div>
 					<div class="input_item clearfix">
-						<a rel="nofollow" href="https://passport.lagou.com/accountPwd/toReset.html" class="forgot_pwd">忘记密码？</a>
+						<a rel="nofollow" class="forgot_pwd">忘记密码？</a>
 					</div>
 					<div class="input_item clearfix" data-propertyname="submit" data-controltype="Botton" style="display: block;">
 						<input type="submit" class="btn btn_green btn_active btn_block btn_lg" value="登 录" data-lg-tj-id="1j90" data-lg-tj-no="idnull"
 						 data-lg-tj-cid="idnull">
 					</div>
 					<div class="input_item clearfix">
-						<h5 class="reg_now">还没有同嘉帐号？<a rel="nofollow" href="https://passport.lagou.com/register/register.html" data-lg-tj-id="1ja0" data-lg-tj-no="idnull"
+						<h5 class="reg_now">还没有同嘉帐号？<a rel="nofollow" data-lg-tj-id="1ja0" data-lg-tj-no="idnull"
 							 data-lg-tj-cid="idnull">立即注册</a></h5>
 					</div>
 					<input type="hidden" value="" id="isVisiable_request_form_verifyCode">
