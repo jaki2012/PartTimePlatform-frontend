@@ -12,11 +12,18 @@
                         <a style="display:none" class="inline jd_collection" title="收藏">
                         </a>
                     </dt>
-                    <dd class="job_request">
+                    <dd style="font-size:18px" class="job_request">
                         <span class="red">{{job.JobDetail.Salary}} x {{job.JobDetail.Day}} </span>
                         <span>每天工时：{{job.JobDetail.JobTime}} </span>
                         <span>工作地点：{{job.JobDetail.Place}}</span><br>
-                        <div>发布时间：{{job.PublishTime}}发布</div>
+                        <!-- 职位标签 -->
+                        <ul class="position-label clearfix">
+                            <li class="labels">兼职标签1</li>
+                            <li class="labels">兼职标签2</li>
+                            <li class="labels">兼职标签3</li>
+                            <li class="labels">兼职标签4</li>
+                        </ul>
+                        <div style="margin-top:0px;">{{job.PublishTime}} 发布于同嘉网</div>
                     </dd>
                     <dd class="job_bt">
                         <h3 class="description">兼职描述</h3>
@@ -69,7 +76,10 @@
                         </a>
                     </dt>
                     <dd>
-                        <ul class="c_feature reset">
+                        <h4 class="jobs_similar_header">
+                            <span>中介信息</span>
+                        </h4>
+                        <ul style="margin-top:10px" class="c_feature reset">
                             <li><span>发布职位</span> {{agency.JobsCount}}个</li>
                             <li><span>中介评分</span> {{agency.Score}}</li>
                             <li><span>中介用户</span> {{agency.Username}}</li>
@@ -116,6 +126,20 @@
                         <!-- <a href="javascript:;" id="mapPreview">查看完整地图</a> -->
                     </dd>
                 </dl>
+                <div class="jobs_similar" id="jobs_similar">
+                <h4 class="jobs_similar_header">
+                    <span>相似职位</span>
+                </h4>
+                <input value="false" id="similarPosition" type="hidden">
+                <div class="jobs_similar_content" id="jobs_similar_content">
+                    <div class="jobs_similar_detail" id="jobs_similar_detail" data-lg-tj-track-code="jobs_similar" data-lg-tj-track-type="1">
+                        <ul class="similar_list reset">
+                            <!--source=rec-->
+                        </ul>
+                    </div>
+                </div>
+                    <div class="nodata_similar_list"></div>
+                </div>
                 <a target="_blank" class="eventAd">
                     <img src="../assets/images/zhouyou.jpg" width="280" height="135" />
                 </a>
@@ -853,5 +877,68 @@ $(function () {
         transform: scaleY(1.0);
         -webkit-transform: scaleY(1.0);
     }
+    }
+
+    .job_detail {
+        /*左右内容高度修正*/
+        height:670px;
+    }
+
+    .job_company dt {
+        margin-bottom:0
+    }
+    .job_company dt h2 {
+        margin: 0 0 5px 10px;
+    }
+
+    .jobs_similar_header {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .jobs_similar_header span {
+        position: relative;
+        display: inline-block;
+        padding: 0 10px 7px 0;
+        margin-right: -4px;
+        margin-bottom: -2px;
+        color: #555;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .jobs_similar_header span::after {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 83px;
+        display: inline-block;
+        width: 162px;
+        border-bottom: 1px solid #e8e8e8;
+    }
+
+    .nodata_similar_list {
+        background: #fbfbfb url("../assets/images/nodata_similar_list.png") center center no-repeat;
+        height: 150px;
+    }
+
+    .position-label {
+        margin: 0 0 0 -10px;
+        padding-left:0;
+    }
+    .labels {
+        float: left;
+        height: 22px;
+        margin-right: 8px;
+        padding: 0 10px;
+        line-height: 22px;
+        background-color: #fff;
+        color: #70797b;
+        font-size: 12px;
+        border-radius: 10px;
+        white-space: nowrap;
+        list-style-type:none;
     }
 </style>

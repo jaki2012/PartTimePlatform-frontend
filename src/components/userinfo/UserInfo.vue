@@ -177,7 +177,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import UserInfoSideBar from './UserInfoSideBar'
 import AgencySideBar from '../resume/AgencySidebar'
 export default {
@@ -186,7 +186,7 @@ export default {
         'userinfosidebar': UserInfoSideBar,
         'agencysidebar': AgencySideBar
     },
-    computed: mapState({user: state=>state.user}),
+    computed: mapState({user: state=>state.user, app: state=>state.app}),
     data: function() {
         return {
             //覆盖了原有数据！
@@ -202,9 +202,9 @@ export default {
         corejs.type = 'text/javascript'
         corejs.src = '../../static/js/core.min.js'
         document.body.appendChild(corejs)
-        console.log(this)
         var vuectx = this;
         if(this.user.detail){
+            console.log("heyhey")
             $.ajax({
                 url: HOST + ":" + PORT +"/user/info",
                 data: {
@@ -219,13 +219,17 @@ export default {
                     console.log(data)
                 }
             });
-        }else {
-            //mounted 才会有组件渲染
-            alert("您的个人资料还没进行首次完善，请先进行补充信息")
-            $("#edit").click();
+        } else {
+             //mounted 才会有组件渲染
+             if(!this.app.firstShow){
+                 alert("您的个人资料还没进行首次完善，请先进行补充信息")
+                 this.showFirst();
+             }
+             $("#edit").click();
         }
     },
     methods: {
+        ...mapActions(["showFirst"]),
         edit: function() {
             var contents = document.getElementsByClassName('concre_content');
             for(var i=0; i<contents.length; i++){

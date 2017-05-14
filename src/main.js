@@ -17,7 +17,11 @@ router.beforeEach(({meta, path}, from, next) => {
     var userType = store.state.user.type;
 
     if (auth && !isLogin && path !== '/login') {
-        return next({ path: '/login' })
+        if(path == '/register'){
+
+        } else {
+            return next({ path: '/login' })
+        }     
     }
 
     if (auth && userType == 1 && (path == '/myjobs')){

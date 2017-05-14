@@ -16,7 +16,11 @@
 					<div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
 						<input v-model="form.password" type="password" class="input input_white" id="password" name="password" placeholder="请输入密码" data-required="required" autocomplete="off">
 					</div>
-					<div style="margin-top:10px; margin-left:40px; color:#777">
+                    <div class="input_item clearfix" data-propertyname="password" data-controltype="Password" style="display: block;">
+						<input v-model="form.password_confirm" type="password" class="input input_white" id="password_confirm" name="password" placeholder="确认密码" data-required="required" autocomplete="off">
+					</div>
+					<div style="margin-top:10px; margin-left:10px; color:#777">
+                        请选择注册身份：
 						学生用户  <input checked type="radio" id="student" name="usertype" value="0">
 						中介用户  <input type="radio" id="agency" name="usertype" value="1">
 					</div>
@@ -27,16 +31,13 @@
 						 alt="" class="yzm">
 						<a rel="nofollow" href="javascript:;" class="reflash"></a>
 					</div>
-					<div class="input_item clearfix">
-						<a rel="nofollow" class="forgot_pwd">忘记密码？</a>
-					</div>
 					<div class="input_item clearfix" data-propertyname="submit" data-controltype="Botton" style="display: block;">
-						<input type="submit" class="btn btn_green btn_active btn_block btn_lg" value="登 录" data-lg-tj-id="1j90" data-lg-tj-no="idnull"
+						<input type="submit" class="btn btn_green btn_active btn_block btn_lg" value="注 册" data-lg-tj-id="1j90" data-lg-tj-no="idnull"
 						 data-lg-tj-cid="idnull">
 					</div>
 					<div class="input_item clearfix">
-						<h5 class="reg_now">还没有同嘉帐号？<router-link to="/register" rel="nofollow" data-lg-tj-id="1ja0" data-lg-tj-no="idnull"
-							 data-lg-tj-cid="idnull">立即注册</router-link></h5>
+						<h5 class="reg_now">已有同嘉帐号？<router-link to="login" rel="nofollow" data-lg-tj-id="1ja0" data-lg-tj-no="idnull"
+							 data-lg-tj-cid="idnull">立即登录</router-link></h5>
 					</div>
 					<input type="hidden" value="" id="isVisiable_request_form_verifyCode">
 				</div>
@@ -94,6 +95,7 @@ export default {
 			form: {
 				name:'',
 				password:'',
+                password_confirm:'',
 				type:'',
 				token:'',
 				detail:''
@@ -105,6 +107,10 @@ export default {
 		submit() {
 			this.btn = true
 			if(!this.form.name || !this.form.password) return 
+            if(!($("#password").val() == $("#password_confirm").val())) {
+                alert("两次密码输入不符")
+                return
+            }
 			if($('input:radio[id="agency"]').is(":checked")){
 				this.form.type = 1;
 			} else {
@@ -114,7 +120,7 @@ export default {
 			//发送请求获取用户数据
 			var vuectx = this;
 			$.ajax({
-				url: "http://211.159.220.170:80/user/login",
+				url: HOST + ":" +PORT + "/user/register",
 				data: {
 					username: this.form.name,
 					password: this.form.password,
@@ -125,6 +131,7 @@ export default {
 					if(0 != data.err){
 						return
 					}
+                    alert("注册成功，即将跳转首页！")
 					vuectx._data.loginSuccessful = true;
 					vuectx._data.userdata = data;
 					vuectx._data.form.token = vuectx._data.userdata.data.token;
@@ -132,7 +139,6 @@ export default {
 					vuectx.jumptohome()
 				},
 				error: function(data) {
-					alert("账号密码错误或登录身份选择错误，请重新登录")
 					return 
 				}
 			})
@@ -517,7 +523,7 @@ input {
 }
 
 input[type="radio"]{
-	margin: 10px 30px 0 0px;
+	margin: 10px 10px 0 0px;
 }
 
 label,select,button,input[type=button],input[type=reset],input[type=submit],input[type=radio],input[type=checkbox] {

@@ -5,6 +5,7 @@ import Hello from '@/components/Hello'
 import Home from '@/components/Home'
 import JobDetail from '@/components/JobDetail'
 import Login from '@/components/Login'
+import Register from '@/components/Register'
 import Create from '@/components/Create'
 import CreateJob from '@/components/CreateJob'
 import Position from '@/components/Position'
@@ -52,6 +53,13 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    ,
+    // register page
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
     },
     // create job page
     {

@@ -60,15 +60,17 @@
       script.src = url;
       document.getElementsByTagName("head")[0].appendChild(script);
   }
-  import { mapState, mapActions} from 'vuex'
+  import { mapState, mapActions } from 'vuex'
   import { USER_SIGNOUT} from '../vuex/store/user'
   export default {
     name: 'header',
     computed: mapState({ user: state => state.user}),
     methods: {
-      ...mapActions({USER_SIGNOUT}),
+      ...mapActions([USER_SIGNOUT,"resetFirstShow"]),
       submit() {
         this.USER_SIGNOUT()
+        this.resetFirstShow()
+        console.log("reset SUCCESS")
         this.$router.replace({path:'/login'})
       }
     },
