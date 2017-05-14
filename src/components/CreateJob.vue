@@ -129,14 +129,14 @@
 
                         <table>
                             <tbody>
-                                <tr>
+                                <tr style="display:none">
                                     <td width="25"><span class="redstar">*</span></td>
                                     <td colspan="2">
                                         接收简历邮箱： <span id="receiveEmailVal">admin@admin.com</span>
                                         <input type="hidden" value="admin@admin.com" id="receiveEmail" name="email">
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr style="display:none">
                                     <td width="25"></td>
                                     <td colspan="2">
                                         同时简历自动发送至邮箱（仅一个）
