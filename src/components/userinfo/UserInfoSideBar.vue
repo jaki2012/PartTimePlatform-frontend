@@ -10,10 +10,10 @@
                 <router-link to="/myresume">个人简历</router-link>
             </dd>
             <dd style="display:none">
-                <a href="haveNoticeResumes.html">账号绑定</a>
+                <a>账号绑定</a>
             </dd>
             <dd >
-                <a >修改密码</a>
+                <a>修改密码</a>
             </dd>
 
         </dl>

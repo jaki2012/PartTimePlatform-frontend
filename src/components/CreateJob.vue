@@ -340,20 +340,7 @@ export default {
     },
     computed: mapState({user: state => state.user}),
     components: {
-      'agencysidebar': AgencySideBar,
-    //   'jobsjs': {
-    //       render(createElement) {
-    //           return createElement(
-    //               'script', 
-    //               {
-    //                   attrs: {
-    //                       type: 'text/javascript',
-    //                       src: '../../static/js/jobs.min.js'
-    //                   }
-    //               }
-    //           )
-    //       }
-    //   },
+        'agencysidebar': AgencySideBar,
         'jquerydatetimepickerjs': {
             render(createElement) {
                 return createElement(

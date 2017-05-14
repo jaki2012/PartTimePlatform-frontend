@@ -736,26 +736,44 @@ export default {
             $("#mask").hide();  
         },
         checkAll: function() {
+            var perCurrent = $(".delivery_tabs .current").removeClass('current');
+            var current = $(".delivery_tabs .reset").find("li:eq(0)");
+            current.addClass('current');
             this.showall = true;
             this.condition = 10;
         },
         checkPending: function() {
+            var perCurrent = $(".delivery_tabs .current").removeClass('current');
+            var current = $(".delivery_tabs .reset").find("li:eq(1)");
+            current.addClass('current');
             this.condition = 0;
             this.showall = false;
         },
         checkEvaluating: function(){
+            var perCurrent = $(".delivery_tabs .current").removeClass('current');
+            var current = $(".delivery_tabs .reset").find("li:eq(2)");
+            current.addClass('current');
             this.condition = 1
             this.showall = false;
         },
         checkFailed: function() {
+            var perCurrent = $(".delivery_tabs .current").removeClass('current');
+            var current = $(".delivery_tabs .reset").find("li:eq(4)");
+            current.addClass('current');
             this.condition = 2;
             this.showall = false;
         },
         checkFinished: function() {
+            var perCurrent = $(".delivery_tabs .current").removeClass('current');
+            var current = $(".delivery_tabs .reset").find("li:eq(3)");
+            current.addClass('current');
             this.condition = 3;
             this.showall = false;
         },
         checkRejected: function() {
+            var perCurrent = $(".delivery_tabs .current").removeClass('current');
+            var current = $(".delivery_tabs .reset").find("li:eq(5)");
+            current.addClass('current');
             this.condition = 4;
             this.showall = false;
         }
